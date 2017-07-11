@@ -25,7 +25,7 @@ namespace GSTBill.Views
             InitializeComponent();
             listBox.ItemsSource = new List<string>()
             {
-                "one", "two"
+                "one", "two", "three"
             };
         }
     }
