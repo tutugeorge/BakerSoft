@@ -13,21 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GSTBill
+namespace GSTBill.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Page
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("Views/AddSalePage.xaml", UriKind.Relative));
-        }
+        //private void button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    NavigationService.Navigate(new Uri("Views/AddSalePage.xaml", UriKind.Relative));
+        //}
     }
 }
