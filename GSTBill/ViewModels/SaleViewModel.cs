@@ -22,7 +22,7 @@ namespace GSTBill.ViewModels
 
         private void Checkout()
         {
-            _saleTransaction.Add();
+            _saleTransaction.Complete();
         }
     }
 }

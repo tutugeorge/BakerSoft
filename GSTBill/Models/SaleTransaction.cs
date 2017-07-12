@@ -16,21 +16,21 @@ namespace GSTBill.Models
             _saleTransactionRepository = saleTransactionRepository;
         }
 
-        public override void Add()
+        public override void Complete()
        {
-            base.Add();
+            base.Complete();
             //Call Data Layer
             _saleTransactionRepository.InsertTransaction();
         }
 
-        public override void Edit()
+        public override void Update()
         {
-            base.Edit();
+            base.Update();
         }
 
-        public override void Delete()
+        public override void Cancel()
         {
-            base.Delete();
-        }
+            base.Cancel();
+        }        
     }
 }
