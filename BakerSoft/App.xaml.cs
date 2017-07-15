@@ -1,10 +1,13 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "App.config", Watch = true)]
 
 namespace GSTBill
 {
@@ -13,8 +16,11 @@ namespace GSTBill
     /// </summary>
     public partial class App : Application
     {
+        
+
         protected override void OnStartup(StartupEventArgs e)
         {
+            log4net.Config.XmlConfigurator.Configure();
             base.OnStartup(e);
 
             var bootstrapper = new Bootstrapper();

@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using log4net;
+using Prism.Commands;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,9 @@ namespace GSTBill.ViewModels
 {
     class HomeWindowViewModel : BaseViewModel
     {
+        private static readonly ILog log = LogManager.GetLogger(
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly IRegionManager _regionManager;
         public DelegateCommand<string> GoToSaleCmd { get; private set; }
 
@@ -22,6 +26,7 @@ namespace GSTBill.ViewModels
 
         private void GoToSale(string navigatePath)
         {
+            log.Info("log this message");
             if (navigatePath != null)
                 _regionManager.RequestNavigate("ContentRegion", navigatePath);
         }
