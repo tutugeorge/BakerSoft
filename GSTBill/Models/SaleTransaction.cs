@@ -1,6 +1,7 @@
 ﻿using GSTBill.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,26 +12,34 @@ namespace GSTBill.Models
     {
         private SaleTransactionRepository _saleTransactionRepository;
 
+        public ObservableCollection<SaleItem> ItemList { get; set; }
+
         public SaleTransaction(SaleTransactionRepository saleTransactionRepository)
         {
             _saleTransactionRepository = saleTransactionRepository;
         }
 
-        public override void Add()
+        public override void Complete()
        {
-            base.Add();
+            base.Complete();
             //Call Data Layer
             _saleTransactionRepository.InsertTransaction();
         }
 
-        public override void Edit()
+        public override void Update()
         {
-            base.Edit();
+            base.Update();
         }
 
-        public override void Delete()
+        public override void Cancel()
         {
-            base.Delete();
+            base.Cancel();
+        }
+
+        public override void AddItem(Item item)
+        {
+            base.AddItem(item);
+            ItemList.Add(item as SaleItem);
         }
     }
 }

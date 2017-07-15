@@ -14,7 +14,8 @@ namespace GSTBill
     {
         protected override DependencyObject CreateShell()
         {
-            return Container.Resolve<MainWindow>();
+            //return Container.Resolve<MainWindow>();
+            return Container.Resolve<HomeWindow>();
         }
 
         protected override void InitializeShell()
@@ -36,6 +37,7 @@ namespace GSTBill
 
             var transactionRepo = Container.Resolve<ITransactionRepository>() as SaleTransactionRepository;
             Container.RegisterInstance(typeof(SaleTransaction), new SaleTransaction(transactionRepo));
+            Container.RegisterInstance(typeof(Products), new Products());
         }
     }
 }

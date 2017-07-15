@@ -9,15 +9,30 @@ namespace GSTBill.Models
 {
     class Transaction : ITransaction
     {
-        public virtual void Add()
+        public virtual void Complete()
         {            
         }
 
-        public virtual void Delete()
+        public virtual void AddItem(Item item)
+        {
+            
+        }
+
+        public void AddTender()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CalculateTotal()
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void Cancel()
         {           
         }
 
-        public virtual void Edit()
+        public virtual void Update()
         {            
         }
     }
