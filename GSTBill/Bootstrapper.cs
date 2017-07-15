@@ -37,6 +37,7 @@ namespace GSTBill
 
             var transactionRepo = Container.Resolve<ITransactionRepository>() as SaleTransactionRepository;
             Container.RegisterInstance(typeof(SaleTransaction), new SaleTransaction(transactionRepo));
+            Container.RegisterInstance(typeof(Products), new Products());
         }
     }
 }
