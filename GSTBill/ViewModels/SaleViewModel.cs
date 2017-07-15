@@ -22,6 +22,10 @@ namespace GSTBill.ViewModels
 
         public SaleItem SelectedProduct { get; set; }
         public ObservableCollection<SaleItem> SearchResult { get; set; }
+        public ObservableCollection<SaleItem> ItemList
+        {
+            get { return _saleTransaction.ItemList; }            
+        }
 
         public SaleViewModel(SaleTransaction saleTransaction,
                             Products products)
@@ -48,7 +52,7 @@ namespace GSTBill.ViewModels
 
         private void AddProduct()
         {
-            _saleTransaction.AddItem();
+            _saleTransaction.AddItem(SelectedProduct);
         }
 
         private void RemoveProduct()

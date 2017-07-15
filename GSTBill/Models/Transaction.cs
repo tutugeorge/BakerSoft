@@ -13,9 +13,9 @@ namespace GSTBill.Models
         {            
         }
 
-        public void AddItem()
+        public virtual void AddItem(Item item)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void AddTender()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GSTBill.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace GSTBill.Definitions
         void Update();
         void Cancel();
 
-        void AddItem();
+        void AddItem(Item item);
         void AddTender();
         void CalculateTotal();
     }

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace GSTBill.Models
 {
-    class SaleItem : Item
+    class PurchaseItem : Item
     {
-
     }
 }

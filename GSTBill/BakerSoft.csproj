@@ -90,8 +90,10 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Definitions\ITransaction.cs" />
     <Compile Include="Definitions\ITransactionRepository.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Price.cs" />
     <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\PurchaseItem.cs" />
     <Compile Include="Models\PurchaseTransaction.cs" />
     <Compile Include="Models\SaleItem.cs" />
     <Compile Include="Models\SaleTransaction.cs" />
