@@ -7,11 +7,32 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:local="clr-namespace:GSTBill.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="89,102,0,0" VerticalAlignment="Top" Width="86"/>
+             d:DesignHeight="562" d:DesignWidth="1000">
+    <Grid Margin="0,0,-272,0">
+
         <Button x:Name="button" Command="{Binding CheckoutCmd}"
-                Content="Checkout" HorizontalAlignment="Left" Margin="215,54,0,0" VerticalAlignment="Top" Width="75"/>
+                Content="Checkout" HorizontalAlignment="Left" Margin="753,478,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="35" Margin="40,37,0,0" TextWrapping="Wrap" 
+                 Text="Enter ProductName" VerticalAlignment="Top" Width="174"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="41" Margin="40,101,0,0" TextWrapping="Wrap" 
+        	Text="Enter ProductID" VerticalAlignment="Top" Width="174"/>
+        <Button x:Name="button_Copy" Command="{Binding CheckoutCmd}"
+        	Content="Cancel" HorizontalAlignment="Left" Margin="607,478,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="418" Margin="864,37,0,0" VerticalAlignment="Top" Width="358">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="158" Margin="422,37,0,0" VerticalAlignment="Top" Width="206"/>
+        <Button x:Name="button_Copy1" Command="{Binding CheckoutCmd}"
+        	Content="Add >>" HorizontalAlignment="Left" Margin="455,260,0,0" VerticalAlignment="Top" Width="191" Height="44"/>
+        <ComboBox x:Name="cmbUOM" HorizontalAlignment="Left" Margin="690,101,0,0" VerticalAlignment="Top" Width="138" Height="42"/>
+        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="41" Margin="690,37,0,0" TextWrapping="Wrap" 
+        	Text="Enter Quantity" VerticalAlignment="Top" Width="76" RenderTransformOrigin="1.737,-3.244"/>
+        <Button x:Name="button_Copy2" Command="{Binding CheckoutCmd}"
+        	Content="Search" HorizontalAlignment="Left" Margin="257,37,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
 
     </Grid>
 </UserControl>

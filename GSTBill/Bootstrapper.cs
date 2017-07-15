@@ -14,7 +14,8 @@ namespace GSTBill
     {
         protected override DependencyObject CreateShell()
         {
-            return Container.Resolve<MainWindow>();
+            //return Container.Resolve<MainWindow>();
+            return Container.Resolve<HomeWindow>();
         }
 
         protected override void InitializeShell()
