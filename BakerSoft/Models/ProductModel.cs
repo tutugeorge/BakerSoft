@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace GSTBill.Models
 {
-    class Products
+    class ProductModel
     {
         private IProductRepository _productRepository;
 
-        public Products(IProductRepository productRepository)
+        public ProductModel(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
 
-        public List<SaleItem> SearchByName(string name)
+        public List<Product> SearchByName(string name)
         {
             return _productRepository.GetProductsByName(name);
         }
 
-        public List<SaleItem> SearchById(string id)
+        public List<Product> SearchById(string id)
         {
             return _productRepository.GetProductsById(id);
         }

@@ -15,12 +15,12 @@ namespace BakerSoft.Repositories
             throw new NotImplementedException();
         }
 
-        public List<SaleItem> GetProductsById(string id)
+        public List<Product> GetProductsById(string id)
         {
             throw new NotImplementedException();
         }
 
-        public List<SaleItem> GetProductsByName(string name)
+        public List<Product> GetProductsByName(string name)
         {
             throw new NotImplementedException();
         }

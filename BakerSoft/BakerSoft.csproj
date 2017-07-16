@@ -99,10 +99,10 @@
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Price.cs" />
-    <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\PurchaseItem.cs" />
     <Compile Include="Models\PurchaseTransaction.cs" />
-    <Compile Include="Models\SaleItem.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\SaleTransaction.cs" />
     <Compile Include="Models\Tender.cs" />
     <Compile Include="Modules\SaleModule.cs" />

@@ -10,7 +10,7 @@ namespace BakerSoft.Definitions
     interface IProductRepository
     {
         void AddProduct();
-        List<SaleItem> GetProductsById(string id);
-        List<SaleItem> GetProductsByName(string name);
+        List<Product> GetProductsById(string id);
+        List<Product> GetProductsByName(string name);
     }
 }

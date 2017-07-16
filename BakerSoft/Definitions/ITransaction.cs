@@ -13,7 +13,7 @@ namespace GSTBill.Definitions
         void Update();
         void Cancel();
 
-        void AddItem(Item item);
+        void AddItem(Product item);
         void AddTender();
         void CalculateTotal();
     }

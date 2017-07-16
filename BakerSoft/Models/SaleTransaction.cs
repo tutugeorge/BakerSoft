@@ -15,7 +15,7 @@ namespace GSTBill.Models
         private SaleTransactionRepository _saleTransactionRepository;
         
 
-        public ObservableCollection<SaleItem> ItemList { get; set; }
+        public ObservableCollection<Product> ItemList { get; set; }
         public ObservableCollection<Payment> PaymentList { get; set; }
 
         public SaleTransaction(SaleTransactionRepository saleTransactionRepository)
@@ -47,16 +47,16 @@ namespace GSTBill.Models
             ClearTransaction();
         }
 
-        public override void AddItem(Item item)
+        public override void AddItem(Product item)
         {
             base.AddItem(item);
-            ItemList.Add(item as SaleItem);
+            ItemList.Add(item);
         }
 
-        public void RemoveItem(Item item)
+        public void RemoveItem(Product item)
         {
             //TODO : Remove selected item from the list
-            ItemList.Remove(item as SaleItem);
+            ItemList.Remove(item);
         }
 
         private void ClearTransaction()

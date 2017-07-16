@@ -42,7 +42,7 @@ namespace GSTBill
             //var productsRepo = Container.Resolve<IProductRepository>() as ProductRepository;
             var productsRepo = Container.Resolve<IProductRepository>() as MockProductRepo;
             Container.RegisterInstance(typeof(SaleTransaction), new SaleTransaction(transactionRepo));
-            Container.RegisterInstance(typeof(Products), new Products(productsRepo));
+            Container.RegisterInstance(typeof(ProductModel), new ProductModel(productsRepo));
         }
     }
 }

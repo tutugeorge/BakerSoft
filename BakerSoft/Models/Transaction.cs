@@ -13,7 +13,7 @@ namespace GSTBill.Models
         {            
         }
 
-        public virtual void AddItem(Item item)
+        public virtual void AddItem(Product item)
         {
             
         }
