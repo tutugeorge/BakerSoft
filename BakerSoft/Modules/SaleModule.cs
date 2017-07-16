@@ -1,4 +1,5 @@
-﻿using GSTBill.Views;
+﻿using BakerSoft.Views;
+using GSTBill.Views;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
@@ -24,8 +25,8 @@ namespace GSTBill.Modules
 
         public void Initialize()
         {
-            _container.RegisterTypeForNavigation<SaleView>();    
-                   
+            _container.RegisterTypeForNavigation<SaleView>();
+            _container.RegisterTypeForNavigation<AddProductView>();
         }
     }
 }
