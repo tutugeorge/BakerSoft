@@ -23,6 +23,7 @@ namespace GSTBill
             log4net.Config.XmlConfigurator.Configure();
             base.OnStartup(e);
 
+            //
             var bootstrapper = new Bootstrapper();
             bootstrapper.Run();
         }
