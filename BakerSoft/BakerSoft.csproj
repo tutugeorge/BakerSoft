@@ -92,9 +92,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Definitions\IProductRepository.cs" />
     <Compile Include="Definitions\ITransaction.cs" />
     <Compile Include="Definitions\ITransactionRepository.cs" />
+    <Compile Include="Models\CashPayment.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Price.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Models\PurchaseItem.cs" />
@@ -104,6 +107,8 @@
     <Compile Include="Models\Tender.cs" />
     <Compile Include="Modules\SaleModule.cs" />
     <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Repositories\MockProductRepo.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\SaleTransactionRepository.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\HomeWindowViewModel.cs" />

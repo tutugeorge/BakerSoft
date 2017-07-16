@@ -18,7 +18,7 @@ namespace GSTBill.ViewModels
         public DelegateCommand CancelSaleCmd { get; private set; }
         public DelegateCommand AddProductCmd { get; private set; }
         public DelegateCommand SearchProductByNameCmd { get; private set; }
-        public DelegateCommand SearchProductByIdCmd { get; private set; }
+        public DelegateCommand SearchProductByIdCmd { get; private set; }        
 
         public SaleItem SelectedProduct { get; set; }
         public ObservableCollection<SaleItem> SearchResult { get; set; }
@@ -47,7 +47,7 @@ namespace GSTBill.ViewModels
 
         private void CancelSale()
         {
-
+            _saleTransaction.Cancel();
         }
 
         private void AddProduct()
@@ -57,7 +57,7 @@ namespace GSTBill.ViewModels
 
         private void RemoveProduct()
         {
-
+            _saleTransaction.RemoveItem(SelectedProduct);
         }
 
         private void SearchProductByName()

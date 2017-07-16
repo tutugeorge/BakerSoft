@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GSTBill.Models
+namespace BakerSoft.Models
 {
-    class SaleItem : Item
+    class Payment
     {
-        public int Quantity { get; set; }
     }
 }

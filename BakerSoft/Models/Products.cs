@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BakerSoft.Definitions;
+using BakerSoft.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +10,21 @@ namespace GSTBill.Models
 {
     class Products
     {
+        private IProductRepository _productRepository;
+
+        public Products(IProductRepository productRepository)
+        {
+            _productRepository = productRepository;
+        }
+
         public List<SaleItem> SearchByName(string name)
         {
-            return new List<SaleItem>();
+            return _productRepository.GetProductsByName(name);
         }
 
         public List<SaleItem> SearchById(string id)
         {
-            return new List<SaleItem>();
+            return _productRepository.GetProductsById(id);
         }
 
         public void Add()
