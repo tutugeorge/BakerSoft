@@ -13,9 +13,14 @@ namespace GSTBill.Models
     class SaleTransaction : Transaction
     {
         private SaleTransactionRepository _saleTransactionRepository;
-        
 
-        public ObservableCollection<Product> ItemList { get; set; }
+        public decimal TransactionDiscountTotal { get; set; }
+        public List<Product> _itemList;
+        public List<Product> ItemList
+        {
+            get { return _itemList; }
+            set { SetProperty(ref _itemList, value); }
+        }
         public ObservableCollection<Payment> PaymentList { get; set; }
 
         public SaleTransaction(SaleTransactionRepository saleTransactionRepository)
@@ -50,6 +55,8 @@ namespace GSTBill.Models
         public override void AddItem(Product item)
         {
             base.AddItem(item);
+            if (ItemList == null)
+                ItemList = new List<Product>();
             ItemList.Add(item);
         }
 

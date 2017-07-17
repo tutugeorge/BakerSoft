@@ -10,6 +10,12 @@ namespace BakerSoft.Repositories
 {
     class MockProductRepo : IProductRepository
     {
+        List<Product> products = new List<Product>()
+            {
+                new Product() { Id=1001, Name="P1", Description="P1DEsc" , UoM=1, SearchId=1001 },
+                new Product() { Id=1002, Name="P2", Description="P2DEsc" , UoM=1, SearchId=1002 }
+            };
+
         public void AddProduct()
         {
             throw new NotImplementedException();
@@ -17,7 +23,7 @@ namespace BakerSoft.Repositories
 
         public List<Product> GetProductsById(string id)
         {
-            throw new NotImplementedException();
+            return products;
         }
 
         public List<Product> GetProductsByName(string name)

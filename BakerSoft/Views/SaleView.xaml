@@ -14,24 +14,49 @@
                 Content="Checkout" HorizontalAlignment="Left" Margin="753,478,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="35" Margin="40,37,0,0" TextWrapping="Wrap" 
                  Text="Enter ProductName" VerticalAlignment="Top" Width="174"/>
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="41" Margin="40,101,0,0" TextWrapping="Wrap" 
-        	Text="Enter ProductID" VerticalAlignment="Top" Width="174"/>
+        <TextBox x:Name="txtBxPId" 
+                 HorizontalAlignment="Left" Height="41" Margin="40,101,0,0" TextWrapping="Wrap" 
+        	    Text="Enter ProductID" VerticalAlignment="Top" Width="174"/>
         <Button x:Name="button_Copy" Command="{Binding CheckoutCmd}"
         	Content="Cancel" HorizontalAlignment="Left" Margin="607,478,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="418" Margin="864,37,0,0" VerticalAlignment="Top" Width="358">
+        <ListView x:Name="listView" 
+                  ItemsSource="{Binding ItemList}"
+                  HorizontalAlignment="Left" Height="418" Margin="864,37,0,0" VerticalAlignment="Top" Width="358">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="ID" Width="120" />
+                    <GridViewColumn Header="Name" Width="50"/>
+                    <GridViewColumn Header="Price" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Description}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="158" Margin="422,37,0,0" VerticalAlignment="Top" Width="206"/>
-        <Button x:Name="button_Copy1" Command="{Binding CheckoutCmd}"
+        <ListBox x:Name="lstBxItems" 
+                 ItemsSource="{Binding SearchResult}"                 
+                 HorizontalAlignment="Left" Height="158" Margin="422,37,0,0" VerticalAlignment="Top" Width="206">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Description}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="button_Copy1" 
+                Command="{Binding AddProductCmd}"
+                CommandParameter="{Binding SelectedItem, ElementName=lstBxItems}"
         	Content="Add >>" HorizontalAlignment="Left" Margin="455,260,0,0" VerticalAlignment="Top" Width="191" Height="44"/>
         <ComboBox x:Name="cmbUOM" HorizontalAlignment="Left" Margin="690,101,0,0" VerticalAlignment="Top" Width="138" Height="42"/>
         <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="41" Margin="690,37,0,0" TextWrapping="Wrap" 
         	Text="Enter Quantity" VerticalAlignment="Top" Width="76" RenderTransformOrigin="1.737,-3.244"/>
-        <Button x:Name="button_Copy2" Command="{Binding CheckoutCmd}"
+        <Button x:Name="button_Copy2" 
+                Command="{Binding SearchProductByIdCmd}"
+                CommandParameter="{Binding Text, ElementName=txtBxPId}"
         	Content="Search" HorizontalAlignment="Left" Margin="257,37,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
 
     </Grid>
