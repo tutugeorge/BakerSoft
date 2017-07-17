@@ -12,23 +12,23 @@ namespace GSTBill.ViewModels
     class SaleViewModel : BaseViewModel
     {
         private SaleTransaction _saleTransaction;
-        private Products _products;
+        private ProductModel _products;
 
         public DelegateCommand CheckoutCmd { get; private set; }
         public DelegateCommand CancelSaleCmd { get; private set; }
         public DelegateCommand AddProductCmd { get; private set; }
         public DelegateCommand SearchProductByNameCmd { get; private set; }
-        public DelegateCommand SearchProductByIdCmd { get; private set; }
+        public DelegateCommand SearchProductByIdCmd { get; private set; }        
 
-        public SaleItem SelectedProduct { get; set; }
-        public ObservableCollection<SaleItem> SearchResult { get; set; }
-        public ObservableCollection<SaleItem> ItemList
+        public Product SelectedProduct { get; set; }
+        public ObservableCollection<Product> SearchResult { get; set; }
+        public ObservableCollection<Product> ItemList
         {
             get { return _saleTransaction.ItemList; }            
         }
 
         public SaleViewModel(SaleTransaction saleTransaction,
-                            Products products)
+                            ProductModel products)
         {
             _saleTransaction = saleTransaction;
             _products = products;
@@ -47,7 +47,7 @@ namespace GSTBill.ViewModels
 
         private void CancelSale()
         {
-
+            _saleTransaction.Cancel();
         }
 
         private void AddProduct()
@@ -57,7 +57,7 @@ namespace GSTBill.ViewModels
 
         private void RemoveProduct()
         {
-
+            _saleTransaction.RemoveItem(SelectedProduct);
         }
 
         private void SearchProductByName()

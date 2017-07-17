@@ -7,6 +7,8 @@ using GSTBill.Modules;
 using GSTBill.Models;
 using GSTBill.Definitions;
 using GSTBill.Repositories;
+using BakerSoft.Definitions;
+using BakerSoft.Repositories;
 
 namespace GSTBill
 {
@@ -33,11 +35,14 @@ namespace GSTBill
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
-            Container.RegisterType<ITransactionRepository, SaleTransactionRepository>();            
+            Container.RegisterType<ITransactionRepository, SaleTransactionRepository>();
+            Container.RegisterType<IProductRepository, ProductRepository>();
 
             var transactionRepo = Container.Resolve<ITransactionRepository>() as SaleTransactionRepository;
+            //var productsRepo = Container.Resolve<IProductRepository>() as ProductRepository;
+            var productsRepo = Container.Resolve<IProductRepository>() as MockProductRepo;
             Container.RegisterInstance(typeof(SaleTransaction), new SaleTransaction(transactionRepo));
-            Container.RegisterInstance(typeof(Products), new Products());
+            Container.RegisterInstance(typeof(ProductModel), new ProductModel(productsRepo));
         }
     }
 }
