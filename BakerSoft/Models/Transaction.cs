@@ -13,8 +13,8 @@ namespace GSTBill.Models
         #region Properties
         protected int TransactionId { get; set; }
         protected DateTime TransactionDate { get; set; }
-        protected double TransactionTotal { get; set; }
-        protected double TransactionTaxTotal { get; set; }
+        public double TransactionTotal { get; set; }
+        public double TransactionTaxTotal { get; set; }
         
         #endregion
 

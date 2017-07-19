@@ -18,8 +18,14 @@ namespace GSTBill.ViewModels
         public DelegateCommand CancelSaleCmd { get; private set; }
         public DelegateCommand<Product> AddProductCmd { get; private set; }
         public DelegateCommand SearchProductByNameCmd { get; private set; }
-        public DelegateCommand<string> SearchProductByIdCmd { get; private set; }        
+        public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
 
+        private string _total;
+        public string Total
+        {
+            get { return _total; }
+            set { SetProperty(ref _total, value); }
+        }
         public Product SelectedProduct { get; set; }        
         private List<Product> _searchResult = new List<Product>();
         public List<Product> SearchResult
@@ -50,26 +56,34 @@ namespace GSTBill.ViewModels
         private void Checkout()
         {
             _saleTransaction.Complete();
+            UpdateTransaction();
         }
 
         private void CancelSale()
         {
             _saleTransaction.Cancel();
+            UpdateTransaction();
         }
 
         private void AddProduct(Product product)
         {
             _saleTransaction.AddItem(product);
-            ItemList = null;
-            ItemList = _saleTransaction.ItemList;
-            //ItemList.Add(product);
+            UpdateTransaction();
         }
 
         private void RemoveProduct()
         {
             _saleTransaction.RemoveItem(SelectedProduct);
+            UpdateTransaction();
+        }
+
+        private void UpdateTransaction()
+        {
+            SearchResult = null;
             ItemList = null;
             ItemList = _saleTransaction.ItemList;
+            Total = (_saleTransaction.TransactionTotal +
+                    _saleTransaction.TransactionTaxTotal).ToString("F2");
         }
 
         private void SearchProductByName()
