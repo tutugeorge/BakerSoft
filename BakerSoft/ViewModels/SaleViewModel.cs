@@ -27,11 +27,11 @@ namespace GSTBill.ViewModels
             get { return _searchResult; }
             set { SetProperty(ref _searchResult, value); }
         }
-        //private List<Product> _itemList;
+        private List<Product> _itemList = new List<Product>();
         public List<Product> ItemList
         {
-            get { return _saleTransaction.ItemList; }
-            set { SetProperty(ref _saleTransaction._itemList, value); }                       
+            get { return _itemList; }
+            set { SetProperty(ref _itemList, value); }                       
         }
 
         public SaleViewModel(SaleTransaction saleTransaction,
@@ -60,11 +60,16 @@ namespace GSTBill.ViewModels
         private void AddProduct(Product product)
         {
             _saleTransaction.AddItem(product);
+            ItemList = null;
+            ItemList = _saleTransaction.ItemList;
+            //ItemList.Add(product);
         }
 
         private void RemoveProduct()
         {
             _saleTransaction.RemoveItem(SelectedProduct);
+            ItemList = null;
+            ItemList = _saleTransaction.ItemList;
         }
 
         private void SearchProductByName()

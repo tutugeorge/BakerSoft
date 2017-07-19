@@ -14,12 +14,11 @@ namespace GSTBill.Models
     {
         private SaleTransactionRepository _saleTransactionRepository;
 
-        public decimal TransactionDiscountTotal { get; set; }
-        public List<Product> _itemList;
+        public decimal TransactionDiscountTotal { get; set; }        
         public List<Product> ItemList
         {
-            get { return _itemList; }
-            set { SetProperty(ref _itemList, value); }
+            get;
+            set;
         }
         public ObservableCollection<Payment> PaymentList { get; set; }
 
@@ -58,17 +57,46 @@ namespace GSTBill.Models
             if (ItemList == null)
                 ItemList = new List<Product>();
             ItemList.Add(item);
+
+            AddToTransactionTotal(item.PriceList[0]);
+            AddToTaxTotal(item.ProductTax, item.PriceList[0]);
         }
 
         public void RemoveItem(Product item)
         {
             //TODO : Remove selected item from the list
             ItemList.Remove(item);
+            SubstractFromTransactionTotal(item.PriceList[0]);
+            SubstractFromTaxTotal(item.ProductTax, item.PriceList[0]);
+        }
+
+        private void AddToTaxTotal(Tax tax, Price price)
+        {
+            TransactionTaxTotal += (price.SellingPrice * tax.SGST) + 
+                                    (price.SellingPrice * tax.CGST);
+        }
+
+        private void SubstractFromTaxTotal(Tax tax, Price price)
+        {
+            TransactionTaxTotal -= (price.SellingPrice * tax.SGST) +
+                                    (price.SellingPrice * tax.CGST);
+        }
+
+        private void AddToTransactionTotal(Price price)
+        {
+            TransactionTotal += price.SellingPrice;
+        }
+
+        private void SubstractFromTransactionTotal(Price price)
+        {
+            TransactionTotal -= price.SellingPrice;
         }
 
         private void ClearTransaction()
         {
             ItemList.Clear();
+            TransactionTotal = 0.00;
+            TransactionTaxTotal = 0.00;
         }
     }
 }
