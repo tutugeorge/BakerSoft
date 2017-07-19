@@ -16,15 +16,28 @@ namespace GSTBill.ViewModels
 
         public DelegateCommand CheckoutCmd { get; private set; }
         public DelegateCommand CancelSaleCmd { get; private set; }
-        public DelegateCommand AddProductCmd { get; private set; }
+        public DelegateCommand<Product> AddProductCmd { get; private set; }
         public DelegateCommand SearchProductByNameCmd { get; private set; }
-        public DelegateCommand SearchProductByIdCmd { get; private set; }        
+        public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
 
-        public Product SelectedProduct { get; set; }
-        public ObservableCollection<Product> SearchResult { get; set; }
-        public ObservableCollection<Product> ItemList
+        private string _total;
+        public string Total
         {
-            get { return _saleTransaction.ItemList; }            
+            get { return _total; }
+            set { SetProperty(ref _total, value); }
+        }
+        public Product SelectedProduct { get; set; }        
+        private List<Product> _searchResult = new List<Product>();
+        public List<Product> SearchResult
+        {
+            get { return _searchResult; }
+            set { SetProperty(ref _searchResult, value); }
+        }
+        private List<Product> _itemList = new List<Product>();
+        public List<Product> ItemList
+        {
+            get { return _itemList; }
+            set { SetProperty(ref _itemList, value); }                       
         }
 
         public SaleViewModel(SaleTransaction saleTransaction,
@@ -35,29 +48,42 @@ namespace GSTBill.ViewModels
 
             CheckoutCmd = new DelegateCommand(Checkout);
             CancelSaleCmd = new DelegateCommand(CancelSale);
-            AddProductCmd = new DelegateCommand(AddProduct);
+            AddProductCmd = new DelegateCommand<Product>(AddProduct);
             SearchProductByNameCmd = new DelegateCommand(SearchProductByName);
-            SearchProductByIdCmd = new DelegateCommand(SearchProductById);
+            SearchProductByIdCmd = new DelegateCommand<string>(SearchProductById);
         }
 
         private void Checkout()
         {
             _saleTransaction.Complete();
+            UpdateTransaction();
         }
 
         private void CancelSale()
         {
             _saleTransaction.Cancel();
+            UpdateTransaction();
         }
 
-        private void AddProduct()
+        private void AddProduct(Product product)
         {
-            _saleTransaction.AddItem(SelectedProduct);
+            _saleTransaction.AddItem(product);
+            UpdateTransaction();
         }
 
         private void RemoveProduct()
         {
             _saleTransaction.RemoveItem(SelectedProduct);
+            UpdateTransaction();
+        }
+
+        private void UpdateTransaction()
+        {
+            SearchResult = null;
+            ItemList = null;
+            ItemList = _saleTransaction.ItemList;
+            Total = (_saleTransaction.TransactionTotal +
+                    _saleTransaction.TransactionTaxTotal).ToString("F2");
         }
 
         private void SearchProductByName()
@@ -65,9 +91,9 @@ namespace GSTBill.ViewModels
 
         }
 
-        private void SearchProductById()
+        private void SearchProductById(string id)
         {
-
+            SearchResult = _products.SearchById(id);            
         }
     }
 }

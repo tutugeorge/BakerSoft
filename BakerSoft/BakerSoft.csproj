@@ -113,6 +113,7 @@
     <Compile Include="Models\PurchaseTransaction.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\SaleTransaction.cs" />
+    <Compile Include="Models\Tax.cs" />
     <Compile Include="Models\Tender.cs" />
     <Compile Include="Modules\SaleModule.cs" />
     <Compile Include="Models\Transaction.cs" />
