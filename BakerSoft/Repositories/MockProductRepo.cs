@@ -21,9 +21,9 @@ namespace BakerSoft.Repositories
                     PriceList = new List<Price>() { new Price() { PurchaseId = 1, PurchasePrice = 100.00, SellingPrice = 120.00 } } },
             };
 
-        public void AddProduct()
+        public void AddProduct(Product product)
         {
-            throw new NotImplementedException();
+            products.Add(product);
         }
 
         public List<Product> GetProductsById(string id)

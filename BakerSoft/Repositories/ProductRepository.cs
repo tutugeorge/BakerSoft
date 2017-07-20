@@ -10,7 +10,7 @@ namespace BakerSoft.Repositories
 {
     class ProductRepository : IProductRepository
     {        
-        public void AddProduct()
+        public void AddProduct(Product product)
         {
             throw new NotImplementedException();
         }
