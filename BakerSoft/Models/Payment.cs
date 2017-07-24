@@ -8,5 +8,6 @@ namespace BakerSoft.Models
 {
     class Payment
     {
+        public double Amount { get; set; }
     }
 }
