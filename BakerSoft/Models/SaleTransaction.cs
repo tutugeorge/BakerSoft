@@ -1,5 +1,6 @@
 ﻿using BakerSoft.Models;
 using BakerSoft.Repositories;
+using GSTBill.Definitions;
 using GSTBill.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace GSTBill.Models
 {
     class SaleTransaction : Transaction
     {
-        private SaleTransactionRepository _saleTransactionRepository;
+        private ITransactionRepository _saleTransactionRepository;
 
         public decimal TransactionDiscountTotal { get; set; }        
         public List<Product> ItemList
@@ -22,7 +23,7 @@ namespace GSTBill.Models
         }
         public ObservableCollection<Payment> PaymentList { get; set; }
 
-        public SaleTransaction(SaleTransactionRepository saleTransactionRepository)
+        public SaleTransaction(ITransactionRepository saleTransactionRepository)
         {
             _saleTransactionRepository = saleTransactionRepository;            
         }
