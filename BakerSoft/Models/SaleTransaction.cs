@@ -59,38 +59,40 @@ namespace GSTBill.Models
                 ItemList = new List<Product>();
             ItemList.Add(item);
 
-            AddToTransactionTotal(item.PriceList[0]);
-            AddToTaxTotal(item.ProductTax, item.PriceList[0]);
+            AddToTransactionTotal(item.PriceList[0], item.Quantity);
+            AddToTaxTotal(item.ProductTax, item.PriceList[0], item.Quantity);
         }
 
         public void RemoveItem(Product item)
         {
             //TODO : Remove selected item from the list
             ItemList.Remove(item);
-            SubstractFromTransactionTotal(item.PriceList[0]);
-            SubstractFromTaxTotal(item.ProductTax, item.PriceList[0]);
+            SubstractFromTransactionTotal(item.PriceList[0], item.Quantity);
+            SubstractFromTaxTotal(item.ProductTax, item.PriceList[0], item.Quantity);
         }
 
-        private void AddToTaxTotal(Tax tax, Price price)
+        private void AddToTaxTotal(Tax tax, Price price, int quantity)
         {
-            TransactionTaxTotal += (price.SellingPrice * tax.SGST) + 
-                                    (price.SellingPrice * tax.CGST);
+            TransactionTaxTotal = TransactionTaxTotal +
+                                    ((price.SellingPrice * tax.SGST) + 
+                                    (price.SellingPrice * tax.CGST)) * quantity;
         }
 
-        private void SubstractFromTaxTotal(Tax tax, Price price)
+        private void SubstractFromTaxTotal(Tax tax, Price price, int quantity)
         {
-            TransactionTaxTotal -= (price.SellingPrice * tax.SGST) +
-                                    (price.SellingPrice * tax.CGST);
+            TransactionTaxTotal = TransactionTaxTotal - 
+                                    ((price.SellingPrice * tax.SGST) +
+                                    (price.SellingPrice * tax.CGST)) * quantity;
         }
 
-        private void AddToTransactionTotal(Price price)
+        private void AddToTransactionTotal(Price price, int quantity)
         {
-            TransactionTotal += price.SellingPrice;
+            TransactionTotal = TransactionTotal + (price.SellingPrice * quantity);
         }
 
-        private void SubstractFromTransactionTotal(Price price)
+        private void SubstractFromTransactionTotal(Price price, int quantity)
         {
-            TransactionTotal -= price.SellingPrice;
+            TransactionTotal = TransactionTotal - (price.SellingPrice * quantity);
         }
 
         private void ClearTransaction()

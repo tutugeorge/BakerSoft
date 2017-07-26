@@ -122,12 +122,16 @@
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\PurchaseTransactionRepository.cs" />
     <Compile Include="Repositories\SaleTransactionRepository.cs" />
+    <Compile Include="ViewModels\AddPaymentViewModel.cs" />
     <Compile Include="ViewModels\AddProductViewModel.cs" />
     <Compile Include="ViewModels\AddPurchaseViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\HomeWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SaleViewModel.cs" />
+    <Compile Include="Views\AddPaymentView.xaml.cs">
+      <DependentUpon>AddPaymentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddProductView.xaml.cs">
       <DependentUpon>AddProductView.xaml</DependentUpon>
     </Compile>
@@ -143,6 +147,10 @@
     <Compile Include="Views\SaleView.xaml.cs">
       <DependentUpon>SaleView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AddPaymentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

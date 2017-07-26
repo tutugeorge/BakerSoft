@@ -20,6 +20,17 @@ namespace GSTBill.ViewModels
         public DelegateCommand SearchProductByNameCmd { get; private set; }
         public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
 
+        private string _quantity;
+        public string Quantity
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_quantity))
+                    _quantity = "1";        
+                return _quantity;
+            }
+            set { SetProperty(ref _quantity, value); }
+        }
         private string _total;
         public string Total
         {
@@ -67,6 +78,7 @@ namespace GSTBill.ViewModels
 
         private void AddProduct(Product product)
         {
+            product.Quantity = Convert.ToInt32(Quantity);
             _saleTransaction.AddItem(product);
             UpdateTransaction();
         }
@@ -84,6 +96,7 @@ namespace GSTBill.ViewModels
             ItemList = _saleTransaction.ItemList;
             Total = (_saleTransaction.TransactionTotal +
                     _saleTransaction.TransactionTaxTotal).ToString("F2");
+            Quantity = "1";
         }
 
         private void SearchProductByName()

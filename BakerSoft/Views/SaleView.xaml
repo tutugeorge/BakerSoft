@@ -24,12 +24,31 @@
                   HorizontalAlignment="Left" Height="418" Margin="864,37,0,0" VerticalAlignment="Top" Width="358">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="120" />
-                    <GridViewColumn Header="Name" Width="50"/>
+                    <GridViewColumn Header="Name" Width="50">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Description}" />
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Qty" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Quantity}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Tax" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Tax}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Price" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Description}" />
+                                <TextBlock Text="{Binding DefaultSellingPrice}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -53,7 +72,7 @@
         	Content="Add >>" HorizontalAlignment="Left" Margin="455,260,0,0" VerticalAlignment="Top" Width="191" Height="44"/>
         <ComboBox x:Name="cmbUOM" HorizontalAlignment="Left" Margin="690,101,0,0" VerticalAlignment="Top" Width="138" Height="42"/>
         <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="41" Margin="690,37,0,0" TextWrapping="Wrap" 
-        	Text="Enter Quantity" VerticalAlignment="Top" Width="76" RenderTransformOrigin="1.737,-3.244"/>
+        	Text="{Binding Quantity}" VerticalAlignment="Top" Width="76" RenderTransformOrigin="1.737,-3.244"/>
         <Button x:Name="button_Copy2" 
                 Command="{Binding SearchProductByIdCmd}"
                 CommandParameter="{Binding Text, ElementName=txtBxPId}"
