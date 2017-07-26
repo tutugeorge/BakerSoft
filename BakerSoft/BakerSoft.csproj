@@ -103,6 +103,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Definitions\Constants.cs" />
     <Compile Include="Definitions\IProductRepository.cs" />
+    <Compile Include="Definitions\ISupplierRepository.cs" />
     <Compile Include="Definitions\ITransaction.cs" />
     <Compile Include="Definitions\ITransactionRepository.cs" />
     <Compile Include="Models\CashPayment.cs" />
@@ -114,14 +115,18 @@
     <Compile Include="Models\PurchaseTransaction.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\SaleTransaction.cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="Models\Tax.cs" />
     <Compile Include="Models\Tender.cs" />
     <Compile Include="Modules\SaleModule.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Repositories\MockProductRepo.cs" />
+    <Compile Include="Repositories\MockSupplierRepo.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\PurchaseTransactionRepository.cs" />
     <Compile Include="Repositories\SaleTransactionRepository.cs" />
+    <Compile Include="Repositories\SupplierRepository.cs" />
     <Compile Include="ViewModels\AddPaymentViewModel.cs" />
     <Compile Include="ViewModels\AddProductViewModel.cs" />
     <Compile Include="ViewModels\AddPurchaseViewModel.cs" />
