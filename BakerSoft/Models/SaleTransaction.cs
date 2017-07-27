@@ -63,10 +63,11 @@ namespace GSTBill.Models
             AddToTaxTotal(item.ProductTax, item.PriceList[0], item.Quantity);
         }
 
-        public void RemoveItem(Product item)
+        public void RemoveItem(int itemIndex)
         {
             //TODO : Remove selected item from the list
-            ItemList.Remove(item);
+            var item = ItemList[itemIndex];
+            ItemList.RemoveAt(itemIndex);
             SubstractFromTransactionTotal(item.PriceList[0], item.Quantity);
             SubstractFromTaxTotal(item.ProductTax, item.PriceList[0], item.Quantity);
         }
