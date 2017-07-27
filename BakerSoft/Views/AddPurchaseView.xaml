@@ -10,17 +10,17 @@
              d:DesignHeight="562" d:DesignWidth="1000">
     <Grid>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="34,35,0,0" TextWrapping="Wrap" 
-                 Text="ProductName" VerticalAlignment="Top" Width="120"/>
+                 Text="{Binding ProductName}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="34,83,0,0" TextWrapping="Wrap" 
-                 Text="ProductID" VerticalAlignment="Top" Width="120"/>
+                 Text="{Binding ProductId}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="462,35,0,0" TextWrapping="Wrap" 
-                 Text="SupllierName" VerticalAlignment="Top" Width="120"/>
+                 Text="{Binding SupplierName}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="34,138,0,0" TextWrapping="Wrap" 
-                 Text="Quantity" VerticalAlignment="Top" Width="120"/>
+                 Text="{Binding Quantity}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" Margin="34,195,0,0" TextWrapping="Wrap" 
                  Text="UOM" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox5" HorizontalAlignment="Left" Height="23" Margin="215,35,0,0" TextWrapping="Wrap" 
-                 Text="PurchasePrice" VerticalAlignment="Top" Width="120"/>
+                 Text="{Binding PurchasePrice}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox6" HorizontalAlignment="Left" Height="23" Margin="462,83,0,0" TextWrapping="Wrap" 
                  Text="GSTIN" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox7" HorizontalAlignment="Left" Height="23" Margin="462,138,0,0" TextWrapping="Wrap" 
@@ -34,7 +34,9 @@
         <TextBox x:Name="textBox10" HorizontalAlignment="Left" Height="23" Margin="215,195,0,0" TextWrapping="Wrap" 
                  Text="Type" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button1" 
-                Content="AddPurchase" HorizontalAlignment="Left" Margin="669,195,0,0" VerticalAlignment="Top" Width="75"/>
+                Content="AddPurchase"
+                Command="{Binding PurchaseCmd}"
+                HorizontalAlignment="Left" Margin="669,195,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBox x:Name="textBox11" HorizontalAlignment="Left" Height="23" Margin="462,195,0,0" TextWrapping="Wrap" 
                  Text="PaymentMode" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox12" HorizontalAlignment="Left" Height="23" Margin="462,246,0,0" TextWrapping="Wrap" 
