@@ -17,9 +17,54 @@ namespace GSTBill.ViewModels
         public DelegateCommand CheckoutCmd { get; private set; }
         public DelegateCommand CancelSaleCmd { get; private set; }
         public DelegateCommand<Product> AddProductCmd { get; private set; }
+        public DelegateCommand<int?> RemoveProductCmd { get; private set; }
         public DelegateCommand SearchProductByNameCmd { get; private set; }
         public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
 
+        private bool _isAddItemEnabled;       
+        public bool IsAddItemEnabled
+        {
+            get { return _isAddItemEnabled; }
+            set { SetProperty(ref _isAddItemEnabled, value); }
+        }
+        private int _selectedSearchItemIndex;
+        public int SelectedSearchItemIndex
+        {
+            get
+            {
+                return _selectedSearchItemIndex;
+            }
+            set
+            {
+                SetProperty(ref _selectedSearchItemIndex, value);
+                if (_selectedSearchItemIndex > -1)
+                    IsAddItemEnabled = true;
+                else
+                    IsAddItemEnabled = false;
+            }
+        }
+        private bool _isRemoveItemEnabled;
+        public bool IsRemoveItemEnabled
+        {
+            get { return _isRemoveItemEnabled; }
+            set { SetProperty(ref _isRemoveItemEnabled, value); }
+        }
+        private int _selectedItemIndex;
+        public int SelectedItemIndex
+        {
+            get
+            {
+                return _selectedItemIndex;
+            }
+            set
+            {
+                SetProperty(ref _selectedItemIndex, value);
+                if (_selectedItemIndex > -1)
+                    IsRemoveItemEnabled = true;
+                else
+                    IsRemoveItemEnabled = false;
+            }
+        }
         private string _quantity;
         public string Quantity
         {
@@ -60,6 +105,7 @@ namespace GSTBill.ViewModels
             CheckoutCmd = new DelegateCommand(Checkout);
             CancelSaleCmd = new DelegateCommand(CancelSale);
             AddProductCmd = new DelegateCommand<Product>(AddProduct);
+            RemoveProductCmd = new DelegateCommand<int?>(RemoveProduct);
             SearchProductByNameCmd = new DelegateCommand(SearchProductByName);
             SearchProductByIdCmd = new DelegateCommand<string>(SearchProductById);
         }
@@ -83,9 +129,10 @@ namespace GSTBill.ViewModels
             UpdateTransaction();
         }
 
-        private void RemoveProduct()
+        private void RemoveProduct(int? index)
         {
-            _saleTransaction.RemoveItem(SelectedProduct);
+            int itemIndex = Convert.ToInt32(index);
+            _saleTransaction.RemoveItem(itemIndex);
             UpdateTransaction();
         }
 
