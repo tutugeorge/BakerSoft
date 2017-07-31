@@ -13,6 +13,8 @@ namespace GSTBill.Models
     {
         private ITransactionRepository _transactionRepository;
 
+        public string GSTIN { get; set; }
+        public string BillNumber { get; set; }
         public List<Product> ItemList
         {
             get;
@@ -28,6 +30,7 @@ namespace GSTBill.Models
         public override void Complete()
         {
             base.Complete();
+            _transactionRepository.InsertTransaction();
         }
 
         public override void AddItem(Product item)

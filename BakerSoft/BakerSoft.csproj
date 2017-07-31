@@ -146,6 +146,9 @@
     <Compile Include="Views\AddSalePage.xaml.cs">
       <DependentUpon>AddSalePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddSupplierView.xaml.cs">
+      <DependentUpon>AddSupplierView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddPurchaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddSupplierView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

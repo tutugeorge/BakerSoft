@@ -22,15 +22,15 @@
         <TextBox x:Name="textBox5" HorizontalAlignment="Left" Height="23" Margin="215,35,0,0" TextWrapping="Wrap" 
                  Text="{Binding PurchasePrice}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox6" HorizontalAlignment="Left" Height="23" Margin="462,83,0,0" TextWrapping="Wrap" 
-                 Text="GSTIN" VerticalAlignment="Top" Width="120"/>
+                 Text="{Binding GSTIN}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox7" HorizontalAlignment="Left" Height="23" Margin="462,138,0,0" TextWrapping="Wrap" 
-                 Text="BillNumber" VerticalAlignment="Top" Width="120"/>
+                 Text="{Binding BillNumber}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox8" HorizontalAlignment="Left" Height="23" Margin="215,83,0,0" TextWrapping="Wrap" 
                  Text="SellingPrice" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button" 
                 Content="AddSupplier" HorizontalAlignment="Left" Margin="658,38,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBox x:Name="textBox9" HorizontalAlignment="Left" Height="23" Margin="215,138,0,0" TextWrapping="Wrap" 
-                 Text="TaxRate" VerticalAlignment="Top" Width="120"/>
+                 Text="{Binding TaxRate}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox10" HorizontalAlignment="Left" Height="23" Margin="215,195,0,0" TextWrapping="Wrap" 
                  Text="Type" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button1" 
@@ -38,9 +38,9 @@
                 Command="{Binding PurchaseCmd}"
                 HorizontalAlignment="Left" Margin="669,195,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBox x:Name="textBox11" HorizontalAlignment="Left" Height="23" Margin="462,195,0,0" TextWrapping="Wrap" 
-                 Text="PaymentMode" VerticalAlignment="Top" Width="120"/>
+                 Text="{Binding PaymentMode}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox12" HorizontalAlignment="Left" Height="23" Margin="462,246,0,0" TextWrapping="Wrap" 
-                 Text="Amount" VerticalAlignment="Top" Width="120"/>
+                 Text="{Binding Amount}" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </UserControl>
