@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GSTBill.Models
+namespace BakerSoft.Models
 {
-    class SaleItem : Item
+    class UOM
     {
-
+        public string Name { get; set; }
+        public int Id  { get; set; }
     }
 }

@@ -105,28 +105,54 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Definitions\Constants.cs" />
+    <Compile Include="Definitions\IProductRepository.cs" />
+    <Compile Include="Definitions\ISupplierRepository.cs" />
     <Compile Include="Definitions\ITransaction.cs" />
     <Compile Include="Definitions\ITransactionRepository.cs" />
+    <Compile Include="Models\CashPayment.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Price.cs" />
-    <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\PurchaseItem.cs" />
     <Compile Include="Models\PurchaseTransaction.cs" />
-    <Compile Include="Models\SaleItem.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\SaleTransaction.cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\SupplierModel.cs" />
+    <Compile Include="Models\Tax.cs" />
     <Compile Include="Models\Tender.cs" />
+    <Compile Include="Models\UOM.cs" />
     <Compile Include="Modules\SaleModule.cs" />
     <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Repositories\MockProductRepo.cs" />
+    <Compile Include="Repositories\MockSupplierRepo.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\PurchaseTransactionRepository.cs" />
     <Compile Include="Repositories\SaleTransactionRepository.cs" />
+    <Compile Include="Repositories\SupplierRepository.cs" />
+    <Compile Include="ViewModels\AddPaymentViewModel.cs" />
+    <Compile Include="ViewModels\AddProductViewModel.cs" />
+    <Compile Include="ViewModels\AddPurchaseViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\HomeWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SaleViewModel.cs" />
+    <Compile Include="Views\AddPaymentView.xaml.cs">
+      <DependentUpon>AddPaymentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddProductView.xaml.cs">
       <DependentUpon>AddProductView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddPurchaseView.xaml.cs">
+      <DependentUpon>AddPurchaseView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddSalePage.xaml.cs">
       <DependentUpon>AddSalePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddSupplierView.xaml.cs">
+      <DependentUpon>AddSupplierView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
@@ -134,7 +160,19 @@
     <Compile Include="Views\SaleView.xaml.cs">
       <DependentUpon>SaleView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AddPaymentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddPurchaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddSupplierView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

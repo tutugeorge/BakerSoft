@@ -27,6 +27,8 @@ namespace GSTBill.Modules
         {
             _container.RegisterTypeForNavigation<SaleView>();
             _container.RegisterTypeForNavigation<AddProductView>();
+            _container.RegisterTypeForNavigation<AddPurchaseView>();
+            _container.RegisterTypeForNavigation<AddSupplierView>();
         }
     }
 }

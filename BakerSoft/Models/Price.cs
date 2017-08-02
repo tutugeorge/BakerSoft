@@ -8,5 +8,8 @@ namespace GSTBill.Models
 {
     class Price
     {
+        public double SellingPrice { get; set; }
+        public double PurchasePrice { get; set; }
+        public int PurchaseId { get; set; }
     }
 }

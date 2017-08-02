@@ -1,4 +1,5 @@
 ﻿using GSTBill.Definitions;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,23 @@ using System.Threading.Tasks;
 
 namespace GSTBill.Models
 {
-    class Transaction : ITransaction
+    class Transaction : BindableBase, ITransaction
     {
+        #region Properties
+        protected int TransactionId { get; set; }
+        protected DateTime TransactionDate { get; set; }
+        public double TransactionTotal { get; set; }
+        public double TransactionTaxTotal { get; set; }
+        
+        #endregion
+
+
+
         public virtual void Complete()
         {            
         }
 
-        public virtual void AddItem(Item item)
+        public virtual void AddItem(Product item)
         {
             
         }
