@@ -27,9 +27,9 @@ namespace GSTBill.Models
             return _productRepository.GetProductsById(id);
         }
 
-        public void Add()
+        public void Add(Product product)
         {
-
+            _productRepository.AddProduct(product);
         }
 
         public void Update()
