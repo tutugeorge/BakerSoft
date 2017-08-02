@@ -119,6 +119,7 @@
     <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="Models\Tax.cs" />
     <Compile Include="Models\Tender.cs" />
+    <Compile Include="Models\UOM.cs" />
     <Compile Include="Modules\SaleModule.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Repositories\MockProductRepo.cs" />
