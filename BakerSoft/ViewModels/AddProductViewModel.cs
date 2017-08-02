@@ -14,8 +14,10 @@ namespace BakerSoft.ViewModels
     {
         private ProductModel _productModel;
 
+        public string ProductSearchId { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
+        public string SellingPrice { get; set;}
         public Tax ProductTax { get; set; }
         public List<Price> PriceList { get; set; }
 
@@ -30,6 +32,10 @@ namespace BakerSoft.ViewModels
 
         private void AddProduct()
         {
+            var product = new Product();
+            product.Name = ProductName;
+            product.SearchId = Convert.ToInt32(ProductSearchId);
+            //product.Tax = 
             _productModel.Add();
         }
     }
