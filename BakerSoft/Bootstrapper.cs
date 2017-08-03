@@ -36,12 +36,12 @@ namespace GSTBill
         {
             base.ConfigureContainer();
             Container.RegisterType<ITransactionRepository, SaleTransactionRepository>();
-            Container.RegisterType<IProductRepository, ProductRepository>();
-            //Container.RegisterType<IProductRepository, MockProductRepo>();
+            //Container.RegisterType<IProductRepository, ProductRepository>();
+            Container.RegisterType<IProductRepository, MockProductRepo>();
 
             var transactionRepo = Container.Resolve<ITransactionRepository>() as SaleTransactionRepository;
-            var productsRepo = Container.Resolve<IProductRepository>() as ProductRepository;
-            //var productsRepo = Container.Resolve<IProductRepository>() as MockProductRepo;
+            //var productsRepo = Container.Resolve<IProductRepository>() as ProductRepository;
+            var productsRepo = Container.Resolve<IProductRepository>() as MockProductRepo;
             Container.RegisterInstance(typeof(SaleTransaction), new SaleTransaction(transactionRepo));
             Container.RegisterInstance(typeof(ProductModel), new ProductModel(productsRepo));
         }
