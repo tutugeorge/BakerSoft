@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using AutoMapper;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -26,6 +27,10 @@ namespace GSTBill
             //
             var bootstrapper = new Bootstrapper();
             bootstrapper.Run();
+
+            BakerSoft.AutoMapperConfig.Configure();
+
+            //IMapper Mapper = BakerSoft.AutoMapperConfig.MapperConfiguration.CreateMapper();
         }
     }
 }
