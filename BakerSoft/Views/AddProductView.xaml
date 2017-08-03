@@ -38,14 +38,14 @@
                   DisplayMemberPath ="Name"
                   SelectedValuePath ="Id"                  
                   SelectedIndex="0"
-                  SelectedValue="{Binding UOM.Id}"
+                  SelectedValue="{Binding SelectedUOM}"
                   HorizontalAlignment="Left" Margin="524,146,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="comboBox_Copy" 
         	ItemsSource="{Binding TaxRateList}"
         	DisplayMemberPath ="TaxTotal"
         	SelectedValuePath ="TaxId"                  
             SelectedIndex="0"      
-        	SelectedValue="{Binding Tax.TaxId}"
+        	SelectedValue="{Binding SelectedTaxRate}"
         	HorizontalAlignment="Left" Margin="524,47,0,0" VerticalAlignment="Top" Width="120" SelectedItem=""/>
 
     </Grid>
