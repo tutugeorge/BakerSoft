@@ -63,6 +63,7 @@
         <ListBox x:Name="lstBxItems" 
                  ItemsSource="{Binding SearchResult}"
                  SelectedIndex="{Binding SelectedSearchItemIndex}"
+                 SelectedItem="{Binding SelectedSearchItem}"
                  HorizontalAlignment="Left" Height="158" Margin="255,37,0,0" VerticalAlignment="Top" Width="206" RenderTransformOrigin="-0.563,0.288">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -77,7 +78,13 @@
                 CommandParameter="{Binding SelectedItem, ElementName=lstBxItems}"
                 IsEnabled="{Binding IsAddItemEnabled, Mode=TwoWay}"
         	Content="Add >>" HorizontalAlignment="Left" Margin="494,37,0,0" VerticalAlignment="Top" Width="192" Height="44"/>
-        <ComboBox x:Name="cmbUOM" HorizontalAlignment="Left" Margin="323,300,0,0" VerticalAlignment="Top" Width="138" Height="42"/>
+        <ComboBox x:Name="cmbUOM" 
+                  ItemsSource="{Binding UOMList}"
+                  DisplayMemberPath ="Name"
+                  SelectedValuePath ="Id"                  
+                  SelectedIndex="0"
+                  SelectedValue="{Binding SelectedUOM}"
+                  HorizontalAlignment="Left" Margin="323,300,0,0" VerticalAlignment="Top" Width="138" Height="42"/>
         <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="42" Margin="385,230,0,0" TextWrapping="Wrap" 
         	Text="{Binding Quantity}" 
             IsEnabled="{Binding IsAddItemEnabled, Mode=TwoWay}"     
