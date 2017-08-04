@@ -1,4 +1,5 @@
-﻿using GSTBill.Models;
+﻿using BakerSoft.Models;
+using GSTBill.Models;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,45 @@ namespace GSTBill.ViewModels
         public DelegateCommand SearchProductByNameCmd { get; private set; }
         public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
 
+        private Product _selectedSearchItem;
+        public Product SelectedSearchItem
+        {
+            get { return _selectedSearchItem; }
+            set
+            {
+                SetProperty(ref _selectedSearchItem, value);
+                if(_selectedSearchItem != null)
+                    SelectedUOM = _selectedSearchItem.UoM; 
+            }
+        }
+        private int _selectedUOM;
+        public int SelectedUOM
+        {
+            get { return _selectedUOM; }
+            set { SetProperty(ref _selectedUOM, value); }
+        }
+        private List<UOM> _uomList;
+        public List<UOM> UOMList
+        {
+            get
+            {
+                if (_uomList == null)
+                {
+                    _uomList = new List<UOM>()
+                    {
+                        new UOM() { Id =1, Name = "Packet" },
+                        new UOM() { Id =2, Name = "Piece" },
+                        new UOM() { Id =3, Name = "Gram" },
+                        new UOM() { Id =4, Name = "Litre" }
+                    };
+                }
+                return _uomList;
+            }
+            set
+            {
+                SetProperty(ref _uomList, value);
+            }
+        }
         private bool _isAddItemEnabled;       
         public bool IsAddItemEnabled
         {

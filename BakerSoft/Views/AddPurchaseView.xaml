@@ -28,7 +28,9 @@
         <TextBox x:Name="textBox8" HorizontalAlignment="Left" Height="23" Margin="215,83,0,0" TextWrapping="Wrap" 
                  Text="SellingPrice" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button" 
-                Content="AddSupplier" HorizontalAlignment="Left" Margin="658,38,0,0" VerticalAlignment="Top" Width="75"/>
+                Content="AddSupplier" 
+                Command="{Binding GoToViewCmd}" CommandParameter="AddSupplierView"
+                HorizontalAlignment="Left" Margin="658,38,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBox x:Name="textBox9" HorizontalAlignment="Left" Height="23" Margin="215,138,0,0" TextWrapping="Wrap" 
                  Text="{Binding TaxRate}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox10" HorizontalAlignment="Left" Height="23" Margin="215,195,0,0" TextWrapping="Wrap" 

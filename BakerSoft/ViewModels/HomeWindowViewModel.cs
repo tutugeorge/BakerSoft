@@ -20,8 +20,7 @@ namespace GSTBill.ViewModels
 
         public HomeWindowViewModel(IRegionManager regionManager)
         {
-            _regionManager = regionManager;
-            GoToSale("SaleView");
+            _regionManager = regionManager;            
 
             GoToSaleCmd = new DelegateCommand<string>(GoToSale);
             GoToViewCmd = new DelegateCommand<string>(GoToView);
