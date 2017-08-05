@@ -9,6 +9,7 @@ using GSTBill.Definitions;
 using GSTBill.Repositories;
 using BakerSoft.Definitions;
 using BakerSoft.Repositories;
+using BakerSoft.Models;
 
 namespace GSTBill
 {
@@ -36,14 +37,20 @@ namespace GSTBill
         {
             base.ConfigureContainer();
             Container.RegisterType<ITransactionRepository, SaleTransactionRepository>();
+            //Container.RegisterType<ISupplierRepository, SupplierRepository>();
             //Container.RegisterType<IProductRepository, ProductRepository>();
             Container.RegisterType<IProductRepository, MockProductRepo>();
+            Container.RegisterType<ISupplierRepository, MockSupplierRepo>();
+            
 
             var transactionRepo = Container.Resolve<ITransactionRepository>() as SaleTransactionRepository;
             //var productsRepo = Container.Resolve<IProductRepository>() as ProductRepository;
+            //var supplierRepo = Container.Resolve<ISupplierRepository>() as SupplierRepository;
             var productsRepo = Container.Resolve<IProductRepository>() as MockProductRepo;
+            var supplierRepo = Container.Resolve<ISupplierRepository>() as MockSupplierRepo;
             Container.RegisterInstance(typeof(SaleTransaction), new SaleTransaction(transactionRepo));
             Container.RegisterInstance(typeof(ProductModel), new ProductModel(productsRepo));
+            Container.RegisterInstance(typeof(SupplierModel), new SupplierModel(supplierRepo));
         }
     }
 }

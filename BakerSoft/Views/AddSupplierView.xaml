@@ -9,6 +9,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="562" d:DesignWidth="1000">
     <Grid>
-            
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="63,59,0,0" TextWrapping="Wrap" 
+                   Text="Supplier Name" VerticalAlignment="Top" Height="24" Width="78"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="24" Margin="194,59,0,0" TextWrapping="Wrap" 
+                 Text="{Binding SupplierName}" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="63,104,0,0" TextWrapping="Wrap" 
+        	Text="GSTIN" VerticalAlignment="Top" Height="24" Width="78"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="24" Margin="194,104,0,0" TextWrapping="Wrap" 
+        	Text="{Binding GstNumber}" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button" Content="Add Supplier" 
+                Command="{Binding AddSupplierCmd}"
+                HorizontalAlignment="Left" Margin="487,54,0,0" VerticalAlignment="Top" Width="106" Height="49"/>
+
     </Grid>
 </UserControl>

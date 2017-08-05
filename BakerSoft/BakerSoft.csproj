@@ -140,6 +140,7 @@
     <Compile Include="ViewModels\AddPaymentViewModel.cs" />
     <Compile Include="ViewModels\AddProductViewModel.cs" />
     <Compile Include="ViewModels\AddPurchaseViewModel.cs" />
+    <Compile Include="ViewModels\AddSupplierViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\HomeWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

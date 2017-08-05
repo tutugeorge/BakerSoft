@@ -15,9 +15,9 @@ namespace BakerSoft.Models
             _supplierRepository = supplierRepository;
         }
 
-        public void AddSupplier()
+        public void AddSupplier(Supplier supplier)
         {
-            _supplierRepository.AddSupplier();
+            _supplierRepository.AddSupplier(supplier);
         }
 
         public void GetSuppliers()

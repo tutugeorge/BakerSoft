@@ -1,4 +1,5 @@
 ﻿using BakerSoft.Definitions;
+using BakerSoft.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,15 @@ namespace BakerSoft.Repositories
 {
     class MockSupplierRepo : ISupplierRepository
     {
-        public void AddSupplier()
+        List<Supplier> _supplierList = new List<Supplier>()
         {
-            throw new NotImplementedException();
+            new Supplier() { GSTIN="123456", Name = "Supplier1", Id = "1" }
+        };
+
+        public void AddSupplier(Supplier supplier)
+        {
+            supplier.Id = (new Random(1000)).Next().ToString();
+            _supplierList.Add(supplier);
         }
 
         public void EditSupplier()
@@ -19,9 +26,9 @@ namespace BakerSoft.Repositories
             throw new NotImplementedException();
         }
 
-        public void GetSuppliers()
+        public List<Supplier> GetSuppliers()
         {
-            throw new NotImplementedException();
+            return _supplierList;
         }
     }
 }
