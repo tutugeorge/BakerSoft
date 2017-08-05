@@ -1,4 +1,5 @@
 ﻿using BakerSoft.Definitions;
+using BakerSoft.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace BakerSoft.Repositories
 {
     class SupplierRepository : ISupplierRepository
     {
-        public void AddSupplier()
+        public void AddSupplier(Supplier supplier)
         {
             throw new NotImplementedException();
         }

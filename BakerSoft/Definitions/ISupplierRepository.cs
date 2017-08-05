@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BakerSoft.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace BakerSoft.Definitions
 {
     interface ISupplierRepository
     {
-        void AddSupplier();
+        void AddSupplier(Supplier supplier );
         void GetSuppliers();
         void EditSupplier();
     }
