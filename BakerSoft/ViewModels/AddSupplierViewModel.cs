@@ -1,5 +1,6 @@
 ﻿using BakerSoft.Models;
 using GSTBill.ViewModels;
+using log4net;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace BakerSoft.ViewModels
 {
     class AddSupplierViewModel : BaseViewModel
     {
+        private static readonly ILog log = LogManager.GetLogger(
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private SupplierModel _supplierModel;
 
         private string _supplierName;
@@ -37,9 +40,27 @@ namespace BakerSoft.ViewModels
         private void AddSupplier()
         {
             var supplier = new Supplier();
-            supplier.GSTIN = GstNumber;
-            supplier.Name = SupplierName;
-            _supplierModel.AddSupplier(supplier);
+            try
+            {
+                supplier.GSTIN = GstNumber;
+                supplier.Name = SupplierName;
+                _supplierModel.AddSupplier(supplier);
+                log.Info(String.Format("New Supplier {0} added successfully", SupplierName));
+            }
+            catch (Exception ex)
+            {
+                log.Error(supplier, ex);
+            }
+            finally
+            {
+                ResetUI();
+            }
+        }
+
+        private void ResetUI()
+        {
+            GstNumber = "";
+            SupplierName = "";
         }
     }
 }

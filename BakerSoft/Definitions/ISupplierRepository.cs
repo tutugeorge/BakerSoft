@@ -10,7 +10,7 @@ namespace BakerSoft.Definitions
     interface ISupplierRepository
     {
         void AddSupplier(Supplier supplier );
-        void GetSuppliers();
+        List<Supplier> GetSuppliers();
         void EditSupplier();
     }
 }

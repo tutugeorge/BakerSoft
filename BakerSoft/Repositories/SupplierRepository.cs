@@ -20,7 +20,7 @@ namespace BakerSoft.Repositories
             throw new NotImplementedException();
         }
 
-        public void GetSuppliers()
+        public List<Supplier> GetSuppliers()
         {
             throw new NotImplementedException();
         }
