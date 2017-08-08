@@ -96,8 +96,8 @@ namespace BakerSoft.ViewModels
         private void Purchase()
         {
             var product = new Product();
-            product.Id = Convert.ToInt32(ProductId);
-            product.Name = ProductName;
+            product.ProductId = Convert.ToInt32(ProductId);
+            product.ProductName = ProductName;
             product.Quantity = Convert.ToInt32(Quantity);
             product.Tax = TaxRate;
             

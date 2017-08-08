@@ -13,10 +13,10 @@
         <ListBox x:Name="lbSuggestion" SelectionChanged="lbSuggestion_SelectionChanged" Background="LightYellow" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top" Width="325" Margin="0,0,10,0"/>
         <Button x:Name="button" Command="{Binding CheckoutCmd}"
                 Content="Checkout" HorizontalAlignment="Left" Margin="1128,45,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="35" Margin="40,37,0,0" TextWrapping="Wrap" 
-                 Text="Enter ProductName" VerticalAlignment="Top" Width="174"/>
+        <TextBox x:Name="txtSearchName" HorizontalAlignment="Left" Height="35" Margin="40,37,0,0" TextWrapping="Wrap" 
+                 Text="{Binding ProductSearchName}" VerticalAlignment="Top" Width="174"/>
         <TextBox x:Name="txtBxPId" 
-                 HorizontalAlignment="Left" Height="29" Margin="40,101,0,0" TextWrapping="Wrap" 
+                 HorizontalAlignment="Left" Height="29" Margin="40,181,0,0" TextWrapping="Wrap" 
         	    Text="Enter ProductID" VerticalAlignment="Top" Width="174"/>
         <Button x:Name="button_Copy" Command="{Binding CheckoutCmd}"
         	Content="Cancel" HorizontalAlignment="Left" Margin="1128,125,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
@@ -68,7 +68,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Description}"/>
+                        <TextBlock Text="{Binding ProductDescription}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -92,7 +92,7 @@
         <Button x:Name="button_Copy2" 
                 Command="{Binding SearchProductByIdCmd}"
                 CommandParameter="{Binding Text, ElementName=txtBxPId}"
-        	Content="Search" HorizontalAlignment="Left" Margin="40,181,0,0" VerticalAlignment="Top" Width="109" Height="44" RenderTransformOrigin="0.486,1.477"/>
+        	Content="Search" HorizontalAlignment="Left" Margin="40,245,0,0" VerticalAlignment="Top" Width="109" Height="44" RenderTransformOrigin="0.486,1.477"/>
         <TextBlock x:Name="textBlock" 
                    Text="{Binding Total}" 
                    HorizontalAlignment="Left" Margin="881,492,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="60" FontSize="18.667"/>
@@ -102,6 +102,10 @@
                 Command="{Binding RemoveProductCmd}"
                 CommandParameter="{Binding SelectedIndex, ElementName=listView}"
                 HorizontalAlignment="Left" Margin="494,125,0,0" VerticalAlignment="Top" Width="192" Height="44"/>
+        <Button x:Name="button_Copy3" 
+        	Command="{Binding SearchProductByNameCmd}"
+        	CommandParameter="{Binding Text, ElementName=txtSearchName}"
+        	Content="Search" HorizontalAlignment="Left" Margin="40,98,0,0" VerticalAlignment="Top" Width="109" Height="44" RenderTransformOrigin="0.486,1.477"/>
 
     </Grid>
 </UserControl>

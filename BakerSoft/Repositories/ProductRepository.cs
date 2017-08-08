@@ -27,11 +27,13 @@ namespace BakerSoft.Repositories
 
         public List<Product> GetProductsById(string id)
         {
+            int i = Convert.ToInt32(id);
             using (var db = new StoreDB())
             {
                 var query = (from b in db.PRODUCTS
-                             where b.ProductId == Convert.ToInt16(id)
+                             where b.ProductId == i
                              select b);
+                var prod =query.ToList();
                 List<Product> prods = Mapper.Map<List<Product>>(query.ToList());
                 return prods;
             }
