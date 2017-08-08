@@ -115,12 +115,12 @@ namespace BakerSoft.ViewModels
             var product = new Product();
             try
             {                
-                product.Name = ProductName;
-                product.SearchId = Convert.ToInt32(ProductSearchId);
-                product.UoM = SelectedUOM;
+                product.ProductName = ProductName;
+                product.ProductSearchId = Convert.ToInt32(ProductSearchId);
+                product.ProductUoM = SelectedUOM;
                 product.PriceList = new List<Price>()
                 { new Price() { SellingPrice = Convert.ToDouble(this.SellingPrice) } };
-                product.Description = ProductDescription;
+                product.ProductDescription = ProductDescription;
                 var taxRate = new Tax()
                 {
                     TaxId = SelectedTaxRate

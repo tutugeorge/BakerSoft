@@ -19,8 +19,15 @@ namespace GSTBill.ViewModels
         public DelegateCommand CancelSaleCmd { get; private set; }
         public DelegateCommand<Product> AddProductCmd { get; private set; }
         public DelegateCommand<int?> RemoveProductCmd { get; private set; }
-        public DelegateCommand SearchProductByNameCmd { get; private set; }
+        public DelegateCommand<string> SearchProductByNameCmd { get; private set; }
         public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
+
+        private string _productSearchName;
+        public string ProductSearchName
+        {
+            get { return _productSearchName; }
+            set { SetProperty(ref _productSearchName, value); }
+        }
 
         private Product _selectedSearchItem;
         public Product SelectedSearchItem
@@ -30,7 +37,7 @@ namespace GSTBill.ViewModels
             {
                 SetProperty(ref _selectedSearchItem, value);
                 if(_selectedSearchItem != null)
-                    SelectedUOM = _selectedSearchItem.UoM; 
+                    SelectedUOM = _selectedSearchItem.ProductUoM; 
             }
         }
         private int _selectedUOM;
@@ -146,7 +153,7 @@ namespace GSTBill.ViewModels
             CancelSaleCmd = new DelegateCommand(CancelSale);
             AddProductCmd = new DelegateCommand<Product>(AddProduct);
             RemoveProductCmd = new DelegateCommand<int?>(RemoveProduct);
-            SearchProductByNameCmd = new DelegateCommand(SearchProductByName);
+            SearchProductByNameCmd = new DelegateCommand<string>(SearchProductByName);
             SearchProductByIdCmd = new DelegateCommand<string>(SearchProductById);
         }
 
@@ -186,9 +193,9 @@ namespace GSTBill.ViewModels
             Quantity = "1";
         }
 
-        private void SearchProductByName()
+        private void SearchProductByName(string name)
         {
-
+            SearchResult = _products.SearchByName(name);
         }
 
         private void SearchProductById(string id)
