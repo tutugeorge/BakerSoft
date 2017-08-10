@@ -3,12 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:local="clr-namespace:GSTBill.Views"
         mc:Ignorable="d"
         Title="HomeWindow" Width="1024" Height="750"
         WindowState="Maximized">
+    <intr:Interaction.Triggers>
+        <intr:EventTrigger EventName="Loaded">
+            <intr:InvokeCommandAction Command="{Binding LoadWindowCmd}"/>
+        </intr:EventTrigger>
+    </intr:Interaction.Triggers>
     <Grid Background="#FF3E1A1A">
         <Button x:Name="button" Content="Sale" 
                 Command="{Binding GoToSaleCmd}" CommandParameter="SaleView"

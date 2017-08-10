@@ -29,6 +29,7 @@ namespace GSTBill.Modules
             _container.RegisterTypeForNavigation<AddProductView>();
             _container.RegisterTypeForNavigation<AddPurchaseView>();
             _container.RegisterTypeForNavigation<AddSupplierView>();
+            _container.RegisterTypeForNavigation<AddPaymentView>();
         }
     }
 }

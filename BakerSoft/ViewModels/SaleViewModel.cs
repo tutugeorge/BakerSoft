@@ -1,6 +1,7 @@
 ﻿using BakerSoft.Models;
 using GSTBill.Models;
 using Prism.Commands;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +13,7 @@ namespace GSTBill.ViewModels
 {
     class SaleViewModel : BaseViewModel
     {
+        private readonly IRegionManager _regionManager;
         private SaleTransaction _saleTransaction;
         private ProductModel _products;
 
@@ -143,9 +145,11 @@ namespace GSTBill.ViewModels
             set { SetProperty(ref _itemList, value); }                       
         }
 
-        public SaleViewModel(SaleTransaction saleTransaction,
+        public SaleViewModel(IRegionManager regionManager,
+                            SaleTransaction saleTransaction,
                             ProductModel products)
         {
+            _regionManager = regionManager;
             _saleTransaction = saleTransaction;
             _products = products;
 
@@ -159,8 +163,9 @@ namespace GSTBill.ViewModels
 
         private void Checkout()
         {
-            _saleTransaction.Complete();
-            UpdateTransaction();
+            _regionManager.RequestNavigate("ContentRegion", "AddPaymentView");
+            //_saleTransaction.Complete();
+            //UpdateTransaction();
         }
 
         private void CancelSale()
