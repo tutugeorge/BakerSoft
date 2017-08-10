@@ -17,13 +17,20 @@ namespace GSTBill.ViewModels
         private readonly IRegionManager _regionManager;
         public DelegateCommand<string> GoToSaleCmd { get; private set; }
         public DelegateCommand<string> GoToViewCmd { get; private set; }
+        public DelegateCommand LoadWindowCmd { get; set; }
 
         public HomeWindowViewModel(IRegionManager regionManager)
         {
-            _regionManager = regionManager;            
-
+            _regionManager = regionManager;
+            
             GoToSaleCmd = new DelegateCommand<string>(GoToSale);
             GoToViewCmd = new DelegateCommand<string>(GoToView);
+            LoadWindowCmd = new DelegateCommand(LoadWindow);
+        }
+
+        private void LoadWindow()
+        {
+            GoToView("SaleView");
         }
 
         private void GoToSale(string navigatePath)

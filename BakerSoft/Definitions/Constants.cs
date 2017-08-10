@@ -14,5 +14,9 @@ namespace BakerSoft.Definitions
         public const int PIECE = 4;
     }
 
-    
+    public class TRANS_STATUS
+    {
+        public const int ACTIVE = 0;
+        public const int COMPLETED = 1;
+    }
 }
