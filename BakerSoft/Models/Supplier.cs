@@ -8,9 +8,9 @@ namespace BakerSoft.Models
 {
     class Supplier
     {
-        public string Id { get; set; }
-        public string GSTIN { get; set; }
-        public string Name { get; set; }
+        public string SupplierId { get; set; }
+        public string SupplierGST { get; set; }
+        public string SupplierName { get; set; }
         public string Address { get; set; }
     }
 }

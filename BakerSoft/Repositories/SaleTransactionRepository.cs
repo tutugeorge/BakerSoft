@@ -1,4 +1,6 @@
-﻿using GSTBill.Definitions;
+﻿using AutoMapper;
+using DAL.Models;
+using GSTBill.Definitions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +13,14 @@ namespace GSTBill.Repositories
     {
         public void InsertTransaction()
         {
-            //DB action
-            //throw new NotImplementedException();
+            //using (var db = new StoreDB())
+            //{
+            //    SALE_TRANSACTIONS txn = Mapper.Map<SALE_TRANSACTIONS>(product);
+                
+
+            //    db.SALE_TRANSACTIONS.Add(txn);
+            //    db.SaveChanges();
+            //}
         }
     }
 }

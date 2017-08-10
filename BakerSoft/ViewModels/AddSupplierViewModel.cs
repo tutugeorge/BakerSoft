@@ -42,8 +42,8 @@ namespace BakerSoft.ViewModels
             var supplier = new Supplier();
             try
             {
-                supplier.GSTIN = GstNumber;
-                supplier.Name = SupplierName;
+                supplier.SupplierGST = GstNumber;
+                supplier.SupplierName = SupplierName;
                 _supplierModel.AddSupplier(supplier);
                 log.Info(String.Format("New Supplier {0} added successfully", SupplierName));
             }

@@ -12,12 +12,12 @@ namespace BakerSoft.Repositories
     {
         List<Supplier> _supplierList = new List<Supplier>()
         {
-            new Supplier() { GSTIN="123456", Name = "Supplier1", Id = "1" }
+            new Supplier() { SupplierGST="123456", SupplierName = "Supplier1", SupplierId = "1" }
         };
 
         public void AddSupplier(Supplier supplier)
         {
-            supplier.Id = (new Random(1000)).Next().ToString();
+            supplier.SupplierId = (new Random(1000)).Next().ToString();
             _supplierList.Add(supplier);
         }
 

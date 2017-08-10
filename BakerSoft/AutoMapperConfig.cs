@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BakerSoft.Models;
 using DAL.Models;
 using GSTBill.Models;
 
@@ -11,6 +12,9 @@ namespace BakerSoft
             Mapper.Initialize(
                 config =>
                 {
+                    config.CreateMap<Supplier, SUPPLIER>();
+                    config.CreateMap<SUPPLIER, Supplier>();
+
                     config.CreateMap<Product, PRODUCT>();
                     config.CreateMap<PRODUCT, Product>();
                     //.ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))
