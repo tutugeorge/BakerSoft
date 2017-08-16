@@ -15,6 +15,9 @@ namespace BakerSoft
                     config.CreateMap<Supplier, SUPPLIER>();
                     config.CreateMap<SUPPLIER, Supplier>();
 
+                    config.CreateMap<Address, ADDRESS>();
+                    config.CreateMap<ADDRESS, Address>();
+
                     config.CreateMap<Product, PRODUCT>();
                     config.CreateMap<PRODUCT, Product>();
                     //.ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))
