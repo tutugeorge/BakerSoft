@@ -11,6 +11,6 @@ namespace BakerSoft.Models
         public string SupplierId { get; set; }
         public string SupplierGST { get; set; }
         public string SupplierName { get; set; }
-        public string Address { get; set; }
+        public Address ADDRESS { get; set; }
     }
 }

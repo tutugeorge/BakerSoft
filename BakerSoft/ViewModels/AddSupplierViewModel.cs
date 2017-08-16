@@ -28,6 +28,48 @@ namespace BakerSoft.ViewModels
             get { return _gstNumber; }
             set { SetProperty(ref _gstNumber, value); }
         }
+        private string _tinNumber;
+        public string TinNumber
+        {
+            get { return _tinNumber; }
+            set { SetProperty(ref _tinNumber, value); }
+        }
+        private string _addressLine1;
+        public string AddressLine1
+        {
+            get { return _addressLine1; }
+            set { SetProperty(ref _addressLine1, value); }
+        }
+        private string _addressLine2;
+        public string AddressLine2
+        {
+            get { return _addressLine2; }
+            set { SetProperty(ref _addressLine2, value); }
+        }
+        private string _addressLine3;
+        public string AddressLine3
+        {
+            get { return _addressLine3; }
+            set { SetProperty(ref _addressLine3, value); }
+        }
+        private string _city;
+        public string City
+        {
+            get { return _city; }
+            set { SetProperty(ref _city, value); }
+        }
+        private string _state;
+        public string State
+        {
+            get { return _state; }
+            set { SetProperty(ref _state, value); }
+        }
+        private string _pincode;
+        public string Pincode
+        {
+            get { return _pincode; }
+            set { SetProperty(ref _pincode, value); }
+        }
 
         public DelegateCommand AddSupplierCmd { get; set; }
 
@@ -40,10 +82,18 @@ namespace BakerSoft.ViewModels
         private void AddSupplier()
         {
             var supplier = new Supplier();
+            var address = new Address();
             try
             {
                 supplier.SupplierGST = GstNumber;
                 supplier.SupplierName = SupplierName;
+                address.AddressLine1 = AddressLine1;
+                address.AddressLine2 = AddressLine2;
+                address.AddressLine3 = AddressLine3;
+                address.City = City;
+                address.State = State;
+                address.Pincode = Pincode;
+                supplier.ADDRESS = address;
                 _supplierModel.AddSupplier(supplier);
                 log.Info(String.Format("New Supplier {0} added successfully", SupplierName));
             }
