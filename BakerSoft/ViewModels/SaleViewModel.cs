@@ -38,8 +38,9 @@ namespace GSTBill.ViewModels
             set
             {
                 SetProperty(ref _selectedSearchItem, value);
-                if(_selectedSearchItem != null)
-                    SelectedUOM = _selectedSearchItem.ProductUoM; 
+                if (_selectedSearchItem != null)
+                    //SelectedUOM = _selectedSearchItem.ProductUoM;
+                    UOMList = _selectedSearchItem.UoMDefinitionList; 
             }
         }
         private int _selectedUOM;
@@ -48,21 +49,21 @@ namespace GSTBill.ViewModels
             get { return _selectedUOM; }
             set { SetProperty(ref _selectedUOM, value); }
         }
-        private List<UOM> _uomList;
-        public List<UOM> UOMList
+        private List<UomDefinitions> _uomList;
+        public List<UomDefinitions> UOMList
         {
             get
             {
-                if (_uomList == null)
-                {
-                    _uomList = new List<UOM>()
-                    {
-                        new UOM() { Id =1, Name = "Packet" },
-                        new UOM() { Id =2, Name = "Piece" },
-                        new UOM() { Id =3, Name = "Gram" },
-                        new UOM() { Id =4, Name = "Litre" }
-                    };
-                }
+                //if (_uomList == null)
+                //{
+                //    _uomList = new List<UOM>()
+                //    {
+                //        new UOM() { Id =1, Name = "Packet" },
+                //        new UOM() { Id =2, Name = "Piece" },
+                //        new UOM() { Id =3, Name = "Gram" },
+                //        new UOM() { Id =4, Name = "Litre" }
+                //    };
+                //}
                 return _uomList;
             }
             set

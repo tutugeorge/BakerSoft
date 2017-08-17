@@ -1,4 +1,5 @@
 ﻿using BakerSoft.Definitions;
+using BakerSoft.Models;
 using BakerSoft.Repositories;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,16 @@ namespace GSTBill.Models
         public void Add(Product product)
         {
             _productRepository.AddProduct(product);
+        }
+
+        public List<ProductCategory> GetProductCategories()
+        {
+           return _productRepository.GetTaxMaster();
+        }
+
+        public List<UomCategory> GetUoMCategories()
+        {
+            return _productRepository.GetUomCategories();
         }
 
         public void Update()

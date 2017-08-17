@@ -27,6 +27,6 @@ namespace DAL.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCT> PRODUCTS { get; set; }
 
-        public virtual UOM_DEFINITION_MASTER UOM_DEFINITION_MASTER { get; set; }
+        public virtual ICollection<UOM_DEFINITION_MASTER> UOM_DEFINITION_MASTER { get; set; }
     }
 }

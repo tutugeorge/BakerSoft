@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using GSTBill.Models;
 using DAL.Models;
 using AutoMapper;
+using BakerSoft.Models;
+
 namespace BakerSoft.Repositories
 {
     class ProductRepository : IProductRepository
@@ -18,7 +20,7 @@ namespace BakerSoft.Repositories
                 PRODUCT prod = Mapper.Map<PRODUCT>(product);
                 prod.ProductCategoryId = 1;
                 prod.ProductType = 1;
-                prod.ProductUoM = 1;
+                //prod.ProductUoM = 1;
 
                 db.PRODUCTS.Add(prod);
                 db.SaveChanges();
@@ -49,6 +51,30 @@ namespace BakerSoft.Repositories
                 List<Product> prods = Mapper.Map<List<Product>>(query.ToList());
                 return prods;
             }
+        }
+
+        public List<ProductCategory> GetTaxMaster()
+        {
+            List<ProductCategory> categories = new List<ProductCategory>();
+            using (var db = new StoreDB())
+            {
+                var query = (from a in db.PRODUCT_CATEGORY_MASTER_NEW
+                            select a);
+                categories = Mapper.Map<List<ProductCategory>>(query.ToList());
+            }
+            return categories;
+        }
+
+        public List<UomCategory> GetUomCategories()
+        {
+            List<UomCategory> categories = new List<UomCategory>();
+            using (var db = new StoreDB())
+            {
+                var query = (from a in db.UOM_CATEGORY_MASTER
+                             select a);
+                categories = Mapper.Map<List<UomCategory>>(query.ToList());
+            }
+            return categories;
         }
     }
 }
