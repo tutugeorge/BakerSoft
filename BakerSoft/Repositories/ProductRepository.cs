@@ -18,7 +18,7 @@ namespace BakerSoft.Repositories
                 PRODUCT prod = Mapper.Map<PRODUCT>(product);
                 prod.ProductCategoryId = 1;
                 prod.ProductType = 1;
-                prod.ProductUoM = 1;
+                //prod.ProductUoM = 1;
 
                 db.PRODUCTS.Add(prod);
                 db.SaveChanges();
@@ -48,6 +48,17 @@ namespace BakerSoft.Repositories
                              select b);
                 List<Product> prods = Mapper.Map<List<Product>>(query.ToList());
                 return prods;
+            }
+        }
+
+        public void GetTaxMaster()
+        {
+            using (var db = new StoreDB())
+            {
+                var query = (from a in db.PRODUCT_CATEGORY_MASTER
+                            select a).ToList();
+                query[0].
+
             }
         }
     }

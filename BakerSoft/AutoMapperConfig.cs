@@ -12,6 +12,9 @@ namespace BakerSoft
             Mapper.Initialize(
                 config =>
                 {
+                    config.CreateMap<PRODUCT_CATEGORY_MASTER, ProductCategory>().
+                    ForMember(dest => dest.TaxId, opt => opt.MapFrom(src => src.CATEGORY_TAX_DEFINITION.)
+
                     config.CreateMap<Supplier, SUPPLIER>();
                     config.CreateMap<SUPPLIER, Supplier>();
 
