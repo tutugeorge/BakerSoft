@@ -1,4 +1,5 @@
-﻿using GSTBill.Models;
+﻿using BakerSoft.Models;
+using GSTBill.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace BakerSoft.Definitions
         void AddProduct(Product product);
         List<Product> GetProductsById(string id);
         List<Product> GetProductsByName(string name);
+        List<ProductCategory> GetTaxMaster();
+        List<UomCategory> GetUomCategories();
     }
 }

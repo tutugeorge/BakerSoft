@@ -13,10 +13,10 @@ namespace DAL.Models
         }
 
         public virtual DbSet<ADDRESS> ADDRESSes { get; set; }
-        public virtual DbSet<CATEGORY_TAX_DEFINITION> CATEGORY_TAX_DEFINITION { get; set; }
+        public virtual DbSet<CATEGORY_TAX_DEFINITION_NEW> CATEGORY_TAX_DEFINITION_NEW { get; set; }
         public virtual DbSet<PAYMENT_ATTRIBUTES> PAYMENT_ATTRIBUTES { get; set; }
         public virtual DbSet<PAYMENT> PAYMENTS { get; set; }
-        public virtual DbSet<PRODUCT_CATEGORY_MASTER> PRODUCT_CATEGORY_MASTER { get; set; }
+        public virtual DbSet<PRODUCT_CATEGORY_MASTER_NEW> PRODUCT_CATEGORY_MASTER_NEW { get; set; }
         public virtual DbSet<PRODUCT> PRODUCTS { get; set; }
         public virtual DbSet<PURCHASE_TRANSACTIONS> PURCHASE_TRANSACTIONS { get; set; }
         public virtual DbSet<SALE_TRANSACTIONS> SALE_TRANSACTIONS { get; set; }
@@ -35,6 +35,12 @@ namespace DAL.Models
                 .HasMany(e => e.SUPPLIERS)
                 .WithRequired(e => e.ADDRESS)
                 .HasForeignKey(e => e.SupplierAddressId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CATEGORY_TAX_DEFINITION_NEW>()
+                .HasMany(e => e.PRODUCT_CATEGORY_MASTER_NEW)
+                .WithRequired(e => e.CATEGORY_TAX_DEFINITION_NEW)
+                .HasForeignKey(e => e.CategoryTaxId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PAYMENT>()
@@ -56,12 +62,7 @@ namespace DAL.Models
                 .WithRequired(e => e.PAYMENT)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<PRODUCT_CATEGORY_MASTER>()
-                .HasMany(e => e.CATEGORY_TAX_DEFINITION)
-                .WithRequired(e => e.PRODUCT_CATEGORY_MASTER)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<PRODUCT_CATEGORY_MASTER>()
+            modelBuilder.Entity<PRODUCT_CATEGORY_MASTER_NEW>()
                 .HasMany(e => e.PRODUCTS)
                 .WithRequired(e => e.PRODUCT_CATEGORY_MASTER)
                 .HasForeignKey(e => e.ProductCategoryId)
@@ -150,7 +151,7 @@ namespace DAL.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<UOM_CATEGORY_MASTER>()
-                .HasOptional(e => e.UOM_DEFINITION_MASTER)
+                .HasMany(e => e.UOM_DEFINITION_MASTER)
                 .WithRequired(e => e.UOM_CATEGORY_MASTER);
 
             modelBuilder.Entity<UOM_DEFINITION_MASTER>()

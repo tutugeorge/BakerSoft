@@ -59,13 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CATEGORY_TAX_DEFINITION_NEW.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Models\ADDRESS.cs" />
-    <Compile Include="Models\CATEGORY_TAX_DEFINITION.cs" />
     <Compile Include="Models\PAYMENT.cs" />
     <Compile Include="Models\PAYMENT_ATTRIBUTES.cs" />
     <Compile Include="Models\PRODUCT.cs" />
-    <Compile Include="Models\PRODUCT_CATEGORY_MASTER.cs" />
     <Compile Include="Models\PURCHASE_PAYMENTS.cs" />
     <Compile Include="Models\PURCHASE_PRODUCTS.cs" />
     <Compile Include="Models\PURCHASE_TRANSACTIONS.cs" />
@@ -77,6 +76,7 @@
     <Compile Include="Models\TAX_MASTER.cs" />
     <Compile Include="Models\UOM_CATEGORY_MASTER.cs" />
     <Compile Include="Models\UOM_DEFINITION_MASTER.cs" />
+    <Compile Include="Models\PRODUCT_CATEGORY_MASTER_NEW.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

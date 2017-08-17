@@ -55,20 +55,20 @@ namespace BakerSoft.ViewModels
         }
         public Tax ProductTax { get; set; }
         public List<Price> PriceList { get; set; }
-        private List<Tax> _taxRateList;
-        public List<Tax> TaxRateList
+        private List<ProductCategory> _taxRateList;
+        public List<ProductCategory> TaxRateList
         {
             get
             {
-                if(_taxRateList == null)
-                {
-                    _taxRateList = new List<Tax>()
-                    {
-                        new Tax() { CGST = 0.05, SGST = 0.05 , TaxId = 1},
-                        new Tax() { CGST = 0.06, SGST = 0.06 , TaxId = 2},
-                        new Tax() { CGST = 0.09, SGST = 0.09, TaxId = 3 }
-                    };
-                }
+                //if(_taxRateList == null)
+                //{
+                //    _taxRateList = new List<Tax>()
+                //    {
+                //        new Tax() { CGST = 0.05, SGST = 0.05 , TaxId = 1},
+                //        new Tax() { CGST = 0.06, SGST = 0.06 , TaxId = 2},
+                //        new Tax() { CGST = 0.09, SGST = 0.09, TaxId = 3 }
+                //    };
+                //}
                 return _taxRateList;
             }
             set
@@ -76,21 +76,21 @@ namespace BakerSoft.ViewModels
                 SetProperty(ref _taxRateList, value);
             }
         }
-        private List<UOM> _uomList;
-        public List<UOM> UOMList
+        private List<UomCategory> _uomList;
+        public List<UomCategory> UOMList
         {
             get
             {
-                if (_uomList == null)
-                {
-                    _uomList = new List<UOM>()
-                    {
-                        new UOM() { Id =1, Name = "Packet" },
-                        new UOM() { Id =2, Name = "Piece" },
-                        new UOM() { Id =3, Name = "Gram" },
-                        new UOM() { Id =4, Name = "Litre" }
-                    };
-                }
+                //if (_uomList == null)
+                //{
+                //    _uomList = new List<UOM>()
+                //    {
+                //        new UOM() { Id =1, Name = "Packet" },
+                //        new UOM() { Id =2, Name = "Piece" },
+                //        new UOM() { Id =3, Name = "Gram" },
+                //        new UOM() { Id =4, Name = "Litre" }
+                //    };
+                //}
                 return _uomList;
             }
             set
@@ -106,8 +106,8 @@ namespace BakerSoft.ViewModels
         {
             _productModel = productModel;
             AddProductCmd = new DelegateCommand(AddProduct);
-
-            
+            TaxRateList = _productModel.GetProductCategories();
+            UOMList = _productModel.GetUoMCategories();       
         }
 
         private void AddProduct()

@@ -33,7 +33,7 @@ namespace DAL.Models
 
         public int ProductType { get; set; }
 
-        public virtual PRODUCT_CATEGORY_MASTER PRODUCT_CATEGORY_MASTER { get; set; }
+        public virtual PRODUCT_CATEGORY_MASTER_NEW PRODUCT_CATEGORY_MASTER { get; set; }
 
         public virtual UOM_CATEGORY_MASTER UOM_CATEGORY_MASTER { get; set; }
 

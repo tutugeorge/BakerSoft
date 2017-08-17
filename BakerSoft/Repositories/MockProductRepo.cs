@@ -37,5 +37,15 @@ namespace BakerSoft.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public List<ProductCategory> GetTaxMaster()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<UomCategory> GetUomCategories()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

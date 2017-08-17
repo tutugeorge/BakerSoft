@@ -80,8 +80,8 @@
         	Content="Add >>" HorizontalAlignment="Left" Margin="494,61,0,0" VerticalAlignment="Top" Width="192" Height="44"/>
         <ComboBox x:Name="cmbUOM" 
                   ItemsSource="{Binding UOMList}"
-                  DisplayMemberPath ="Name"
-                  SelectedValuePath ="Id"                  
+                  DisplayMemberPath ="UoMDescription"
+                  SelectedValuePath ="UoMId"                  
                   SelectedIndex="0"
                   SelectedValue="{Binding SelectedUOM}"
                   HorizontalAlignment="Left" Margin="323,374,0,0" VerticalAlignment="Top" Width="138" Height="42"/>
