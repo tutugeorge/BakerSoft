@@ -10,6 +10,7 @@ using GSTBill.Repositories;
 using BakerSoft.Definitions;
 using BakerSoft.Repositories;
 using BakerSoft.Models;
+using System.Linq;
 
 namespace GSTBill
 {
@@ -17,6 +18,26 @@ namespace GSTBill
     {
         protected override DependencyObject CreateShell()
         {
+            using (var litedb = new DAL.LiteDB.StoreDbContext())
+            {
+                if (litedb.Set<DAL.Models.ADDRESS>().Count() != 0)
+                {
+                    //return;
+                }
+
+                litedb.Set<DAL.Models.ADDRESS>().Add(new DAL.Models.ADDRESS()
+                {
+                    AddressId = 1,
+                    AddressLine1 = "1",
+                    AddressLine2 = "2",
+                    AddressLine3 = "3",
+                    City = "c",
+                    Pincode = "p",
+                    State = "s"
+                });
+                litedb.SaveChanges();
+            }
+
             //return Container.Resolve<MainWindow>();
             return Container.Resolve<HomeWindow>();
         }
