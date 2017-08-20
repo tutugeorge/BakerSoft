@@ -14,7 +14,7 @@ namespace GSTBill.Models
         public string ProductDescription { get; set; }
         public int ProductSearchId { get; set; }
         public int ProductCategoryId { get; set; }
-        public int ProductUoM { get; set; }
+        public int UoMCategoryId { get; set; }
         public int ProductType { get; set; }
         public int Quantity { get; set; }
         private double _defaultSellingPrice = 0.00;

@@ -105,7 +105,9 @@ namespace BakerSoft.ViewModels
         public AddProductViewModel(ProductModel productModel)
         {
             _productModel = productModel;
+
             AddProductCmd = new DelegateCommand(AddProduct);
+
             TaxRateList = _productModel.GetProductCategories();
             UOMList = _productModel.GetUoMCategories();       
         }
@@ -117,7 +119,7 @@ namespace BakerSoft.ViewModels
             {                
                 product.ProductName = ProductName;
                 product.ProductSearchId = Convert.ToInt32(ProductSearchId);
-                product.ProductUoM = SelectedUOM;
+                product.UoMCategoryId = SelectedUOM;
                 product.PriceList = new List<Price>()
                 { new Price() { SellingPrice = Convert.ToDouble(this.SellingPrice) } };
                 product.ProductDescription = ProductDescription;
