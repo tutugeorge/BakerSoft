@@ -31,7 +31,14 @@ namespace BakerSoft.Repositories
 
         public List<Supplier> GetSuppliers()
         {
-            throw new NotImplementedException();
+            using (var db = new StoreDbContext())
+            {
+                var query = (from b in db.Set<SUPPLIER>()
+                                 //where b.SupplierName.Contains(name)
+                             select b);
+                List<Supplier> suppliers = Mapper.Map<List<Supplier>>(query.ToList());
+                return suppliers;
+            }
         }
     }
 }

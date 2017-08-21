@@ -13,8 +13,6 @@
                  Text="{Binding ProductName}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="34,83,0,0" TextWrapping="Wrap" 
                  Text="{Binding ProductId}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="462,35,0,0" TextWrapping="Wrap" 
-                 Text="{Binding SupplierName}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="34,138,0,0" TextWrapping="Wrap" 
                  Text="{Binding Quantity}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" Margin="34,195,0,0" TextWrapping="Wrap" 
@@ -43,6 +41,13 @@
                  Text="{Binding PaymentMode}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox12" HorizontalAlignment="Left" Height="23" Margin="462,246,0,0" TextWrapping="Wrap" 
                  Text="{Binding Amount}" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cmbBxSuppliers" 
+                  ItemsSource="{Binding SupplierList}"
+                  DisplayMemberPath ="SupplierName"
+                  SelectedValuePath ="SupplierId"                  
+                  SelectedIndex="0"
+                  SelectedValue="{Binding SelectedUOM}"
+                  HorizontalAlignment="Left" Margin="462,35,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </UserControl>
