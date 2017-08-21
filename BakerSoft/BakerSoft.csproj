@@ -152,9 +152,11 @@
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Repositories\MockProductRepo.cs" />
     <Compile Include="Repositories\MockSupplierRepo.cs" />
+    <Compile Include="Repositories\LiteRepo\ProductLiteRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\PurchaseTransactionRepository.cs" />
     <Compile Include="Repositories\SaleTransactionRepository.cs" />
+    <Compile Include="Repositories\LiteRepo\SupplierLiteRepository.cs" />
     <Compile Include="Repositories\SupplierRepository.cs" />
     <Compile Include="ViewModels\AddPaymentViewModel.cs" />
     <Compile Include="ViewModels\AddProductViewModel.cs" />

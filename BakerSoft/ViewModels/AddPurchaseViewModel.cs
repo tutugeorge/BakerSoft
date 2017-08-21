@@ -1,4 +1,5 @@
-﻿using GSTBill.Models;
+﻿using BakerSoft.Models;
+using GSTBill.Models;
 using GSTBill.ViewModels;
 using Prism.Commands;
 using Prism.Regions;
@@ -14,10 +15,17 @@ namespace BakerSoft.ViewModels
     {
         IRegionManager _regionManager;
         PurchaseTransaction _purchaseTransaction;
+        SupplierModel _supplierModel;
 
         public DelegateCommand<string> GoToViewCmd { get; set; }
         public DelegateCommand PurchaseCmd { get; set; }
 
+        private List<Supplier> _supplierList;
+        public List<Supplier> SupplierList
+        {
+            get { return _supplierList; }
+            set { SetProperty(ref _supplierList, value); }
+        } 
         private string _paymentMode;
         public string PaymentMode
         {
@@ -78,11 +86,16 @@ namespace BakerSoft.ViewModels
             get { return _productId; }
             set { SetProperty(ref _productId, value); }
         }
+
         public AddPurchaseViewModel(IRegionManager regionManager,
-            PurchaseTransaction purchaseTransaction)
+                                    PurchaseTransaction purchaseTransaction,
+                                    SupplierModel supplierModel)
         {
             _purchaseTransaction = purchaseTransaction;
             _regionManager = regionManager;
+            _supplierModel = supplierModel;
+
+            SupplierList = _supplierModel.GetSuppliers();
 
             GoToViewCmd = new DelegateCommand<string>(GoToView);
             PurchaseCmd = new DelegateCommand(Purchase);

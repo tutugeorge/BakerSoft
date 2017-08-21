@@ -20,9 +20,9 @@ namespace BakerSoft.Models
             _supplierRepository.AddSupplier(supplier);
         }
 
-        public void GetSuppliers()
+        public List<Supplier> GetSuppliers()
         {
-            _supplierRepository.GetSuppliers();
+            return _supplierRepository.GetSuppliers();
         }
     }
 }

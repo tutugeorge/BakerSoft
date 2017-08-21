@@ -22,25 +22,21 @@ namespace GSTBill
             //Added for testing code firt in sqlite with EF
 
 
-            using (var litedb = new DAL.LiteDB.StoreDbContext())
-            {
-                if (litedb.Set<DAL.Models.ADDRESS>().Count() != 0)
-                {
-                    //return;
-                }
+            //using (var litedb = new DAL.LiteDB.StoreDbContext())
+            //{
+            //    if (litedb.Set<DAL.Models.ADDRESS>().Count() != 0)
+            //    {
+            //        //return;
+            //    }
 
-                litedb.Set<DAL.Models.ADDRESS>().Add(new DAL.Models.ADDRESS()
-                {
-                    AddressId = 1,
-                    AddressLine1 = "1",
-                    AddressLine2 = "2",
-                    AddressLine3 = "3",
-                    City = "c",
-                    Pincode = "p",
-                    State = "s"
-                });
-                litedb.SaveChanges();
-            }
+            //    litedb.Set<DAL.Models.UOM_CATEGORY_MASTER>().Add(new DAL.Models.UOM_CATEGORY_MASTER()
+            //    {
+            //        UoMCategoryCode = "2",
+            //        UoMCategoryId = 2,
+            //        UoMCategoryDescription = "Litre"
+            //    });
+            //    litedb.SaveChanges();
+            //}
 
             //return Container.Resolve<MainWindow>();
             return Container.Resolve<HomeWindow>();
@@ -62,17 +58,31 @@ namespace GSTBill
         {
             base.ConfigureContainer();
             Container.RegisterType<ITransactionRepository, SaleTransactionRepository>();
-            Container.RegisterType<ISupplierRepository, SupplierRepository>();
-            Container.RegisterType<IProductRepository, ProductRepository>();
+
+
+            #region SQL Repo
+            //Container.RegisterType<ISupplierRepository, SupplierRepository>();
+            //Container.RegisterType<IProductRepository, ProductRepository>();
+            //var productsRepo = Container.Resolve<IProductRepository>() as ProductRepository;
+            //var supplierRepo = Container.Resolve<ISupplierRepository>() as SupplierRepository;
+            #endregion
+
+            #region Mock Repo
             //Container.RegisterType<IProductRepository, MockProductRepo>();
             //Container.RegisterType<ISupplierRepository, MockSupplierRepo>();
-
-
-            var transactionRepo = Container.Resolve<ITransactionRepository>() as SaleTransactionRepository;
-            var productsRepo = Container.Resolve<IProductRepository>() as ProductRepository;
-            var supplierRepo = Container.Resolve<ISupplierRepository>() as SupplierRepository;
             //var productsRepo = Container.Resolve<IProductRepository>() as MockProductRepo;
             //var supplierRepo = Container.Resolve<ISupplierRepository>() as MockSupplierRepo;
+            #endregion
+
+            #region Lite Repo
+            Container.RegisterType<ISupplierRepository, SupplierLiteRepository>();
+            var supplierRepo = Container.Resolve<ISupplierRepository>() as SupplierLiteRepository;
+            Container.RegisterType<IProductRepository, ProductLiteRepository>();
+            var productsRepo = Container.Resolve<IProductRepository>() as ProductLiteRepository;
+            #endregion
+
+            var transactionRepo = Container.Resolve<ITransactionRepository>() as SaleTransactionRepository;
+            
             Container.RegisterInstance(typeof(SaleTransaction), new SaleTransaction(transactionRepo));
             Container.RegisterInstance(typeof(ProductModel), new ProductModel(productsRepo));
             Container.RegisterInstance(typeof(SupplierModel), new SupplierModel(supplierRepo));
