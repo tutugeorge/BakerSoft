@@ -29,15 +29,11 @@ namespace GSTBill
             //        //return;
             //    }
 
-            //    litedb.Set<DAL.Models.ADDRESS>().Add(new DAL.Models.ADDRESS()
+            //    litedb.Set<DAL.Models.UOM_CATEGORY_MASTER>().Add(new DAL.Models.UOM_CATEGORY_MASTER()
             //    {
-            //        AddressId = 1,
-            //        AddressLine1 = "1",
-            //        AddressLine2 = "2",
-            //        AddressLine3 = "3",
-            //        City = "c",
-            //        Pincode = "p",
-            //        State = "s"
+            //        UoMCategoryCode = "2",
+            //        UoMCategoryId = 2,
+            //        UoMCategoryDescription = "Litre"
             //    });
             //    litedb.SaveChanges();
             //}
@@ -66,8 +62,8 @@ namespace GSTBill
 
             #region SQL Repo
             //Container.RegisterType<ISupplierRepository, SupplierRepository>();
-            Container.RegisterType<IProductRepository, ProductRepository>();
-            var productsRepo = Container.Resolve<IProductRepository>() as ProductRepository;
+            //Container.RegisterType<IProductRepository, ProductRepository>();
+            //var productsRepo = Container.Resolve<IProductRepository>() as ProductRepository;
             //var supplierRepo = Container.Resolve<ISupplierRepository>() as SupplierRepository;
             #endregion
 
@@ -81,6 +77,8 @@ namespace GSTBill
             #region Lite Repo
             Container.RegisterType<ISupplierRepository, SupplierLiteRepository>();
             var supplierRepo = Container.Resolve<ISupplierRepository>() as SupplierLiteRepository;
+            Container.RegisterType<IProductRepository, ProductLiteRepository>();
+            var productsRepo = Container.Resolve<IProductRepository>() as ProductLiteRepository;
             #endregion
 
             var transactionRepo = Container.Resolve<ITransactionRepository>() as SaleTransactionRepository;
