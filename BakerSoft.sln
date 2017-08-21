@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakerSoft", "BakerSoft\Bake
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{D55F93AB-3A1C-4F0E-B162-946BB5F30F99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteDB", "..\..\Mock\SQLiteEFPoC\LiteDB\LiteDB.csproj", "{2EA0D3B5-362C-4CBC-9E6B-19B4316D6BCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteDB", "LiteDB\LiteDB.csproj", "{2EA0D3B5-362C-4CBC-9E6B-19B4316D6BCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

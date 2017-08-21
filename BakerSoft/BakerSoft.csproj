@@ -255,13 +255,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Mock\SQLiteEFPoC\LiteDB\LiteDB.csproj">
-      <Project>{2ea0d3b5-362c-4cbc-9e6b-19b4316d6bcd}</Project>
-      <Name>LiteDB</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{D55F93AB-3A1C-4F0E-B162-946BB5F30F99}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LiteDB\LiteDB.csproj">
+      <Project>{2ea0d3b5-362c-4cbc-9e6b-19b4316d6bcd}</Project>
+      <Name>LiteDB</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
