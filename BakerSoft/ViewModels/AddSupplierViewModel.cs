@@ -87,6 +87,8 @@ namespace BakerSoft.ViewModels
             {
                 supplier.SupplierGST = GstNumber;
                 supplier.SupplierName = SupplierName;
+                supplier.SupplierTIN = TinNumber;
+
                 address.AddressLine1 = AddressLine1;
                 address.AddressLine2 = AddressLine2;
                 address.AddressLine3 = AddressLine3;
@@ -94,6 +96,7 @@ namespace BakerSoft.ViewModels
                 address.State = State;
                 address.Pincode = Pincode;
                 supplier.ADDRESS = address;
+
                 _supplierModel.AddSupplier(supplier);
                 log.Info(String.Format("New Supplier {0} added successfully", SupplierName));
             }
@@ -111,6 +114,13 @@ namespace BakerSoft.ViewModels
         {
             GstNumber = "";
             SupplierName = "";
+            TinNumber = "";
+            AddressLine1 = "";
+            AddressLine2 = "";
+            AddressLine3 = "";
+            City = "";
+            State = "";
+            Pincode = "";
         }
     }
 }
