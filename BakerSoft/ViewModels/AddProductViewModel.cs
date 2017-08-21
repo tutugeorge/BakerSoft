@@ -59,16 +59,7 @@ namespace BakerSoft.ViewModels
         public List<ProductCategory> TaxRateList
         {
             get
-            {
-                //if(_taxRateList == null)
-                //{
-                //    _taxRateList = new List<Tax>()
-                //    {
-                //        new Tax() { CGST = 0.05, SGST = 0.05 , TaxId = 1},
-                //        new Tax() { CGST = 0.06, SGST = 0.06 , TaxId = 2},
-                //        new Tax() { CGST = 0.09, SGST = 0.09, TaxId = 3 }
-                //    };
-                //}
+            {                
                 return _taxRateList;
             }
             set

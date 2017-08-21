@@ -16,10 +16,40 @@ namespace BakerSoft.ViewModels
         IRegionManager _regionManager;
         PurchaseTransaction _purchaseTransaction;
         SupplierModel _supplierModel;
+        ProductModel _products;
 
         public DelegateCommand<string> GoToViewCmd { get; set; }
         public DelegateCommand PurchaseCmd { get; set; }
+        public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
 
+        private int _selectedUOMIndex;
+        public int SelectedUOMIndex
+        {
+            get { return _selectedUOMIndex; }
+            set { SetProperty(ref _selectedUOMIndex, value); }
+        }
+        private List<UomCategory> _uomList;
+        public List<UomCategory> UOMList
+        {
+            get
+            {
+                return _uomList;
+            }
+            set
+            {
+                SetProperty(ref _uomList, value);
+            }
+        }
+        private Supplier _selectedSupplier;
+        public Supplier SelectedSupplier
+        {
+            get { return _selectedSupplier; }
+            set
+            {
+                SetProperty(ref _selectedSupplier, value);
+                GSTIN = _selectedSupplier.SupplierGST;
+            }
+        }
         private List<Supplier> _supplierList;
         public List<Supplier> SupplierList
         {
@@ -89,16 +119,20 @@ namespace BakerSoft.ViewModels
 
         public AddPurchaseViewModel(IRegionManager regionManager,
                                     PurchaseTransaction purchaseTransaction,
-                                    SupplierModel supplierModel)
+                                    SupplierModel supplierModel,
+                                    ProductModel products)
         {
             _purchaseTransaction = purchaseTransaction;
             _regionManager = regionManager;
             _supplierModel = supplierModel;
+            _products = products;
 
             SupplierList = _supplierModel.GetSuppliers();
+            UOMList = _products.GetUoMCategories();
 
             GoToViewCmd = new DelegateCommand<string>(GoToView);
             PurchaseCmd = new DelegateCommand(Purchase);
+            SearchProductByIdCmd = new DelegateCommand<string>(SearchProductById);
         }
 
         private void GoToView(string navPath)
@@ -119,6 +153,22 @@ namespace BakerSoft.ViewModels
             _purchaseTransaction.BillNumber = BillNumber;
             _purchaseTransaction.GSTIN = GSTIN;
             _purchaseTransaction.Complete();
+        }
+
+        private void SearchProductById(string id)
+        {
+            var products = _products.SearchById(id);
+            ProductName = products[0].ProductName;
+            SelectedUOMIndex = FindUOMIndex(products[0].ProductUoM);
+        }
+
+        private int FindUOMIndex(int value)
+        {
+            int index = 0;
+            for (int i = 0; i < UOMList.Count; i++)
+                if (UOMList[i].UoMCategoryId.Equals(value))
+                    index = i;
+            return index;
         }
     }
 }

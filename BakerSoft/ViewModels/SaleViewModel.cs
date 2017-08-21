@@ -196,7 +196,8 @@ namespace GSTBill.ViewModels
 
         private void SearchProductById(string id)
         {
-            SearchResult = _products.SearchById(id);            
+            SearchResult = _products.SearchById(id);
+            SelectedSearchItemIndex = -1;
         }
     }
 }

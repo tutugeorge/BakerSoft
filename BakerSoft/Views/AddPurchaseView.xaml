@@ -9,45 +9,61 @@
              mc:Ignorable="d" 
              d:DesignHeight="562" d:DesignWidth="1000">
     <Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="34,35,0,0" TextWrapping="Wrap" 
-                 Text="{Binding ProductName}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="34,83,0,0" TextWrapping="Wrap" 
+        <TextBox x:Name="txtBxPId" HorizontalAlignment="Left" Height="23" Margin="141,38,0,0" TextWrapping="Wrap" 
                  Text="{Binding ProductId}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="34,138,0,0" TextWrapping="Wrap" 
+        <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="140,138,0,0" TextWrapping="Wrap" 
                  Text="{Binding Quantity}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" Margin="34,195,0,0" TextWrapping="Wrap" 
-                 Text="UOM" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox5" HorizontalAlignment="Left" Height="23" Margin="215,35,0,0" TextWrapping="Wrap" 
+        <TextBox x:Name="textBox5" HorizontalAlignment="Left" Height="23" Margin="411,35,0,0" TextWrapping="Wrap" 
                  Text="{Binding PurchasePrice}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox6" HorizontalAlignment="Left" Height="23" Margin="462,83,0,0" TextWrapping="Wrap" 
-                 Text="{Binding GSTIN}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox7" HorizontalAlignment="Left" Height="23" Margin="462,138,0,0" TextWrapping="Wrap" 
+        <TextBox x:Name="textBox6" HorizontalAlignment="Left" Height="23" Margin="658,83,0,0" TextWrapping="Wrap" 
+                 Text="{Binding GSTIN}"
+                 IsEnabled="False"
+                 VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBox7" HorizontalAlignment="Left" Height="23" Margin="658,138,0,0" TextWrapping="Wrap" 
                  Text="{Binding BillNumber}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox8" HorizontalAlignment="Left" Height="23" Margin="215,83,0,0" TextWrapping="Wrap" 
+        <TextBox x:Name="textBox8" HorizontalAlignment="Left" Height="23" Margin="411,83,0,0" TextWrapping="Wrap" 
                  Text="SellingPrice" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button" 
                 Content="AddSupplier" 
                 Command="{Binding GoToViewCmd}" CommandParameter="AddSupplierView"
-                HorizontalAlignment="Left" Margin="658,38,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox x:Name="textBox9" HorizontalAlignment="Left" Height="23" Margin="215,138,0,0" TextWrapping="Wrap" 
+                HorizontalAlignment="Left" Margin="854,38,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="textBox9" HorizontalAlignment="Left" Height="23" Margin="411,138,0,0" TextWrapping="Wrap" 
                  Text="{Binding TaxRate}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox10" HorizontalAlignment="Left" Height="23" Margin="215,195,0,0" TextWrapping="Wrap" 
+        <TextBox x:Name="textBox10" HorizontalAlignment="Left" Height="23" Margin="411,195,0,0" TextWrapping="Wrap" 
                  Text="Type" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button1" 
                 Content="AddPurchase"
                 Command="{Binding PurchaseCmd}"
-                HorizontalAlignment="Left" Margin="669,195,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox x:Name="textBox11" HorizontalAlignment="Left" Height="23" Margin="462,195,0,0" TextWrapping="Wrap" 
+                HorizontalAlignment="Left" Margin="865,195,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="textBox11" HorizontalAlignment="Left" Height="23" Margin="658,195,0,0" TextWrapping="Wrap" 
                  Text="{Binding PaymentMode}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBox12" HorizontalAlignment="Left" Height="23" Margin="462,246,0,0" TextWrapping="Wrap" 
+        <TextBox x:Name="textBox12" HorizontalAlignment="Left" Height="23" Margin="658,246,0,0" TextWrapping="Wrap" 
                  Text="{Binding Amount}" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cmbBxSuppliers" 
                   ItemsSource="{Binding SupplierList}"
                   DisplayMemberPath ="SupplierName"
                   SelectedValuePath ="SupplierId"                  
                   SelectedIndex="0"
+                  SelectedValue="{Binding SelectedSupplier}"
+                  HorizontalAlignment="Left" Margin="658,37,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="34,35,0,0" TextWrapping="Wrap" 
+                   Text="Product Id" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="144,107,0,0" TextWrapping="Wrap" 
+                   Text="{Binding ProductName}" VerticalAlignment="Top" RenderTransformOrigin="-0.02,0.531"/>
+        <Button x:Name="button2" 
+                Content="Find Product"
+                Command="{Binding SearchProductByIdCmd}"
+                CommandParameter="{Binding Text, ElementName=txtBxPId}"
+                HorizontalAlignment="Left" Margin="142,75,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.067,-0.325"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="34,139,0,0" TextWrapping="Wrap" 
+        	Text="Quantity" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbBxSuppliers_Copy" 
+        	ItemsSource="{Binding UOMList}"
+        	DisplayMemberPath ="UoMCategoryDescription"
+                  SelectedValuePath ="UoMCategoryId"                  
+                  SelectedIndex="{Binding SelectedUOMIndex}"
                   SelectedValue="{Binding SelectedUOM}"
-                  HorizontalAlignment="Left" Margin="462,35,0,0" VerticalAlignment="Top" Width="120"/>
+        	HorizontalAlignment="Left" Margin="138,195,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </UserControl>
