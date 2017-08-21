@@ -18,6 +18,10 @@ namespace GSTBill
     {
         protected override DependencyObject CreateShell()
         {
+            // To be removed . 
+            //Added for testing code firt in sqlite with EF
+
+
             using (var litedb = new DAL.LiteDB.StoreDbContext())
             {
                 if (litedb.Set<DAL.Models.ADDRESS>().Count() != 0)
