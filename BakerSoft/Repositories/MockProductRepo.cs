@@ -13,10 +13,10 @@ namespace BakerSoft.Repositories
     {
         List<Product> products = new List<Product>()
             {
-                new Product() { ProductId=1001, ProductName="P1", ProductDescription="P1DEsc" , ProductUoM=1, ProductSearchId=1001,
+                new Product() { ProductId=1001, ProductName="P1", ProductDescription="P1DEsc" , UoMCategoryId=1, ProductSearchId=1001,
                     ProductTax = new Tax() { CGST = 0.05, SGST = 0.05},
                     PriceList = new List<Price>() { new Price() { PurchaseId = 1, PurchasePrice = 100.00, SellingPrice = 120.00 } } },
-                new Product() { ProductId=1002, ProductName="P2", ProductDescription="P2DEsc" , ProductUoM=2, ProductSearchId=1002,
+                new Product() { ProductId=1002, ProductName="P2", ProductDescription="P2DEsc" , UoMCategoryId=2, ProductSearchId=1002,
                     ProductTax = new Tax() { CGST = 0.10, SGST = 0.10},
                     PriceList = new List<Price>() { new Price() { PurchaseId = 1, PurchasePrice = 100.00, SellingPrice = 120.00 } } },
             };
