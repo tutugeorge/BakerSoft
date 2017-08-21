@@ -54,16 +54,6 @@ namespace GSTBill.ViewModels
         {
             get
             {
-                //if (_uomList == null)
-                //{
-                //    _uomList = new List<UOM>()
-                //    {
-                //        new UOM() { Id =1, Name = "Packet" },
-                //        new UOM() { Id =2, Name = "Piece" },
-                //        new UOM() { Id =3, Name = "Gram" },
-                //        new UOM() { Id =4, Name = "Litre" }
-                //    };
-                //}
                 return _uomList;
             }
             set
@@ -206,7 +196,8 @@ namespace GSTBill.ViewModels
 
         private void SearchProductById(string id)
         {
-            SearchResult = _products.SearchById(id);            
+            SearchResult = _products.SearchById(id);
+            SelectedSearchItemIndex = -1;
         }
     }
 }
