@@ -40,13 +40,13 @@
                   SelectedIndex="0"
                   SelectedValue="{Binding SelectedUOM}"
                   HorizontalAlignment="Left" Margin="524,146,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="comboBox_Copy" 
+        <!--<ComboBox x:Name="comboBox_Copy" 
         	ItemsSource="{Binding TaxRateList}"
         	DisplayMemberPath ="TaxTotal"
         	SelectedValuePath ="TaxId"                  
             SelectedIndex="0"      
         	SelectedValue="{Binding SelectedTaxRate}"
-        	HorizontalAlignment="Left" Margin="524,47,0,0" VerticalAlignment="Top" Width="120" SelectedItem=""/>
+        	HorizontalAlignment="Left" Margin="524,47,0,0" VerticalAlignment="Top" Width="120" SelectedItem=""/>-->
         <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Margin="51,208,0,0" TextWrapping="Wrap" 
         	Text="Category" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBox_Copy1" 

@@ -16,7 +16,16 @@ namespace BakerSoft.Repositories
     {
         public void AddProduct(Product product)
         {
-            throw new NotImplementedException();
+            using (var db = new StoreDbContext())
+            {
+                PRODUCT prod = Mapper.Map<PRODUCT>(product);
+                prod.ProductCategoryId = 1;
+                prod.ProductType = 1;
+                //prod.ProductUoM = 1;
+
+                db.Set<PRODUCT>().Add(prod);
+                db.SaveChanges();
+            }
         }
 
         public List<Product> GetProductsById(string id)
