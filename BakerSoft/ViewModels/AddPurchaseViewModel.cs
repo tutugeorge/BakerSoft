@@ -22,6 +22,15 @@ namespace BakerSoft.ViewModels
         public DelegateCommand PurchaseCmd { get; set; }
         public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
 
+        private int _selectedSupplierIndex;
+        public int SelectedSupplierIndex
+        {
+            get { return _selectedSupplierIndex; }
+            set
+            {
+                SetProperty(ref _selectedSupplierIndex, value);                
+            }
+        }
         private int _selectedUOMIndex;
         public int SelectedUOMIndex
         {
@@ -40,14 +49,14 @@ namespace BakerSoft.ViewModels
                 SetProperty(ref _uomList, value);
             }
         }
-        private Supplier _selectedSupplier;
-        public Supplier SelectedSupplier
+        private string _selectedSupplierId;
+        public string SelectedSupplierId
         {
-            get { return _selectedSupplier; }
+            get { return _selectedSupplierId; }
             set
             {
-                SetProperty(ref _selectedSupplier, value);
-                GSTIN = _selectedSupplier.SupplierGST;
+                SetProperty(ref _selectedSupplierId, value);
+                GSTIN = FindGSTN(value);
             }
         }
         private List<Supplier> _supplierList;
@@ -128,7 +137,7 @@ namespace BakerSoft.ViewModels
             _products = products;
 
             SupplierList = _supplierModel.GetSuppliers();
-            UOMList = _products.GetUoMCategories();
+            UOMList = _products.GetUoMCategories();            
 
             GoToViewCmd = new DelegateCommand<string>(GoToView);
             PurchaseCmd = new DelegateCommand(Purchase);
@@ -169,6 +178,15 @@ namespace BakerSoft.ViewModels
                 if (UOMList[i].UoMCategoryId.Equals(value))
                     index = i;
             return index;
+        }
+
+        private string FindGSTN(string value)
+        {
+            foreach (var item in SupplierList)
+                if (item.SupplierId.Equals(value))
+                    return item.SupplierGST;
+
+            return "";
         }
     }
 }

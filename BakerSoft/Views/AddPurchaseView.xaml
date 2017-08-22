@@ -27,8 +27,6 @@
                 Content="AddSupplier" 
                 Command="{Binding GoToViewCmd}" CommandParameter="AddSupplierView"
                 HorizontalAlignment="Left" Margin="854,38,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox x:Name="textBox9" HorizontalAlignment="Left" Height="23" Margin="411,138,0,0" TextWrapping="Wrap" 
-                 Text="{Binding TaxRate}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox10" HorizontalAlignment="Left" Height="23" Margin="411,195,0,0" TextWrapping="Wrap" 
                  Text="Type" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button1" 
@@ -39,13 +37,13 @@
                  Text="{Binding PaymentMode}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox12" HorizontalAlignment="Left" Height="23" Margin="658,246,0,0" TextWrapping="Wrap" 
                  Text="{Binding Amount}" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cmbBxSuppliers" 
+        <!--<ComboBox x:Name="cmbBxSuppliers" 
                   ItemsSource="{Binding SupplierList}"
                   DisplayMemberPath ="SupplierName"
                   SelectedValuePath ="SupplierId"                  
-                  SelectedIndex="0"
+                  SelectedIndex="{Binding SelectedSupplierIndex}"
                   SelectedValue="{Binding SelectedSupplier}"
-                  HorizontalAlignment="Left" Margin="658,37,0,0" VerticalAlignment="Top" Width="120"/>
+                  HorizontalAlignment="Left" Margin="658,37,0,0" VerticalAlignment="Top" Width="120"/>-->
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="34,35,0,0" TextWrapping="Wrap" 
                    Text="Product Id" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="144,107,0,0" TextWrapping="Wrap" 
@@ -57,13 +55,43 @@
                 HorizontalAlignment="Left" Margin="142,75,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.067,-0.325"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="34,139,0,0" TextWrapping="Wrap" 
         	Text="Quantity" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cmbBxSuppliers_Copy" 
+        <ComboBox x:Name="cmbBxUOMList" 
         	ItemsSource="{Binding UOMList}"
         	DisplayMemberPath ="UoMCategoryDescription"
                   SelectedValuePath ="UoMCategoryId"                  
                   SelectedIndex="{Binding SelectedUOMIndex}"
                   SelectedValue="{Binding SelectedUOM}"
         	HorizontalAlignment="Left" Margin="138,195,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="comboBox" 
+                  ItemsSource="{Binding SupplierList}"
+                  DisplayMemberPath ="SupplierName"
+                  SelectedValuePath ="SupplierId"                  
+                  SelectedIndex="0"
+                  SelectedValue="{Binding SelectedSupplierId}"
+                  HorizontalAlignment="Left" Margin="658,35,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="315,35,0,0" TextWrapping="Wrap" 
+        	Text="Purchase Price" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="315,84,0,0" TextWrapping="Wrap" 
+        	Text="Selling Price" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="315,139,0,0" TextWrapping="Wrap" 
+        	Text="Tax Category" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="575,38,0,0" TextWrapping="Wrap" 
+        	Text="Supplier" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Margin="575,83,0,0" TextWrapping="Wrap" 
+        	Text="Supplier GSTN" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy6" HorizontalAlignment="Left" Margin="576,138,0,0" TextWrapping="Wrap" 
+        	Text="Bill Number" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy7" HorizontalAlignment="Left" Margin="575,195,0,0" TextWrapping="Wrap" 
+        	Text="Payment Mode" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy8" HorizontalAlignment="Left" Margin="576,246,0,0" TextWrapping="Wrap" 
+        	Text="Amount" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbBxUOMList_Copy" 
+        	ItemsSource="{Binding UOMList}"
+        	DisplayMemberPath ="UoMCategoryDescription"
+        	SelectedValuePath ="UoMCategoryId"                  
+        	SelectedIndex="{Binding SelectedUOMIndex}"
+        	SelectedValue="{Binding SelectedUOM}"
+        	HorizontalAlignment="Left" Margin="411,138,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </UserControl>
