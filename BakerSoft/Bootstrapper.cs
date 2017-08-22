@@ -75,6 +75,8 @@ namespace GSTBill
             #endregion
 
             #region Lite Repo
+            Container.RegisterType<IPurchaseTransactionRepository, PurchaseTransactionLiteRepository>();
+            var purchaseTransactionRepo = Container.Resolve<IPurchaseTransactionRepository>() as PurchaseTransactionLiteRepository;
             Container.RegisterType<ISupplierRepository, SupplierLiteRepository>();
             var supplierRepo = Container.Resolve<ISupplierRepository>() as SupplierLiteRepository;
             Container.RegisterType<IProductRepository, ProductLiteRepository>();
@@ -86,6 +88,7 @@ namespace GSTBill
             Container.RegisterInstance(typeof(SaleTransaction), new SaleTransaction(transactionRepo));
             Container.RegisterInstance(typeof(ProductModel), new ProductModel(productsRepo));
             Container.RegisterInstance(typeof(SupplierModel), new SupplierModel(supplierRepo));
+            Container.RegisterInstance(typeof(PurchaseTransactionModel), new PurchaseTransactionModel(purchaseTransactionRepo));
         }
     }
 }

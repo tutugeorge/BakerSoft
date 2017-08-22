@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BakerSoft.Models
 {
-    class CashPayment : Payment
+    class CashPayment //: Payment
     {
     }
 }

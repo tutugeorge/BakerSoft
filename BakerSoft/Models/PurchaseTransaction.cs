@@ -9,40 +9,43 @@ using System.Threading.Tasks;
 
 namespace GSTBill.Models
 {
-    class PurchaseTransaction : Transaction
+    class PurchaseTransactionModel //: Transaction
     {
-        private ITransactionRepository _transactionRepository;
+        private IPurchaseTransactionRepository _transactionRepository;
 
-        public string GSTIN { get; set; }
-        public string BillNumber { get; set; }
-        public List<Product> ItemList
-        {
-            get;
-            set;
-        }
-        public List<Payment> PaymentList { get; set; }
+        //public decimal PurchaseTaxTotal { get; set; }
+        //public decimal PurchaseTxnTotal { get; set; }
+        //public DateTime PurchaseDate { get; set; }
+        //public string SupplierId { get; set; }
+        //public string GSTIN { get; set; }
+        //public string BillNumber { get; set; }
+        //public List<Product> ItemList
+        //{
+        //    get;
+        //    set;
+        //}
+        //public List<Payment> PaymentList { get; set; }
 
-        public PurchaseTransaction(ITransactionRepository transactionRepository)
+        public PurchaseTransactionModel(IPurchaseTransactionRepository transactionRepository)
         {
-            _transactionRepository = transactionRepository;
-        }
-
-        public override void Complete()
-        {
-            base.Complete();
-            _transactionRepository.InsertTransaction();
+            _transactionRepository = transactionRepository;            
         }
 
-        public override void AddItem(Product item)
-        {
-            base.AddItem(item);
-            ItemList.Add(item);
+        public void Complete(PurchaseTransaction purchase)
+        {            
+            _transactionRepository.InsertTransaction(purchase);
         }
 
-        public override void Cancel()
-        {
-            base.Cancel();
-        }
+        //public override void AddItem(Product item)
+        //{
+        //    base.AddItem(item);
+        //    ItemList.Add(item);
+        //}
+
+        //public override void Cancel()
+        //{
+        //    base.Cancel();
+        //}
 
         
     }

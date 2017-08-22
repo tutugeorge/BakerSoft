@@ -30,7 +30,11 @@ namespace BakerSoft
                     config.CreateMap<ADDRESS, Address>();
 
                     config.CreateMap<Product, PRODUCT>();
-                    
+
+                    config.CreateMap<PurchaseProduct, PURCHASE_PRODUCTS>();
+                    config.CreateMap<PurchaseTransaction, PURCHASE_TRANSACTIONS>();
+                    //ForMember(dest => dest.PURCHASE_PRODUCTS, opt => opt.MapFrom(src => src.ItemList[0]));
+
                     //.ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))
                     //.ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.ProductName))
                     //.ForMember(dest => dest.ProductDescription, opt => opt.MapFrom(src => src.ProductDescription))
