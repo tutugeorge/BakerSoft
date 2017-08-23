@@ -11,6 +11,7 @@ using BakerSoft.Definitions;
 using BakerSoft.Repositories;
 using BakerSoft.Models;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace GSTBill
 {
@@ -22,24 +23,50 @@ namespace GSTBill
             //Added for testing code firt in sqlite with EF
 
 
-            //using (var litedb = new DAL.LiteDB.StoreDbContext())
-            //{
-            //    if (litedb.Set<DAL.Models.ADDRESS>().Count() != 0)
-            //    {
-            //        //return;
-            //    }
-
-            //    litedb.Set<DAL.Models.UOM_CATEGORY_MASTER>().Add(new DAL.Models.UOM_CATEGORY_MASTER()
-            //    {
-            //        UoMCategoryCode = "2",
-            //        UoMCategoryId = 2,
-            //        UoMCategoryDescription = "Litre"
-            //    });
-            //    litedb.SaveChanges();
-            //}
+            InitLiteDb();
 
             //return Container.Resolve<MainWindow>();
             return Container.Resolve<HomeWindow>();
+        }
+
+        private static void InitLiteDb()
+        {
+            using (var litedb = new DAL.LiteDB.StoreDbContext())
+            {
+                if (litedb.Set<DAL.Models.ADDRESS>().Count() != 0)
+                {
+                    //return;
+                }
+
+                litedb.Set<DAL.Models.UOM_CATEGORY_MASTER>().Add(new DAL.Models.UOM_CATEGORY_MASTER()
+                {
+                    UoMCategoryCode = "2",
+                    UoMCategoryId = 2,
+                    UoMCategoryDescription = "Litre"
+                });
+                litedb.Set<DAL.Models.UOM_CATEGORY_MASTER>().Add(new DAL.Models.UOM_CATEGORY_MASTER()
+                {
+                    UoMCategoryCode = "1",
+                    UoMCategoryId = 1,
+                    UoMCategoryDescription = "KiloGram"
+                });
+                litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
+                {
+                    UoMCode = "1",
+                    UoMDescription = "Gram",
+                    UoMCategoryId = 1,
+                    UoMConversionFactor = 0.001m
+                });
+                litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
+                {
+                    UoMCode = "1",
+                    UoMDescription = "KiloGram",
+                    UoMCategoryId = 1,
+                    UoMConversionFactor = 0.001m
+                });
+
+                litedb.SaveChanges();
+            }
         }
 
         protected override void InitializeShell()
