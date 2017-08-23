@@ -181,17 +181,22 @@ namespace BakerSoft.ViewModels
             product.ProductId = Convert.ToInt32(ProductId);
             product.PurchasePrice = Convert.ToDecimal(PurchasePrice);
             product.SellingPrice = Convert.ToDecimal(SellingPrice);
-            //product.ProductName = ProductName;
             product.Quantity = Convert.ToInt32(Quantity);
+
+            //product.ProductName = ProductName;
             //product.ProductCategoryId = SelectedTaxRate;
             //product.ProductUoM = SelectedUOM;            
             transaction.ItemList.Add(product);
-            
-
+            transaction.PaymentList.Add(new PurchasePayment()
+            { PaymentAmount = Convert.ToDecimal(Amount) });
+            //To do
+            //transaction.PurchaseTaxTotal = //Compute tax from SelectedTaxRate
+            transaction.PurchaseTaxTotal = Convert.ToDecimal(1.00);
             transaction.SupplierId = SelectedSupplierId;
             transaction.PurchaseTxnTotal = Convert.ToDecimal(Amount);
             transaction.BillNumber = BillNumber;
             transaction.GSTIN = GSTIN;
+            transaction.PurchaseDate = DateTime.Today;
             _purchaseTransaction.Complete(transaction);
         }
 

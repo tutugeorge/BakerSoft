@@ -16,8 +16,8 @@ namespace GSTBill.Models
         public string GSTIN { get; set; }
         public string BillNumber { get; set; }
         public List<PurchaseProduct> ItemList = new List<PurchaseProduct>();
-        
-        public List<Payment> PaymentList { get; set; }
+
+        public List<PurchasePayment> PaymentList = new List<PurchasePayment>();
     }
 
     public class PurchaseProduct
