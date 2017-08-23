@@ -20,7 +20,7 @@ namespace GSTBill.Models
         public List<PurchasePayment> PaymentList = new List<PurchasePayment>();
     }
 
-    public class PurchaseProduct
+    class PurchaseProduct
     {
         public int PurchaseId { get; set; }
 
@@ -32,5 +32,6 @@ namespace GSTBill.Models
 
         public decimal? SellingPrice { get; set; }
 
+        public Product Product { get; set; }
     }
 }

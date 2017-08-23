@@ -23,7 +23,7 @@ namespace GSTBill
             //Added for testing code firt in sqlite with EF
 
 
-            InitLiteDb();
+            //InitLiteDb();
 
             //return Container.Resolve<MainWindow>();
             return Container.Resolve<HomeWindow>();
@@ -38,18 +38,18 @@ namespace GSTBill
                     //return;
                 }
 
-                litedb.Set<DAL.Models.UOM_CATEGORY_MASTER>().Add(new DAL.Models.UOM_CATEGORY_MASTER()
-                {
-                    UoMCategoryCode = "2",
-                    UoMCategoryId = 2,
-                    UoMCategoryDescription = "Litre"
-                });
-                litedb.Set<DAL.Models.UOM_CATEGORY_MASTER>().Add(new DAL.Models.UOM_CATEGORY_MASTER()
-                {
-                    UoMCategoryCode = "1",
-                    UoMCategoryId = 1,
-                    UoMCategoryDescription = "KiloGram"
-                });
+                //litedb.Set<DAL.Models.UOM_CATEGORY_MASTER>().Add(new DAL.Models.UOM_CATEGORY_MASTER()
+                //{
+                //    UoMCategoryCode = "2",
+                //    UoMCategoryId = 2,
+                //    UoMCategoryDescription = "Litre"
+                //});
+                //litedb.Set<DAL.Models.UOM_CATEGORY_MASTER>().Add(new DAL.Models.UOM_CATEGORY_MASTER()
+                //{
+                //    UoMCategoryCode = "1",
+                //    UoMCategoryId = 1,
+                //    UoMCategoryDescription = "KiloGram"
+                //});
                 litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
                 {
                     UoMCode = "1",
@@ -57,39 +57,39 @@ namespace GSTBill
                     UoMCategoryId = 1,
                     UoMConversionFactor = 0.001m
                 });
-                litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
-                {
-                    UoMCode = "1",
-                    UoMDescription = "KiloGram",
-                    UoMCategoryId = 1,
-                    UoMConversionFactor = 0.001m
-                });
-                litedb.Set<DAL.Models.TAX_MASTER>().Add(new DAL.Models.TAX_MASTER()
-                {
-                    TaxId = 1,
-                    TaxRate = 0.18m,
-                    TaxChar = "@",
-                    TaxDescription = "18 %"
-                });
-                litedb.Set<DAL.Models.TAX_MASTER>().Add(new DAL.Models.TAX_MASTER()
-                {
-                    TaxId = 2,
-                    TaxRate = 0.12m,
-                    TaxChar = "#",
-                    TaxDescription = "12 %"
-                });
+                //litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
+                //{
+                //    UoMCode = "1",
+                //    UoMDescription = "KiloGram",
+                //    UoMCategoryId = 1,
+                //    UoMConversionFactor = 0.001m
+                //});
+                //litedb.Set<DAL.Models.TAX_MASTER>().Add(new DAL.Models.TAX_MASTER()
+                //{
+                //    TaxId = 1,
+                //    TaxRate = 0.18m,
+                //    TaxChar = "@",
+                //    TaxDescription = "18 %"
+                //});
+                //litedb.Set<DAL.Models.TAX_MASTER>().Add(new DAL.Models.TAX_MASTER()
+                //{
+                //    TaxId = 2,
+                //    TaxRate = 0.12m,
+                //    TaxChar = "#",
+                //    TaxDescription = "12 %"
+                //});
                 litedb.Set<DAL.Models.PRODUCT_CATEGORY_MASTER_NEW>().Add(new DAL.Models.PRODUCT_CATEGORY_MASTER_NEW()
                 {
                     CategoryTaxId = 1,
                     CategoryName = "18 %",
                     CategoryDescription = "Luxury items"
                 });
-                litedb.Set<DAL.Models.PRODUCT_CATEGORY_MASTER_NEW>().Add(new DAL.Models.PRODUCT_CATEGORY_MASTER_NEW()
-                {
-                    CategoryTaxId = 2,
-                    CategoryName = "12 %",
-                    CategoryDescription = "Biscuits"
-                });
+                //litedb.Set<DAL.Models.PRODUCT_CATEGORY_MASTER_NEW>().Add(new DAL.Models.PRODUCT_CATEGORY_MASTER_NEW()
+                //{
+                //    CategoryTaxId = 2,
+                //    CategoryName = "12 %",  
+                //    CategoryDescription = "Biscuits"
+                //});
                 litedb.SaveChanges();
             }
         }

@@ -95,7 +95,7 @@ namespace DAL.Models
             modelBuilder.Entity<PURCHASE_TRANSACTIONS>()
                 .HasMany(e => e.PURCHASE_PAYMENTS)
                 .WithRequired(e => e.PURCHASE_TRANSACTIONS)
-                .HasForeignKey(e => e.PaymentId)
+                .HasForeignKey(e => e.PurchaseId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SALE_TRANSACTIONS>()
