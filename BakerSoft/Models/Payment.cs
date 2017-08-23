@@ -10,4 +10,13 @@ namespace BakerSoft.Models
     {
         public double Amount { get; set; }
     }
+
+    class PurchasePayment
+    {
+        public int PurchaseId { get; set; }
+
+        public int PaymentId { get; set; }
+
+        public decimal PaymentAmount { get; set; }
+    }
 }

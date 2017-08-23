@@ -14,7 +14,7 @@ namespace BakerSoft.ViewModels
     class AddPurchaseViewModel : BaseViewModel
     {
         IRegionManager _regionManager;
-        PurchaseTransaction _purchaseTransaction;
+        PurchaseTransactionModel _purchaseTransaction;
         SupplierModel _supplierModel;
         ProductModel _products;
 
@@ -22,6 +22,18 @@ namespace BakerSoft.ViewModels
         public DelegateCommand PurchaseCmd { get; set; }
         public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
 
+        private List<ProductCategory> _taxRateList;
+        public List<ProductCategory> TaxRateList
+        {
+            get
+            {
+                return _taxRateList;
+            }
+            set
+            {
+                SetProperty(ref _taxRateList, value);
+            }
+        }
         private int _selectedSupplierIndex;
         public int SelectedSupplierIndex
         {
@@ -36,6 +48,12 @@ namespace BakerSoft.ViewModels
         {
             get { return _selectedUOMIndex; }
             set { SetProperty(ref _selectedUOMIndex, value); }
+        }
+        private int _selectedUOM;
+        public int SelectedUOM
+        {
+            get { return _selectedUOM; }
+            set { SetProperty(ref _selectedUOM, value); }
         }
         private List<UomCategory> _uomList;
         public List<UomCategory> UOMList
@@ -71,11 +89,11 @@ namespace BakerSoft.ViewModels
             get { return _paymentMode; }
             set { SetProperty(ref _paymentMode, value); }
         }
-        private string _taxRate;
-        public string TaxRate
+        private int _selectedTaxRate;
+        public int SelectedTaxRate
         {
-            get { return _taxRate; }
-            set { SetProperty(ref _taxRate, value); }
+            get { return _selectedTaxRate; }
+            set { SetProperty(ref _selectedTaxRate, value); }
         }
         private string _amount;
         public string Amount
@@ -100,6 +118,12 @@ namespace BakerSoft.ViewModels
         {
             get { return _purchasePrice; }
             set { SetProperty(ref _purchasePrice, value); }
+        }
+        private string _sellingPrice;
+        public string SellingPrice
+        {
+            get { return _sellingPrice; }
+            set { SetProperty(ref _sellingPrice, value); }
         }
         private string _quantity;
         public string Quantity
@@ -127,7 +151,7 @@ namespace BakerSoft.ViewModels
         }
 
         public AddPurchaseViewModel(IRegionManager regionManager,
-                                    PurchaseTransaction purchaseTransaction,
+                                    PurchaseTransactionModel purchaseTransaction,
                                     SupplierModel supplierModel,
                                     ProductModel products)
         {
@@ -137,7 +161,8 @@ namespace BakerSoft.ViewModels
             _products = products;
 
             SupplierList = _supplierModel.GetSuppliers();
-            UOMList = _products.GetUoMCategories();            
+            UOMList = _products.GetUoMCategories();
+            TaxRateList = _products.GetProductCategories();
 
             GoToViewCmd = new DelegateCommand<string>(GoToView);
             PurchaseCmd = new DelegateCommand(Purchase);
@@ -151,17 +176,28 @@ namespace BakerSoft.ViewModels
 
         private void Purchase()
         {
-            var product = new Product();
+            var transaction = new PurchaseTransaction();
+            var product = new PurchaseProduct();
             product.ProductId = Convert.ToInt32(ProductId);
-            product.ProductName = ProductName;
+            product.PurchasePrice = Convert.ToDecimal(PurchasePrice);
+            product.SellingPrice = Convert.ToDecimal(SellingPrice);
             product.Quantity = Convert.ToInt32(Quantity);
-            product.Tax = TaxRate;
-            
-            _purchaseTransaction.AddItem(product);
 
-            _purchaseTransaction.BillNumber = BillNumber;
-            _purchaseTransaction.GSTIN = GSTIN;
-            _purchaseTransaction.Complete();
+            //product.ProductName = ProductName;
+            //product.ProductCategoryId = SelectedTaxRate;
+            //product.ProductUoM = SelectedUOM;            
+            transaction.ItemList.Add(product);
+            transaction.PaymentList.Add(new PurchasePayment()
+            { PaymentAmount = Convert.ToDecimal(Amount) });
+            //To do
+            //transaction.PurchaseTaxTotal = //Compute tax from SelectedTaxRate
+            transaction.PurchaseTaxTotal = Convert.ToDecimal(1.00);
+            transaction.SupplierId = SelectedSupplierId;
+            transaction.PurchaseTxnTotal = Convert.ToDecimal(Amount);
+            transaction.BillNumber = BillNumber;
+            transaction.GSTIN = GSTIN;
+            transaction.PurchaseDate = DateTime.Today;
+            _purchaseTransaction.Complete(transaction);
         }
 
         private void SearchProductById(string id)
