@@ -50,13 +50,13 @@ namespace GSTBill
                 //    UoMCategoryId = 1,
                 //    UoMCategoryDescription = "KiloGram"
                 //});
-                litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
-                {
-                    UoMCode = "1",
-                    UoMDescription = "Gram",
-                    UoMCategoryId = 1,
-                    UoMConversionFactor = 0.001m
-                });
+                //litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
+                //{
+                //    UoMCode = "1",
+                //    UoMDescription = "Gram",
+                //    UoMCategoryId = 1,
+                //    UoMConversionFactor = 0.001m
+                //});
                 //litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
                 //{
                 //    UoMCode = "1",

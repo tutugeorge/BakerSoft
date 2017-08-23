@@ -52,6 +52,7 @@ namespace DAL.Models
                 .WithRequired(e => e.PAYMENT)
                 .WillCascadeOnDelete(false);
 
+            //Check
             modelBuilder.Entity<PAYMENT>()
                 .HasMany(e => e.PURCHASE_PAYMENTS)
                 .WithRequired(e => e.PAYMENT)
@@ -68,6 +69,7 @@ namespace DAL.Models
                 .HasForeignKey(e => e.ProductCategoryId)
                 .WillCascadeOnDelete(false);
 
+            //Check
             modelBuilder.Entity<PRODUCT>()
                 .HasMany(e => e.PURCHASE_PRODUCTS)
                 .WithRequired(e => e.PRODUCT)

@@ -16,7 +16,7 @@ namespace DAL.Models
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PurchseId { get; set; }
 
         public DateTime PurchaseDate { get; set; }
