@@ -64,7 +64,32 @@ namespace GSTBill
                     UoMCategoryId = 1,
                     UoMConversionFactor = 0.001m
                 });
-
+                litedb.Set<DAL.Models.TAX_MASTER>().Add(new DAL.Models.TAX_MASTER()
+                {
+                    TaxId = 1,
+                    TaxRate = 0.18m,
+                    TaxChar = "@",
+                    TaxDescription = "18 %"
+                });
+                litedb.Set<DAL.Models.TAX_MASTER>().Add(new DAL.Models.TAX_MASTER()
+                {
+                    TaxId = 2,
+                    TaxRate = 0.12m,
+                    TaxChar = "#",
+                    TaxDescription = "12 %"
+                });
+                litedb.Set<DAL.Models.PRODUCT_CATEGORY_MASTER_NEW>().Add(new DAL.Models.PRODUCT_CATEGORY_MASTER_NEW()
+                {
+                    CategoryTaxId = 1,
+                    CategoryName = "18 %",
+                    CategoryDescription = "Luxury items"
+                });
+                litedb.Set<DAL.Models.PRODUCT_CATEGORY_MASTER_NEW>().Add(new DAL.Models.PRODUCT_CATEGORY_MASTER_NEW()
+                {
+                    CategoryTaxId = 2,
+                    CategoryName = "12 %",
+                    CategoryDescription = "Biscuits"
+                });
                 litedb.SaveChanges();
             }
         }
