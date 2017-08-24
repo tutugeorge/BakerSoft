@@ -30,6 +30,10 @@ namespace GSTBill.Models
 
         public void AddPayment(Payment payment)
         {
+            if (PaymentList == null)
+            {
+                PaymentList = new ObservableCollection<Payment>();
+            }
             PaymentList.Add(payment);
         }
 
@@ -59,8 +63,8 @@ namespace GSTBill.Models
                 ItemList = new List<Product>();
             ItemList.Add(item);
 
-            AddToTransactionTotal(item.PriceList[0], item.Quantity);
-            AddToTaxTotal(item.ProductTax, item.PriceList[0], item.Quantity);
+            AddToTransactionTotal(item.PriceList[0].Value, item.Quantity);
+            AddToTaxTotal(item.ProductTax, item.PriceList[0].Value, item.Quantity);
         }
 
         public void RemoveItem(int itemIndex)
@@ -68,15 +72,15 @@ namespace GSTBill.Models
             //TODO : Remove selected item from the list
             var item = ItemList[itemIndex];
             ItemList.RemoveAt(itemIndex);
-            SubstractFromTransactionTotal(item.PriceList[0], item.Quantity);
-            SubstractFromTaxTotal(item.ProductTax, item.PriceList[0], item.Quantity);
+            //SubstractFromTransactionTotal(item.PriceList[0].Value, item.Quantity);
+            //SubstractFromTaxTotal(item.ProductTax, item.PriceList[0].Value, item.Quantity);
         }
 
-        private void AddToTaxTotal(Tax tax, Price price, int quantity)
+        private void AddToTaxTotal(Tax tax, double price, int quantity)
         {
             TransactionTaxTotal = TransactionTaxTotal +
-                                    ((price.SellingPrice * tax.SGST) + 
-                                    (price.SellingPrice * tax.CGST)) * quantity;
+                                    ((price * tax.SGST) + 
+                                    (price * tax.CGST)) * quantity;
         }
 
         private void SubstractFromTaxTotal(Tax tax, Price price, int quantity)
@@ -86,9 +90,9 @@ namespace GSTBill.Models
                                     (price.SellingPrice * tax.CGST)) * quantity;
         }
 
-        private void AddToTransactionTotal(Price price, int quantity)
+        private void AddToTransactionTotal(double price, int quantity)
         {
-            TransactionTotal = TransactionTotal + (price.SellingPrice * quantity);
+            TransactionTotal = TransactionTotal + Convert.ToDouble(price * quantity);
         }
 
         private void SubstractFromTransactionTotal(Price price, int quantity)

@@ -57,13 +57,13 @@ namespace GSTBill
                 //    UoMCategoryId = 1,
                 //    UoMConversionFactor = 0.001m
                 //});
-                //litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
-                //{
-                //    UoMCode = "1",
-                //    UoMDescription = "KiloGram",
-                //    UoMCategoryId = 1,
-                //    UoMConversionFactor = 0.001m
-                //});
+                litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
+                {
+                    UoMCode = "1",
+                    UoMDescription = "KiloGram",
+                    UoMCategoryId = 1,
+                    UoMConversionFactor = 0.001m
+                });
                 //litedb.Set<DAL.Models.TAX_MASTER>().Add(new DAL.Models.TAX_MASTER()
                 //{
                 //    TaxId = 1,
@@ -78,12 +78,12 @@ namespace GSTBill
                 //    TaxChar = "#",
                 //    TaxDescription = "12 %"
                 //});
-                litedb.Set<DAL.Models.PRODUCT_CATEGORY_MASTER_NEW>().Add(new DAL.Models.PRODUCT_CATEGORY_MASTER_NEW()
-                {
-                    CategoryTaxId = 1,
-                    CategoryName = "18 %",
-                    CategoryDescription = "Luxury items"
-                });
+                //litedb.Set<DAL.Models.PRODUCT_CATEGORY_MASTER_NEW>().Add(new DAL.Models.PRODUCT_CATEGORY_MASTER_NEW()
+                //{
+                //    CategoryTaxId = 1,
+                //    CategoryName = "18 %",
+                //    CategoryDescription = "Luxury items"
+                //});
                 //litedb.Set<DAL.Models.PRODUCT_CATEGORY_MASTER_NEW>().Add(new DAL.Models.PRODUCT_CATEGORY_MASTER_NEW()
                 //{
                 //    CategoryTaxId = 2,
@@ -113,10 +113,12 @@ namespace GSTBill
 
 
             #region SQL Repo
-            //Container.RegisterType<ISupplierRepository, SupplierRepository>();
-            //Container.RegisterType<IProductRepository, ProductRepository>();
-            //var productsRepo = Container.Resolve<IProductRepository>() as ProductRepository;
-            //var supplierRepo = Container.Resolve<ISupplierRepository>() as SupplierRepository;
+            Container.RegisterType<ISupplierRepository, SupplierRepository>();
+            Container.RegisterType<IProductRepository, ProductRepository>();
+            var productsRepo = Container.Resolve<IProductRepository>() as ProductRepository;
+            var supplierRepo = Container.Resolve<ISupplierRepository>() as SupplierRepository;
+            Container.RegisterType<IPurchaseTransactionRepository, PurchaseTransactionRepository>();
+            var purchaseTransactionRepo = Container.Resolve<IPurchaseTransactionRepository>() as PurchaseTransactionRepository;
             #endregion
 
             #region Mock Repo
@@ -127,12 +129,12 @@ namespace GSTBill
             #endregion
 
             #region Lite Repo
-            Container.RegisterType<IPurchaseTransactionRepository, PurchaseTransactionLiteRepository>();
-            var purchaseTransactionRepo = Container.Resolve<IPurchaseTransactionRepository>() as PurchaseTransactionLiteRepository;
-            Container.RegisterType<ISupplierRepository, SupplierLiteRepository>();
-            var supplierRepo = Container.Resolve<ISupplierRepository>() as SupplierLiteRepository;
-            Container.RegisterType<IProductRepository, ProductLiteRepository>();
-            var productsRepo = Container.Resolve<IProductRepository>() as ProductLiteRepository;
+            //Container.RegisterType<IPurchaseTransactionRepository, PurchaseTransactionLiteRepository>();
+            //var purchaseTransactionRepo = Container.Resolve<IPurchaseTransactionRepository>() as PurchaseTransactionLiteRepository;
+            //Container.RegisterType<ISupplierRepository, SupplierLiteRepository>();
+            //var supplierRepo = Container.Resolve<ISupplierRepository>() as SupplierLiteRepository;
+            //Container.RegisterType<IProductRepository, ProductLiteRepository>();
+            //var productsRepo = Container.Resolve<IProductRepository>() as ProductLiteRepository;
             #endregion
 
             var transactionRepo = Container.Resolve<ITransactionRepository>() as SaleTransactionRepository;

@@ -32,6 +32,6 @@ namespace GSTBill.Models
 
         public decimal? SellingPrice { get; set; }
 
-        public Product Product { get; set; }
+        //public Product Product { get; set; }
     }
 }

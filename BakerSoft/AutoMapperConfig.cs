@@ -12,6 +12,10 @@ namespace BakerSoft
             Mapper.Initialize(
                 config =>
                 {
+                    config.CreateMap<TAX_MASTER, Tax>()
+                    .ForMember(dest => dest.CGST, opt => opt.MapFrom(src => src.TaxRate))
+                    .ForMember(dest => dest.SGST, opt => opt.MapFrom(src => src.TaxRate));
+
                     config.CreateMap<UOM_DEFINITION_MASTER, UomDefinitions>();
 
                     config.CreateMap<PRODUCT, Product>().
