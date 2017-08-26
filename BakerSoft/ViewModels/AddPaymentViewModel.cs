@@ -37,11 +37,19 @@ namespace BakerSoft.ViewModels
         {
             try
             {
-                var cashPayment = new Payment()
+                var cashPayment = new SalePayment()
                 {
-                    Amount = Convert.ToDouble(amount)
+                    PaymentAmount = Convert.ToDecimal(amount)
+                };
+                cashPayment.Payment = new Payment()
+                {
+                    PaidAmount = Convert.ToDecimal(amount),
+                    PaymentDate = DateTime.Today,
+                    PaymentType = 1
                 };
                 _saleTransaction.AddPayment(cashPayment);
+
+                CompleteTransaction();
                 log.Info(String.Format("Cash payment of {0} successfull", amount));
             }
             catch(Exception ex)
@@ -57,6 +65,11 @@ namespace BakerSoft.ViewModels
                     _regionManager.RequestNavigate("", "");
                 }
             }
+        }
+
+        private void CompleteTransaction()
+        {
+            _saleTransaction.Complete();
         }
     }
 }

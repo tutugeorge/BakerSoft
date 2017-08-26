@@ -32,8 +32,9 @@ namespace DAL.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SALES_PAYMENTS> SALES_PAYMENTS { get; set; }
 
-        public virtual SALE_TRANSACTIONS SALE_TRANSACTIONS1 { get; set; }
+        //Check
+        //public virtual SALE_TRANSACTIONS SALE_TRANSACTIONS1 { get; set; }
 
-        public virtual SALE_TRANSACTIONS SALE_TRANSACTIONS2 { get; set; }
+        //public virtual SALE_TRANSACTIONS SALE_TRANSACTIONS2 { get; set; }
     }
 }

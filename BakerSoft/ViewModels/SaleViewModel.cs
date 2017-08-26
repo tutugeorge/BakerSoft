@@ -129,8 +129,8 @@ namespace GSTBill.ViewModels
             get { return _searchResult; }
             set { SetProperty(ref _searchResult, value); }
         }
-        private List<Product> _itemList = new List<Product>();
-        public List<Product> ItemList
+        private List<SaleProduct> _itemList = new List<SaleProduct>();
+        public List<SaleProduct> ItemList
         {
             get { return _itemList; }
             set { SetProperty(ref _itemList, value); }                       
@@ -167,8 +167,15 @@ namespace GSTBill.ViewModels
 
         private void AddProduct(Product product)
         {
-            product.Quantity = Convert.ToInt32(Quantity);
-            _saleTransaction.AddItem(product);
+            var saleProduct = new SaleProduct();
+            saleProduct.UoM = product.ProductUoM;
+            saleProduct.PriceList = product.PriceList;
+            saleProduct.ProductId = product.ProductId;
+            saleProduct.ProductTax = product.ProductTax;
+            saleProduct.SellingPrice = Convert.ToDecimal(product.PriceList[0]);
+
+            saleProduct.Quantity = Convert.ToDecimal(Quantity);
+            _saleTransaction.AddItem(saleProduct);
             UpdateTransaction();
         }
 

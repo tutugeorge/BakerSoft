@@ -23,8 +23,8 @@ namespace BakerSoft.Repositories
 
         public void AddProduct(Product product)
         {
-            product.ProductTax.CGST = 0.09;
-            product.ProductTax.SGST = 0.09;
+            product.ProductTax.CGST = 0.09m;
+            product.ProductTax.SGST = 0.09m;
             products.Add(product);
         }
 

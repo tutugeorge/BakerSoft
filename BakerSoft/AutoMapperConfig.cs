@@ -44,6 +44,14 @@ namespace BakerSoft
                     ForMember(dest => dest.PURCHASE_PRODUCTS, opt => opt.MapFrom(src => src.ItemList)).
                     ForMember(dest => dest.PURCHASE_PAYMENTS, opt => opt.MapFrom(src => src.PaymentList));
 
+                    config.CreateMap<SalePayment, SALES_PAYMENTS>().
+                    ForMember(dest => dest.PAYMENT, opt => opt.MapFrom(src => src.Payment));
+                    config.CreateMap<SaleProduct, SALES_PRODUCTS>();
+                    config.CreateMap<SaleTransaction, SALE_TRANSACTIONS>().
+                    ForMember(dest => dest.SALES_PRODUCTS, opt => opt.MapFrom(src => src.ItemList)).
+                    ForMember(dest => dest.SALES_PAYMENTS, opt => opt.MapFrom(src => src.PaymentList));
+
+
                     //.ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))
                     //.ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.ProductName))
                     //.ForMember(dest => dest.ProductDescription, opt => opt.MapFrom(src => src.ProductDescription))
