@@ -78,7 +78,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Jithu\GSTBill\DAL\DAL.csproj">
+    <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{d55f93ab-3a1c-4f0e-b162-946bb5f30f99}</Project>
       <Name>DAL</Name>
     </ProjectReference>

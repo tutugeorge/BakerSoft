@@ -9,6 +9,7 @@ namespace GSTBill.Models
 {
     class PurchaseTransaction
     {
+        public int PurchseId { get; set; }
         public decimal PurchaseTaxTotal { get; set; }
         public decimal PurchaseTxnTotal { get; set; }
         public DateTime PurchaseDate { get; set; }
@@ -20,7 +21,7 @@ namespace GSTBill.Models
         public List<PurchasePayment> PaymentList = new List<PurchasePayment>();
     }
 
-    public class PurchaseProduct
+    class PurchaseProduct
     {
         public int PurchaseId { get; set; }
 
@@ -32,5 +33,6 @@ namespace GSTBill.Models
 
         public decimal? SellingPrice { get; set; }
 
+        //public Product Product { get; set; }
     }
 }

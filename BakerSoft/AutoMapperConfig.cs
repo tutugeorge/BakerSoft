@@ -12,6 +12,10 @@ namespace BakerSoft
             Mapper.Initialize(
                 config =>
                 {
+                    config.CreateMap<TAX_MASTER, Tax>()
+                    .ForMember(dest => dest.CGST, opt => opt.MapFrom(src => src.TaxRate))
+                    .ForMember(dest => dest.SGST, opt => opt.MapFrom(src => src.TaxRate));
+
                     config.CreateMap<UOM_DEFINITION_MASTER, UomDefinitions>();
 
                     config.CreateMap<PRODUCT, Product>().
@@ -31,8 +35,11 @@ namespace BakerSoft
 
                     config.CreateMap<Product, PRODUCT>();
 
-                    config.CreateMap<PurchasePayment, PURCHASE_PAYMENTS>();
+                    config.CreateMap<Payment, PAYMENT>();
+                    config.CreateMap<PurchasePayment, PURCHASE_PAYMENTS>().
+                    ForMember(dest => dest.PAYMENT, opt => opt.MapFrom(src => src.Payment));
                     config.CreateMap<PurchaseProduct, PURCHASE_PRODUCTS>();
+                    //ForMember(dest => dest.PRODUCT, opt => opt.MapFrom(src => src.Product));
                     config.CreateMap<PurchaseTransaction, PURCHASE_TRANSACTIONS>().
                     ForMember(dest => dest.PURCHASE_PRODUCTS, opt => opt.MapFrom(src => src.ItemList)).
                     ForMember(dest => dest.PURCHASE_PAYMENTS, opt => opt.MapFrom(src => src.PaymentList));

@@ -23,7 +23,7 @@ namespace GSTBill.Models
             get
             {
                 if (_defaultSellingPrice.Equals(0.00))
-                    _defaultSellingPrice = Quantity * PriceList[0].SellingPrice;
+                    _defaultSellingPrice = Convert.ToDouble(Quantity * PriceList[0]);
                 return _defaultSellingPrice;
             }
             set
@@ -46,7 +46,8 @@ namespace GSTBill.Models
             }
         }
 
-        public List<Price> PriceList { get; set; }
+        //public List<Price> PriceList { get; set; }
+        public List<double?> PriceList { get; set; }
 
         public Tax ProductTax { get; set; }
 

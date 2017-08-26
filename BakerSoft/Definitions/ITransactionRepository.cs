@@ -1,4 +1,5 @@
-﻿using GSTBill.Models;
+﻿using BakerSoft.Models;
+using GSTBill.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,11 @@ namespace GSTBill.Definitions
     interface ITransactionRepository
     {
         void InsertTransaction();
+    }
+
+    interface ISaleTransactionRepository
+    {
+        void InsertTransaction(SaleTransaction sale);
     }
 
     interface IPurchaseTransactionRepository

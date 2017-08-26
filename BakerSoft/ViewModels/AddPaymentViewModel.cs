@@ -19,13 +19,13 @@ namespace BakerSoft.ViewModels
                 System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly IRegionManager _regionManager;
-        SaleTransaction _saleTransaction;
+        SaleTransactionModel _saleTransaction;
 
         public DelegateCommand<string> CashPaymentCmd { get; set; }         
         public string PaymentTotal { get; set; }
 
         public AddPaymentViewModel(IRegionManager regionManager,
-                                   SaleTransaction saleTransaction)
+                                   SaleTransactionModel saleTransaction)
         {
             _regionManager = regionManager;
             _saleTransaction = saleTransaction;
@@ -50,7 +50,7 @@ namespace BakerSoft.ViewModels
             }
             finally
             {
-               if( _saleTransaction.TransactionStatus.Equals(TRANS_STATUS.COMPLETED))
+               if( _saleTransaction.sale.TransactionStatus.Equals(TRANS_STATUS.COMPLETED))
                 {
                     //Show balance amount
                     //Navigate back to sale txn screen

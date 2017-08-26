@@ -14,7 +14,7 @@ namespace GSTBill.ViewModels
     class SaleViewModel : BaseViewModel
     {
         private readonly IRegionManager _regionManager;
-        private SaleTransaction _saleTransaction;
+        private SaleTransactionModel _saleTransaction;
         private ProductModel _products;
 
         public DelegateCommand CheckoutCmd { get; private set; }
@@ -137,7 +137,7 @@ namespace GSTBill.ViewModels
         }
 
         public SaleViewModel(IRegionManager regionManager,
-                            SaleTransaction saleTransaction,
+                            SaleTransactionModel saleTransaction,
                             ProductModel products)
         {
             _regionManager = regionManager;
@@ -183,9 +183,9 @@ namespace GSTBill.ViewModels
         {
             SearchResult = null;
             ItemList = null;
-            ItemList = _saleTransaction.ItemList;
-            Total = (_saleTransaction.TransactionTotal +
-                    _saleTransaction.TransactionTaxTotal).ToString("F2");
+            ItemList = _saleTransaction.sale.ItemList;
+            Total = (_saleTransaction.sale.TransactionTotal +
+                    _saleTransaction.sale.TransactionTaxTotal).ToString("F2");
             Quantity = "1";
         }
 
