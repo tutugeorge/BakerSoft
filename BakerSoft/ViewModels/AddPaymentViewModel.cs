@@ -37,9 +37,9 @@ namespace BakerSoft.ViewModels
         {
             try
             {
-                var cashPayment = new Payment()
+                var cashPayment = new SalePayment()
                 {
-                    Amount = Convert.ToDouble(amount)
+                    PaymentAmount = Convert.ToDecimal(amount)
                 };
                 _saleTransaction.AddPayment(cashPayment);
                 log.Info(String.Format("Cash payment of {0} successfull", amount));

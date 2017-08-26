@@ -19,7 +19,7 @@ namespace GSTBill.ViewModels
 
         public DelegateCommand CheckoutCmd { get; private set; }
         public DelegateCommand CancelSaleCmd { get; private set; }
-        public DelegateCommand<Product> AddProductCmd { get; private set; }
+        public DelegateCommand<SaleProduct> AddProductCmd { get; private set; }
         public DelegateCommand<int?> RemoveProductCmd { get; private set; }
         public DelegateCommand<string> SearchProductByNameCmd { get; private set; }
         public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
@@ -129,8 +129,8 @@ namespace GSTBill.ViewModels
             get { return _searchResult; }
             set { SetProperty(ref _searchResult, value); }
         }
-        private List<Product> _itemList = new List<Product>();
-        public List<Product> ItemList
+        private List<SaleProduct> _itemList = new List<SaleProduct>();
+        public List<SaleProduct> ItemList
         {
             get { return _itemList; }
             set { SetProperty(ref _itemList, value); }                       
@@ -146,7 +146,7 @@ namespace GSTBill.ViewModels
 
             CheckoutCmd = new DelegateCommand(Checkout);
             CancelSaleCmd = new DelegateCommand(CancelSale);
-            AddProductCmd = new DelegateCommand<Product>(AddProduct);
+            AddProductCmd = new DelegateCommand<SaleProduct>(AddProduct);
             RemoveProductCmd = new DelegateCommand<int?>(RemoveProduct);
             SearchProductByNameCmd = new DelegateCommand<string>(SearchProductByName);
             SearchProductByIdCmd = new DelegateCommand<string>(SearchProductById);
@@ -165,7 +165,7 @@ namespace GSTBill.ViewModels
             UpdateTransaction();
         }
 
-        private void AddProduct(Product product)
+        private void AddProduct(SaleProduct product)
         {
             product.Quantity = Convert.ToInt32(Quantity);
             _saleTransaction.AddItem(product);

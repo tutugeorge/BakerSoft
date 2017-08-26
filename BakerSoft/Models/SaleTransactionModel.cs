@@ -33,11 +33,11 @@ namespace GSTBill.Models
             _saleTransactionRepository = saleTransactionRepository;            
         }
 
-        public void AddPayment(Payment payment)
+        public void AddPayment(SalePayment payment)
         {
             if (sale.PaymentList == null)
             {
-                sale.PaymentList = new ObservableCollection<Payment>();
+                sale.PaymentList = new ObservableCollection<SalePayment>();
             }
             sale.PaymentList.Add(payment);
         }
@@ -61,11 +61,11 @@ namespace GSTBill.Models
             ClearTransaction();
         }
 
-        public void AddItem(Product item)
+        public void AddItem(SaleProduct item)
         {
             //base.AddItem(item);
             if (sale.ItemList == null)
-                sale.ItemList = new List<Product>(); //new List<Product>();
+                sale.ItemList = new List<SaleProduct>(); //new List<Product>();
             sale.ItemList.Add(item);
 
             AddToTransactionTotal(item.PriceList[0].Value, item.Quantity);
@@ -81,7 +81,7 @@ namespace GSTBill.Models
             //SubstractFromTaxTotal(item.ProductTax, item.PriceList[0].Value, item.Quantity);
         }
 
-        private void AddToTaxTotal(Tax tax, decimal price, int quantity)
+        private void AddToTaxTotal(Tax tax, decimal price, decimal quantity)
         {
             sale.TransactionTaxTotal = sale.TransactionTaxTotal +
                                     ((price * tax.SGST) + 
@@ -95,7 +95,7 @@ namespace GSTBill.Models
                                     (price.SellingPrice * tax.CGST)) * quantity;
         }
 
-        private void AddToTransactionTotal(decimal price, int quantity)
+        private void AddToTransactionTotal(decimal price, decimal quantity)
         {
             sale.TransactionTotal = sale.TransactionTotal + Convert.ToDecimal(price * quantity);
         }

@@ -18,11 +18,42 @@ namespace BakerSoft.Models
 
         public int TransactionStatus { get; set; }
         
-        public List<Product> ItemList
+        public List<SaleProduct> ItemList
         {
             get;
             set;
         }
-        public ObservableCollection<Payment> PaymentList { get; set; }
+        public ObservableCollection<SalePayment> PaymentList { get; set; }
+    }
+
+    class SaleProduct
+    {
+        public int SaleTransactionId { get; set; }
+
+        public int ProductId { get; set; }
+
+        public decimal Quantity { get; set; }
+
+        public int UoM { get; set; }
+
+        public decimal SellingPrice { get; set; }
+
+        public decimal? PurchasePrice { get; set; }
+
+        //Additional
+        public List<decimal?> PriceList { get; set; }
+
+        public Tax ProductTax { get; set; }
+    }
+
+    class SalePayment
+    {
+        public int SaleTransactionId { get; set; }
+
+        public int PaymentId { get; set; }
+
+        public decimal PaymentAmount { get; set; }
+
+        public Payment Payment { get; set; }
     }
 }
