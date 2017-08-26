@@ -19,12 +19,6 @@ namespace GSTBill
     {
         protected override DependencyObject CreateShell()
         {
-            // To be removed . 
-            //Added for testing code firt in sqlite with EF
-
-
-            InitLiteDb();
-
             //return Container.Resolve<MainWindow>();
             return Container.Resolve<HomeWindow>();
         }
@@ -33,9 +27,9 @@ namespace GSTBill
         {
             using (var litedb = new DAL.LiteDB.StoreDbContext())
             {
-                if (litedb.Set<DAL.Models.ADDRESS>().Count() != 0)
+                if (litedb.Set<DAL.Models.TAX_MASTER>().Count() != 0)
                 {
-                    //return;
+                    return;
                 }
 
                 //litedb.Set<DAL.Models.UOM_CATEGORY_MASTER>().Add(new DAL.Models.UOM_CATEGORY_MASTER()
@@ -135,6 +129,7 @@ namespace GSTBill
             #endregion
 
             #region Lite Repo
+            InitLiteDb();
             Container.RegisterType<ISaleTransactionRepository, SaleTransactionLiteRepo>();
             var transactionRepo = Container.Resolve<ISaleTransactionRepository>() as SaleTransactionLiteRepo;
             Container.RegisterType<IPurchaseTransactionRepository, PurchaseTransactionLiteRepository>();
