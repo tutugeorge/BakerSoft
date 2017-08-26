@@ -143,6 +143,7 @@
     <Compile Include="Models\PurchaseTransaction.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\SaleTransaction.cs" />
+    <Compile Include="Models\SaleTransactionModel.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\SupplierModel.cs" />
     <Compile Include="Models\Tax.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\LiteRepo\PurchaseTransactionLiteRepository.cs" />
     <Compile Include="Repositories\PurchaseTransactionRepository.cs" />
+    <Compile Include="Repositories\LiteRepo\SaleTransactionLiteRepo.cs" />
     <Compile Include="Repositories\SaleTransactionRepository.cs" />
     <Compile Include="Repositories\LiteRepo\SupplierLiteRepository.cs" />
     <Compile Include="Repositories\SupplierRepository.cs" />

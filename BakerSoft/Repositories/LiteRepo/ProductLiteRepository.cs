@@ -31,15 +31,30 @@ namespace BakerSoft.Repositories
         public List<Product> GetProductsById(string id)
         {
             int i = Convert.ToInt32(id);
+            Product prods;
             using (var db = new StoreDbContext())
             {
                 var query = (from b in db.Set<PRODUCT>()
                              where b.ProductSearchId == i
                              select b);
                 var prod = query.ToList();
-                List<Product> prods = Mapper.Map<List<Product>>(query.ToList());
-                return prods;
+                prods = Mapper.Map<Product>(query.FirstOrDefault());
+                var price = (from p in db.Set<PURCHASE_PRODUCTS>()
+                             where p.ProductId == i
+                             select p.SellingPrice).ToList();
+                prods.PriceList = new List<double?>();
+                price.ForEach(x => prods.PriceList.Add(Convert.ToDouble(x.Value)));
+
+                var taxID = (from t in db.Set<PRODUCT_CATEGORY_MASTER_NEW>()
+                             where t.CategoryId == prods.ProductCategoryId
+                             select t.CATEGORY_TAX_DEFINITION_NEW.TaxId).ToList();
+                var tax = (from t in db.Set<TAX_MASTER>()
+                           where taxID.Contains(t.TaxId)
+                           select t).FirstOrDefault();
+
+                prods.ProductTax = Mapper.Map<Tax>(tax);
             }
+            return (new List<Product>() { prods });
         }
 
         public List<Product> GetProductsByName(string name)

@@ -9,6 +9,7 @@ namespace GSTBill.Models
 {
     class PurchaseTransaction
     {
+        public int PurchseId { get; set; }
         public decimal PurchaseTaxTotal { get; set; }
         public decimal PurchaseTxnTotal { get; set; }
         public DateTime PurchaseDate { get; set; }

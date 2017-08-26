@@ -1,7 +1,4 @@
-﻿using BakerSoft.Models;
-using BakerSoft.Repositories;
-using GSTBill.Definitions;
-using GSTBill.Repositories;
+﻿using GSTBill.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,102 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GSTBill.Models
+namespace BakerSoft.Models
 {
-    class SaleTransaction : Transaction
+    class SaleTransaction
     {
-        private ITransactionRepository _saleTransactionRepository;
-
-        public decimal TransactionDiscountTotal { get; set; }        
+        public int TransactionStatus { get; set; }
+        public double TransactionTotal { get; set; }
+        public double TransactionTaxTotal { get; set; }
+        public decimal TransactionDiscountTotal { get; set; }
         public List<Product> ItemList
         {
             get;
             set;
         }
         public ObservableCollection<Payment> PaymentList { get; set; }
-
-        public SaleTransaction(ITransactionRepository saleTransactionRepository)
-        {
-            _saleTransactionRepository = saleTransactionRepository;            
-        }
-
-        public void AddPayment(Payment payment)
-        {
-            if (PaymentList == null)
-            {
-                PaymentList = new ObservableCollection<Payment>();
-            }
-            PaymentList.Add(payment);
-        }
-
-        public override void Complete()
-        {
-            base.Complete();
-            //Call Data Layer
-            _saleTransactionRepository.InsertTransaction();
-            ClearTransaction();
-        }
-
-        public override void Update()
-        {
-            base.Update();
-        }
-
-        public override void Cancel()
-        {
-            base.Cancel();
-            ClearTransaction();
-        }
-
-        public override void AddItem(Product item)
-        {
-            base.AddItem(item);
-            if (ItemList == null)
-                ItemList = new List<Product>();
-            ItemList.Add(item);
-
-            AddToTransactionTotal(item.PriceList[0].Value, item.Quantity);
-            AddToTaxTotal(item.ProductTax, item.PriceList[0].Value, item.Quantity);
-        }
-
-        public void RemoveItem(int itemIndex)
-        {
-            //TODO : Remove selected item from the list
-            var item = ItemList[itemIndex];
-            ItemList.RemoveAt(itemIndex);
-            //SubstractFromTransactionTotal(item.PriceList[0].Value, item.Quantity);
-            //SubstractFromTaxTotal(item.ProductTax, item.PriceList[0].Value, item.Quantity);
-        }
-
-        private void AddToTaxTotal(Tax tax, double price, int quantity)
-        {
-            TransactionTaxTotal = TransactionTaxTotal +
-                                    ((price * tax.SGST) + 
-                                    (price * tax.CGST)) * quantity;
-        }
-
-        private void SubstractFromTaxTotal(Tax tax, Price price, int quantity)
-        {
-            TransactionTaxTotal = TransactionTaxTotal - 
-                                    ((price.SellingPrice * tax.SGST) +
-                                    (price.SellingPrice * tax.CGST)) * quantity;
-        }
-
-        private void AddToTransactionTotal(double price, int quantity)
-        {
-            TransactionTotal = TransactionTotal + Convert.ToDouble(price * quantity);
-        }
-
-        private void SubstractFromTransactionTotal(Price price, int quantity)
-        {
-            TransactionTotal = TransactionTotal - (price.SellingPrice * quantity);
-        }
-
-        private void ClearTransaction()
-        {
-            ItemList.Clear();
-            TransactionTotal = 0.00;
-            TransactionTaxTotal = 0.00;
-        }
     }
 }
