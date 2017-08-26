@@ -42,6 +42,8 @@ namespace BakerSoft.ViewModels
                     PaymentAmount = Convert.ToDecimal(amount)
                 };
                 _saleTransaction.AddPayment(cashPayment);
+
+                CompleteTransaction();
                 log.Info(String.Format("Cash payment of {0} successfull", amount));
             }
             catch(Exception ex)
@@ -57,6 +59,11 @@ namespace BakerSoft.ViewModels
                     _regionManager.RequestNavigate("", "");
                 }
             }
+        }
+
+        private void CompleteTransaction()
+        {
+            _saleTransaction.Complete();
         }
     }
 }

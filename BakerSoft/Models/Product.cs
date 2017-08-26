@@ -17,13 +17,13 @@ namespace GSTBill.Models
         public int ProductUoM { get; set; }
         public int ProductType { get; set; }
         public int Quantity { get; set; }
-        private double _defaultSellingPrice = 0.00;
-        public double DefaultSellingPrice
+        private decimal _defaultSellingPrice = 0.00m;
+        public decimal DefaultSellingPrice
         {
             get
             {
                 if (_defaultSellingPrice.Equals(0.00))
-                    _defaultSellingPrice = Convert.ToDouble(Quantity * PriceList[0]);
+                    _defaultSellingPrice = Convert.ToDecimal(Quantity * PriceList[0]);
                 return _defaultSellingPrice;
             }
             set

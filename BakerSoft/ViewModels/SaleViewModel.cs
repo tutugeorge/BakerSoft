@@ -19,7 +19,7 @@ namespace GSTBill.ViewModels
 
         public DelegateCommand CheckoutCmd { get; private set; }
         public DelegateCommand CancelSaleCmd { get; private set; }
-        public DelegateCommand<SaleProduct> AddProductCmd { get; private set; }
+        public DelegateCommand<Product> AddProductCmd { get; private set; }
         public DelegateCommand<int?> RemoveProductCmd { get; private set; }
         public DelegateCommand<string> SearchProductByNameCmd { get; private set; }
         public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
@@ -146,7 +146,7 @@ namespace GSTBill.ViewModels
 
             CheckoutCmd = new DelegateCommand(Checkout);
             CancelSaleCmd = new DelegateCommand(CancelSale);
-            AddProductCmd = new DelegateCommand<SaleProduct>(AddProduct);
+            AddProductCmd = new DelegateCommand<Product>(AddProduct);
             RemoveProductCmd = new DelegateCommand<int?>(RemoveProduct);
             SearchProductByNameCmd = new DelegateCommand<string>(SearchProductByName);
             SearchProductByIdCmd = new DelegateCommand<string>(SearchProductById);
@@ -165,10 +165,17 @@ namespace GSTBill.ViewModels
             UpdateTransaction();
         }
 
-        private void AddProduct(SaleProduct product)
+        private void AddProduct(Product product)
         {
-            product.Quantity = Convert.ToInt32(Quantity);
-            _saleTransaction.AddItem(product);
+            var saleProduct = new SaleProduct();
+            saleProduct.UoM = product.ProductUoM;
+            saleProduct.PriceList = product.PriceList;
+            saleProduct.ProductId = product.ProductId;
+            saleProduct.ProductTax = product.ProductTax;
+            saleProduct.SellingPrice = product.DefaultSellingPrice;
+
+            saleProduct.Quantity = Convert.ToDecimal(Quantity);
+            _saleTransaction.AddItem(saleProduct);
             UpdateTransaction();
         }
 

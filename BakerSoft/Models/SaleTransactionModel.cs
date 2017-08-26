@@ -64,6 +64,8 @@ namespace GSTBill.Models
         public void AddItem(SaleProduct item)
         {
             //base.AddItem(item);
+            if (sale == null)
+                sale = new SaleTransaction();
             if (sale.ItemList == null)
                 sale.ItemList = new List<SaleProduct>(); //new List<Product>();
             sale.ItemList.Add(item);
