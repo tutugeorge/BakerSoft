@@ -81,7 +81,7 @@ namespace GSTBill.Models
             //SubstractFromTaxTotal(item.ProductTax, item.PriceList[0].Value, item.Quantity);
         }
 
-        private void AddToTaxTotal(Tax tax, double price, int quantity)
+        private void AddToTaxTotal(Tax tax, decimal price, int quantity)
         {
             sale.TransactionTaxTotal = sale.TransactionTaxTotal +
                                     ((price * tax.SGST) + 
@@ -95,9 +95,9 @@ namespace GSTBill.Models
                                     (price.SellingPrice * tax.CGST)) * quantity;
         }
 
-        private void AddToTransactionTotal(double price, int quantity)
+        private void AddToTransactionTotal(decimal price, int quantity)
         {
-            sale.TransactionTotal = sale.TransactionTotal + Convert.ToDouble(price * quantity);
+            sale.TransactionTotal = sale.TransactionTotal + Convert.ToDecimal(price * quantity);
         }
 
         private void SubstractFromTransactionTotal(Price price, int quantity)
@@ -108,8 +108,8 @@ namespace GSTBill.Models
         private void ClearTransaction()
         {
             sale.ItemList.Clear();
-            sale.TransactionTotal = 0.00;
-            sale.TransactionTaxTotal = 0.00;
+            sale.TransactionTotal = 0.00m;
+            sale.TransactionTaxTotal = 0.00m;
         }
     }
 }

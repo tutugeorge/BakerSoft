@@ -47,7 +47,7 @@ namespace GSTBill.Models
         }
 
         //public List<Price> PriceList { get; set; }
-        public List<double?> PriceList { get; set; }
+        public List<decimal?> PriceList { get; set; }
 
         public Tax ProductTax { get; set; }
 

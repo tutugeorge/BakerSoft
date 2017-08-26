@@ -10,10 +10,14 @@ namespace BakerSoft.Models
 {
     class SaleTransaction
     {
-        public int TransactionStatus { get; set; }
-        public double TransactionTotal { get; set; }
-        public double TransactionTaxTotal { get; set; }
+        public int TransactionId { get; set; }
+        public DateTime TransactionDate { get; set; }
+        public decimal TransactionTotal { get; set; }
+        public decimal TransactionTaxTotal { get; set; }
         public decimal TransactionDiscountTotal { get; set; }
+
+        public int TransactionStatus { get; set; }
+        
         public List<Product> ItemList
         {
             get;

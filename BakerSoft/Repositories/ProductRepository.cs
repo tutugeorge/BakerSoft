@@ -45,8 +45,8 @@ namespace BakerSoft.Repositories
                              select p.SellingPrice).ToList();
 
                 //price.
-                prods.PriceList = new List<double?>();
-                price.ForEach(x=> prods.PriceList.Add(Convert.ToDouble(x.Value)));
+                prods.PriceList = new List<decimal?>();
+                price.ForEach(x=> prods.PriceList.Add((x.Value)));
 
                 var taxID = (from t in db.PRODUCT_CATEGORY_MASTER_NEW
                              where t.CategoryId == prods.ProductCategoryId
