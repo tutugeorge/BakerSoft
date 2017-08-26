@@ -10,7 +10,7 @@
              d:DesignHeight="562" d:DesignWidth="1000">
     <Grid>
         <TextBox x:Name="txtBxPId" HorizontalAlignment="Left" Height="23" Margin="141,38,0,0" TextWrapping="Wrap" 
-                 Text="{Binding ProductId}" VerticalAlignment="Top" Width="120"/>
+                 Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="140,138,0,0" TextWrapping="Wrap" 
                  Text="{Binding Quantity}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox5" HorizontalAlignment="Left" Height="23" Margin="411,35,0,0" TextWrapping="Wrap" 

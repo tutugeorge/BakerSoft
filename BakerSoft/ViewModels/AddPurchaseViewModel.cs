@@ -216,6 +216,7 @@ namespace BakerSoft.ViewModels
         {
             var products = _products.SearchById(id);
             ProductName = products[0].ProductName;
+            ProductId = Convert.ToString(products[0].ProductId);
             SelectedUOMIndex = FindUOMIndex(products[0].ProductUoM);
         }
 

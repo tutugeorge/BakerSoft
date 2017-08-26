@@ -12,11 +12,7 @@ namespace DAL.LiteDB
     {
         public static void Configure(DbModelBuilder modelBuilder)
         {
-            ConfigureTeamEntity(modelBuilder);
-            //ConfigureStadionEntity(modelBuilder);
-            //ConfigureCoachEntity(modelBuilder);
-            //ConfigurePlayerEntity(modelBuilder);
-            //ConfigureSelfReferencingEntities(modelBuilder);
+            ConfigureTeamEntity(modelBuilder);            
         }
 
         private static void ConfigureTeamEntity(DbModelBuilder modelBuilder)
@@ -185,34 +181,6 @@ namespace DAL.LiteDB
             modelBuilder.Entity<SALES_PRODUCTS>()
                 .Property(e => e.PurchasePrice)
                 .HasPrecision(18, 0);
-        }
-
-        //private static void ConfigureStadionEntity(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Stadion>();
-        //}
-
-        //private static void ConfigureCoachEntity(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Coach>()
-        //        .HasRequired(p => p.Team)
-        //        .WithRequiredPrincipal(t => t.Coach)
-        //        .WillCascadeOnDelete(false);
-        //}
-
-        //private static void ConfigurePlayerEntity(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Player>()
-        //        .HasRequired(p => p.Team)
-        //        .WithMany(team => team.Players)
-        //        .WillCascadeOnDelete(true);
-        //}
-
-        //private static void ConfigureSelfReferencingEntities(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Foo>();
-        //    modelBuilder.Entity<FooSelf>();
-        //    modelBuilder.Entity<FooStep>();
-        //}
+        }        
     }
 }
