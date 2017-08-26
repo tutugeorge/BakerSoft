@@ -23,7 +23,7 @@ namespace GSTBill
             //Added for testing code firt in sqlite with EF
 
 
-            //InitLiteDb();
+            InitLiteDb();
 
             //return Container.Resolve<MainWindow>();
             return Container.Resolve<HomeWindow>();

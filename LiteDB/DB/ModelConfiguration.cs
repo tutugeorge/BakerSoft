@@ -112,9 +112,9 @@ namespace DAL.LiteDB
                 .HasForeignKey(e => e.SaleTransactionId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<SALE_TRANSACTIONS>()
-                .HasOptional(e => e.SALE_TRANSACTIONS1)
-                .WithRequired(e => e.SALE_TRANSACTIONS2);
+            //modelBuilder.Entity<SALE_TRANSACTIONS>()
+            //    .HasOptional(e => e.SALE_TRANSACTIONS1)
+            //    .WithRequired(e => e.SALE_TRANSACTIONS2);
 
             modelBuilder.Entity<SUPPLIER>()
                 .HasMany(e => e.PURCHASE_TRANSACTIONS)

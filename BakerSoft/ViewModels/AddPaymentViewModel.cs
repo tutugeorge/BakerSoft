@@ -41,6 +41,12 @@ namespace BakerSoft.ViewModels
                 {
                     PaymentAmount = Convert.ToDecimal(amount)
                 };
+                cashPayment.Payment = new Payment()
+                {
+                    PaidAmount = Convert.ToDecimal(amount),
+                    PaymentDate = DateTime.Today,
+                    PaymentType = 1
+                };
                 _saleTransaction.AddPayment(cashPayment);
 
                 CompleteTransaction();

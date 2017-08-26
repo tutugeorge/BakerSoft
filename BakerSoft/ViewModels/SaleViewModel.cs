@@ -172,7 +172,7 @@ namespace GSTBill.ViewModels
             saleProduct.PriceList = product.PriceList;
             saleProduct.ProductId = product.ProductId;
             saleProduct.ProductTax = product.ProductTax;
-            saleProduct.SellingPrice = product.DefaultSellingPrice;
+            saleProduct.SellingPrice = Convert.ToDecimal(product.PriceList[0]);
 
             saleProduct.Quantity = Convert.ToDecimal(Quantity);
             _saleTransaction.AddItem(saleProduct);
