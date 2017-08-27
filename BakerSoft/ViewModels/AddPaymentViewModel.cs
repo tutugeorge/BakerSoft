@@ -23,6 +23,15 @@ namespace BakerSoft.ViewModels
 
         public DelegateCommand<string> CashPaymentCmd { get; set; }         
         public string PaymentTotal { get; set; }
+        private decimal _paymentAmount;
+        public decimal PaymentAmount
+        {
+            get { return _paymentAmount; }
+            set
+            {
+                SetProperty(ref _paymentAmount, value);
+            }
+        }
 
         public AddPaymentViewModel(IRegionManager regionManager,
                                    SaleTransactionModel saleTransaction)
@@ -31,6 +40,8 @@ namespace BakerSoft.ViewModels
             _saleTransaction = saleTransaction;
 
             CashPaymentCmd = new DelegateCommand<string>(CashPayment);
+
+            PaymentAmount = _saleTransaction.sale.TransactionTotal;
         }
 
         private void CashPayment(string amount)
@@ -51,6 +62,9 @@ namespace BakerSoft.ViewModels
 
                 if(outstandingAmount <= 0)
                     CompleteTransaction(outstandingAmount * -1.0m);
+
+                PaymentAmount = outstandingAmount;
+
                 log.Info(String.Format("Cash payment of {0} successfull", amount));
             }
             catch(Exception ex)

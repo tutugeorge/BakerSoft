@@ -114,6 +114,7 @@ namespace GSTBill.Models
             sale.ItemList.Clear();
             sale.TransactionTotal = 0.00m;
             sale.TransactionTaxTotal = 0.00m;
+            sale = new SaleTransaction();
         }
 
         private decimal GetPaymentTotal()

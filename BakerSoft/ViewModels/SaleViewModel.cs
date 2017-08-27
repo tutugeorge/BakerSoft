@@ -169,6 +169,7 @@ namespace GSTBill.ViewModels
         {
             var saleProduct = new SaleProduct();
             saleProduct.UoM = product.ProductUoM;
+            saleProduct.ProductDescription = product.ProductDescription;
             saleProduct.PriceList = product.PriceList;
             saleProduct.ProductId = product.ProductId;
             saleProduct.ProductTax = product.ProductTax;

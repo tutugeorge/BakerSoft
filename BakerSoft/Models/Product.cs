@@ -36,9 +36,7 @@ namespace GSTBill.Models
         {
             get
             {
-                if (_tax.Equals("0"))
-                    _tax = (ProductTax.CGST + ProductTax.SGST).ToString("F2");
-                return _tax;
+                return Convert.ToString(ProductTax.TaxRate);
             }
             set
             {

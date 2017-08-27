@@ -29,7 +29,7 @@
                     <GridViewColumn Header="Name" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Description}" />
+                                <TextBlock Text="{Binding ProductDescription}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -44,7 +44,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Tax}" />
+                                    <TextBlock Text="{Binding ProductTax.TaxRate}" />
                                     <TextBlock Text="%" />
                                 </StackPanel>
                             </DataTemplate>
@@ -53,7 +53,7 @@
                     <GridViewColumn Header="Price" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding DefaultSellingPrice}" />
+                                <TextBlock Text="{Binding SellingPrice}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

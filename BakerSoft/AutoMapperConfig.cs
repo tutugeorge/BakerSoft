@@ -13,6 +13,7 @@ namespace BakerSoft
                 config =>
                 {
                     config.CreateMap<TAX_MASTER, Tax>()
+                    .ForMember(dest => dest.TaxRate, opt => opt.MapFrom(src => src.TaxRate))
                     .ForMember(dest => dest.CGST, opt => opt.MapFrom(src => src.TaxRate))
                     .ForMember(dest => dest.SGST, opt => opt.MapFrom(src => src.TaxRate));
 

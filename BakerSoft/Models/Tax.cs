@@ -42,6 +42,7 @@ namespace BakerSoft.Models
     class Tax
     {
         public int TaxId { get; set; }
+        public decimal TaxRate { get; set; }
         public decimal SGST { get; set; }
         public decimal CGST { get; set; }
         public decimal TaxTotal
