@@ -38,9 +38,10 @@ namespace BakerSoft.Repositories
                              where b.ProductSearchId == i
                              select b);
                 var prod = query.ToList();
+
                 prods = Mapper.Map<Product>(query.FirstOrDefault());
                 var price = (from p in db.Set<PURCHASE_PRODUCTS>()
-                             where p.ProductId == i
+                             where p.ProductId == prods.ProductId
                              select p.SellingPrice).ToList();
                 prods.PriceList = new List<decimal?>();
                 price.ForEach(x => prods.PriceList.Add((x.Value)));

@@ -23,6 +23,15 @@ namespace BakerSoft.ViewModels
 
         public DelegateCommand<string> CashPaymentCmd { get; set; }         
         public string PaymentTotal { get; set; }
+        private decimal _paymentAmount;
+        public decimal PaymentAmount
+        {
+            get { return _paymentAmount; }
+            set
+            {
+                SetProperty(ref _paymentAmount, value);
+            }
+        }
 
         public AddPaymentViewModel(IRegionManager regionManager,
                                    SaleTransactionModel saleTransaction)
@@ -31,6 +40,8 @@ namespace BakerSoft.ViewModels
             _saleTransaction = saleTransaction;
 
             CashPaymentCmd = new DelegateCommand<string>(CashPayment);
+
+            PaymentAmount = _saleTransaction.sale.TransactionTotal;
         }
 
         private void CashPayment(string amount)
@@ -47,9 +58,13 @@ namespace BakerSoft.ViewModels
                     PaymentDate = DateTime.Today,
                     PaymentType = 1
                 };
-                _saleTransaction.AddPayment(cashPayment);
+                var outstandingAmount = _saleTransaction.AddPayment(cashPayment);
 
-                CompleteTransaction();
+                if(outstandingAmount <= 0)
+                    CompleteTransaction(outstandingAmount * -1.0m);
+
+                PaymentAmount = outstandingAmount;
+
                 log.Info(String.Format("Cash payment of {0} successfull", amount));
             }
             catch(Exception ex)
@@ -58,18 +73,26 @@ namespace BakerSoft.ViewModels
             }
             finally
             {
-               if( _saleTransaction.sale.TransactionStatus.Equals(TRANS_STATUS.COMPLETED))
-                {
-                    //Show balance amount
-                    //Navigate back to sale txn screen
-                    _regionManager.RequestNavigate("", "");
-                }
+               
             }
         }
 
-        private void CompleteTransaction()
+        private void CompleteTransaction(decimal balanceAmount)
         {
+            //Show balance amount
+            //if (balanceAmount > 0)
+            //    ;
             _saleTransaction.Complete();
+            _regionManager.RequestNavigate("ContentRegion", "SaleView");
+
+            //if (_saleTransaction.sale.TransactionStatus.Equals(TRANS_STATUS.COMPLETED))
+            //{
+            //    //Show balance amount
+            //    //Navigate back to sale txn screen
+               
+            //}
         }
+
+        
     }
 }

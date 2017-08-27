@@ -44,6 +44,8 @@ namespace BakerSoft.Models
         public List<decimal?> PriceList { get; set; }
 
         public Tax ProductTax { get; set; }
+
+        public string ProductDescription { get; set; }
     }
 
     class SalePayment

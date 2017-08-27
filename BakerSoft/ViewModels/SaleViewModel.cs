@@ -1,4 +1,5 @@
-﻿using BakerSoft.Models;
+﻿using AutoMapper;
+using BakerSoft.Models;
 using GSTBill.Models;
 using Prism.Commands;
 using Prism.Regions;
@@ -169,6 +170,7 @@ namespace GSTBill.ViewModels
         {
             var saleProduct = new SaleProduct();
             saleProduct.UoM = product.ProductUoM;
+            saleProduct.ProductDescription = product.ProductDescription;
             saleProduct.PriceList = product.PriceList;
             saleProduct.ProductId = product.ProductId;
             saleProduct.ProductTax = product.ProductTax;
@@ -203,7 +205,21 @@ namespace GSTBill.ViewModels
 
         private void SearchProductById(string id)
         {
-            SearchResult = _products.SearchById(id);
+            //Object cloning required.
+
+            //Displaying products as different items if multiple pricess are available
+            var prods = _products.SearchById(id);
+            var multipleProds = new List<Product>();
+
+            foreach (var item in prods[0].PriceList)
+            {
+                var temp = new Product();
+                temp = Mapper.Map<Product,Product>(prods[0], temp);
+                temp.PriceList = new List<decimal?>() { item };
+                multipleProds.Add(temp);
+            }
+            SearchResult = multipleProds;
+            //SearchResult = _products.SearchById(id);
             SelectedSearchItemIndex = -1;
         }
     }
