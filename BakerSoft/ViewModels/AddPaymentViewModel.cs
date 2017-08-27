@@ -47,9 +47,10 @@ namespace BakerSoft.ViewModels
                     PaymentDate = DateTime.Today,
                     PaymentType = 1
                 };
-                _saleTransaction.AddPayment(cashPayment);
+                var outstandingAmount = _saleTransaction.AddPayment(cashPayment);
 
-                CompleteTransaction();
+                if(outstandingAmount <= 0)
+                    CompleteTransaction(outstandingAmount * -1.0m);
                 log.Info(String.Format("Cash payment of {0} successfull", amount));
             }
             catch(Exception ex)
@@ -58,18 +59,26 @@ namespace BakerSoft.ViewModels
             }
             finally
             {
-               if( _saleTransaction.sale.TransactionStatus.Equals(TRANS_STATUS.COMPLETED))
-                {
-                    //Show balance amount
-                    //Navigate back to sale txn screen
-                    _regionManager.RequestNavigate("", "");
-                }
+               
             }
         }
 
-        private void CompleteTransaction()
+        private void CompleteTransaction(decimal balanceAmount)
         {
+            //Show balance amount
+            //if (balanceAmount > 0)
+            //    ;
             _saleTransaction.Complete();
+            _regionManager.RequestNavigate("ContentRegion", "SaleView");
+
+            //if (_saleTransaction.sale.TransactionStatus.Equals(TRANS_STATUS.COMPLETED))
+            //{
+            //    //Show balance amount
+            //    //Navigate back to sale txn screen
+               
+            //}
         }
+
+        
     }
 }

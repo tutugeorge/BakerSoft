@@ -33,13 +33,15 @@ namespace GSTBill.Models
             _saleTransactionRepository = saleTransactionRepository;            
         }
 
-        public void AddPayment(SalePayment payment)
+        public decimal AddPayment(SalePayment payment)
         {
             if (sale.PaymentList == null)
             {
                 sale.PaymentList = new ObservableCollection<SalePayment>();
             }
             sale.PaymentList.Add(payment);
+
+            return GetOutstandingAmount();
         }
 
         public void Complete()
@@ -112,6 +114,21 @@ namespace GSTBill.Models
             sale.ItemList.Clear();
             sale.TransactionTotal = 0.00m;
             sale.TransactionTaxTotal = 0.00m;
+        }
+
+        private decimal GetPaymentTotal()
+        {
+            decimal paymentTotal = 0.0m;
+            foreach(var item in sale.PaymentList)
+            {
+                paymentTotal += item.PaymentAmount;
+            }
+            return paymentTotal;
+        }
+
+        private decimal GetOutstandingAmount()
+        {
+            return (sale.TransactionTotal - GetPaymentTotal());
         }
     }
 }
