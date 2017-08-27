@@ -38,6 +38,7 @@ namespace BakerSoft.Repositories
                              where b.ProductSearchId == i
                              select b);
                 var prod = query.ToList();
+
                 prods = Mapper.Map<Product>(query.FirstOrDefault());
                 var price = (from p in db.Set<PURCHASE_PRODUCTS>()
                              where p.ProductId == prods.ProductId
