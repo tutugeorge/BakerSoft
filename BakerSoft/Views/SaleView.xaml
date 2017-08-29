@@ -15,11 +15,14 @@
                 Content="Checkout" HorizontalAlignment="Left" Margin="1128,69,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
         <TextBox x:Name="txtSearchName" HorizontalAlignment="Left" Height="35" Margin="40,103,0,0" TextWrapping="Wrap" 
                  Text="Enter ProductID" VerticalAlignment="Top" Width="174"/>
-        <TextBox x:Name="txtBxPId" 
+        <TextBox x:Name="txtBxPId"
+                 KeyboardNavigation.TabIndex="0"
+                 
                  HorizontalAlignment="Left" Height="29" Margin="40,305,0,0" TextWrapping="Wrap" 
         	    Text="Enter ProductID" VerticalAlignment="Top" Width="174"/>
         <Button x:Name="button_Copy" Command="{Binding CheckoutCmd}"
-        	Content="Cancel" HorizontalAlignment="Left" Margin="1128,149,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
+        	    Content="Cancel"                 
+                HorizontalAlignment="Left" Margin="1128,149,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
         <ListView x:Name="listView" 
                   ItemsSource="{Binding ItemList}"
                   SelectedIndex="{Binding SelectedItemIndex}"
@@ -64,6 +67,7 @@
                  ItemsSource="{Binding SearchResult}"
                  SelectedIndex="{Binding SelectedSearchItemIndex}"
                  SelectedItem="{Binding SelectedSearchItem}"
+                 KeyboardNavigation.TabIndex="2"
                  HorizontalAlignment="Left" Height="224" Margin="255,61,0,0" VerticalAlignment="Top" Width="206" RenderTransformOrigin="-0.563,0.288">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -87,12 +91,15 @@
                   HorizontalAlignment="Left" Margin="323,374,0,0" VerticalAlignment="Top" Width="138" Height="42"/>
         <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="42" Margin="385,304,0,0" TextWrapping="Wrap" 
         	Text="{Binding Quantity}" 
-            IsEnabled="{Binding IsAddItemEnabled, Mode=TwoWay}"     
+            IsEnabled="{Binding IsAddItemEnabled, Mode=TwoWay}" 
+                 KeyboardNavigation.TabIndex="3"
                  VerticalAlignment="Top" Width="76" RenderTransformOrigin="1.737,-3.244"/>
         <Button x:Name="button_Copy2" 
                 Command="{Binding SearchProductByIdCmd}"
                 CommandParameter="{Binding Text, ElementName=txtBxPId}"
-        	Content="Search" HorizontalAlignment="Left" Margin="40,369,0,0" VerticalAlignment="Top" Width="109" Height="44" RenderTransformOrigin="0.486,1.477"/>
+        	    Content="Search"
+                KeyboardNavigation.TabIndex="1"
+                HorizontalAlignment="Left" Margin="40,369,0,0" VerticalAlignment="Top" Width="109" Height="44" RenderTransformOrigin="0.486,1.477"/>
         <TextBlock x:Name="textBlock" 
                    Text="{Binding Total}" 
                    HorizontalAlignment="Left" Margin="881,516,0,-14" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="60" FontSize="18.667"/>

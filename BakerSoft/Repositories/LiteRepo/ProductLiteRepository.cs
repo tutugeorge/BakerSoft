@@ -31,6 +31,7 @@ namespace BakerSoft.Repositories
         public List<Product> GetProductsById(string id)
         {
             int i = Convert.ToInt32(id);
+            List<Product> productList = new List<Product>();
             Product prods;
             using (var db = new StoreDbContext())
             {
@@ -38,13 +39,7 @@ namespace BakerSoft.Repositories
                              where b.ProductSearchId == i
                              select b);
                 var prod = query.ToList();
-
                 prods = Mapper.Map<Product>(query.FirstOrDefault());
-                var price = (from p in db.Set<PURCHASE_PRODUCTS>()
-                             where p.ProductId == prods.ProductId
-                             select p.SellingPrice).ToList();
-                prods.PriceList = new List<decimal?>();
-                price.ForEach(x => prods.PriceList.Add((x.Value)));
 
                 var taxID = (from t in db.Set<PRODUCT_CATEGORY_MASTER_NEW>()
                              where t.CategoryId == prods.ProductCategoryId
@@ -52,8 +47,20 @@ namespace BakerSoft.Repositories
                 var tax = (from t in db.Set<TAX_MASTER>()
                            where taxID.Contains(t.TaxId)
                            select t).FirstOrDefault();
-
                 prods.ProductTax = Mapper.Map<Tax>(tax);
+
+                var price = (from p in db.Set<PURCHASE_PRODUCTS>()
+                             where p.ProductId == prods.ProductId
+                             select p.SellingPrice).ToList();
+                prods.PriceList = new List<decimal?>();
+
+                //price.ForEach(x => productList.Add(prods));
+
+                //for (int index = 0; index < price.Count; index++)
+                //    productList[index].PriceList.Add(price[index]);
+                price.ForEach(x => prods.PriceList.Add((x.Value)));
+
+
             }
             return (new List<Product>() { prods });
         }
