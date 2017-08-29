@@ -7,7 +7,8 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:local="clr-namespace:GSTBill.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="562" d:DesignWidth="1000">
+             d:DesignHeight="562" d:DesignWidth="1000"
+             Loaded="UserControl_Loaded">
     <Grid Margin="0,0,-272,0">
         <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="25" Width="325" Margin="0,0,10,-24" x:Name="txtAuto" TextWrapping="NoWrap"/>
         <ListBox x:Name="lbSuggestion" SelectionChanged="lbSuggestion_SelectionChanged" Background="LightYellow" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top" Width="325" Margin="0,0,10,0"/>
