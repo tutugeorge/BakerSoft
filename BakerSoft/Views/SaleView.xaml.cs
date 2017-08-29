@@ -81,5 +81,10 @@ namespace GSTBill.Views
                 txtAuto.TextChanged += new TextChangedEventHandler(txtAuto_TextChanged);
             }
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtBxPId.Focus();
+        }
     }
 }

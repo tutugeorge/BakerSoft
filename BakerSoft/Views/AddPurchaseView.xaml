@@ -7,7 +7,8 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:local="clr-namespace:BakerSoft.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="562" d:DesignWidth="1000">
+             d:DesignHeight="562" d:DesignWidth="1000"
+             Loaded="UserControl_Loaded">
     <Grid>
         <TextBox x:Name="txtBxPId" HorizontalAlignment="Left" Height="23" Margin="141,38,0,0" TextWrapping="Wrap" 
                  Text="" VerticalAlignment="Top" Width="120"/>
@@ -26,6 +27,7 @@
         <Button x:Name="button" 
                 Content="AddSupplier" 
                 Command="{Binding GoToViewCmd}" CommandParameter="AddSupplierView"
+                Visibility="Hidden"
                 HorizontalAlignment="Left" Margin="854,38,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBox x:Name="textBox10" HorizontalAlignment="Left" Height="23" Margin="411,195,0,0" TextWrapping="Wrap" 
                  Text="Type" VerticalAlignment="Top" Width="120"/>
@@ -95,7 +97,7 @@
         	DisplayMemberPath ="PaymentName"
         	SelectedValuePath ="PaymentId"                  
         	SelectedIndex="0"      
-        	
+        	SelectedValue="CASH"
         	HorizontalAlignment="Left" Margin="659,196,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock_Copy9" HorizontalAlignment="Left" Margin="34,199,0,0" TextWrapping="Wrap" 
         	Text="UOM" VerticalAlignment="Top"/>

@@ -8,12 +8,12 @@
              xmlns:local="clr-namespace:BakerSoft.Views"
              mc:Ignorable="d" 
              d:DesignHeight="562" d:DesignWidth="1000"
-             >
+             Loaded="UserControl_Loaded">
     <Grid>
         <Button x:Name="button" 
                 Command="{Binding AddProductCmd}"
                 Content="Add Product" HorizontalAlignment="Left" Margin="524,242,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="158,47,0,0" TextWrapping="Wrap" 
+        <TextBox x:Name="txtBxProductName" HorizontalAlignment="Left" Height="23" Margin="158,47,0,0" TextWrapping="Wrap" 
                  Text="{Binding ProductName}" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="46,54,0,0" TextWrapping="Wrap" 
                    Text="Product Name" VerticalAlignment="Top"/>
@@ -25,13 +25,11 @@
         	Text="Description" VerticalAlignment="Top"/>
         <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="158,139,0,0" TextWrapping="Wrap" 
                  Text="{Binding ProductDescription}" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="385,54,0,0" TextWrapping="Wrap" 
-        	Text="Tax Rate" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="385,102,0,0" TextWrapping="Wrap" 
+        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="385,54,0,0" TextWrapping="Wrap" 
         	Text="Selling Price" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_Copy3" HorizontalAlignment="Left" Height="23" Margin="524,95,0,0" TextWrapping="Wrap" 
+        <TextBox x:Name="textBox_Copy3" HorizontalAlignment="Left" Height="23" Margin="524,47,0,0" TextWrapping="Wrap" 
         	Text="{Binding SellingPrice}" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="385,146,0,0" TextWrapping="Wrap" 
+        <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="385,98,0,0" TextWrapping="Wrap" 
         	Text="UOM" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBox" 
                   ItemsSource="{Binding UOMList}"
@@ -39,7 +37,7 @@
                   SelectedValuePath ="UoMCategoryId"                  
                   SelectedIndex="0"
                   SelectedValue="{Binding SelectedUOM}"
-                  HorizontalAlignment="Left" Margin="524,146,0,0" VerticalAlignment="Top" Width="120"/>
+                  HorizontalAlignment="Left" Margin="524,98,0,0" VerticalAlignment="Top" Width="120"/>
         <!--<ComboBox x:Name="comboBox_Copy" 
         	ItemsSource="{Binding TaxRateList}"
         	DisplayMemberPath ="TaxTotal"
@@ -47,7 +45,7 @@
             SelectedIndex="0"      
         	SelectedValue="{Binding SelectedTaxRate}"
         	HorizontalAlignment="Left" Margin="524,47,0,0" VerticalAlignment="Top" Width="120" SelectedItem=""/>-->
-        <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Margin="51,208,0,0" TextWrapping="Wrap" 
+        <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Margin="389,160,0,0" TextWrapping="Wrap" 
         	Text="Category" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBox_Copy1" 
         	ItemsSource="{Binding TaxRateList}"
@@ -55,7 +53,7 @@
         	SelectedValuePath ="CategoryId"                  
         	SelectedIndex="0"      
         	SelectedValue="{Binding SelectedTaxRate}"
-        	HorizontalAlignment="Left" Margin="190,201,0,0" VerticalAlignment="Top" Width="120" SelectedItem=""/>
+        	HorizontalAlignment="Left" Margin="528,153,0,0" VerticalAlignment="Top" Width="120" SelectedItem=""/>
 
     </Grid>
 </UserControl>

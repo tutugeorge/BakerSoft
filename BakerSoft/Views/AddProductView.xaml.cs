@@ -24,5 +24,10 @@ namespace BakerSoft.Views
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtBxProductName.Focus();
+        }
     }
 }
