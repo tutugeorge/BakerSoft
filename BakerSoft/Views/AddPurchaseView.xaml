@@ -95,11 +95,8 @@
                   IsEnabled="False"
         	HorizontalAlignment="Left" Margin="411,138,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cmbBxTaxRateList_Copy" 
-        	ItemsSource="{Binding PaymentModeList}"
-        	DisplayMemberPath ="PaymentName"
-        	SelectedValuePath ="PaymentId"                  
-        	SelectedIndex="0"      
-        	SelectedValue="CASH"
+        	ItemsSource="{Binding PaymentModeList}"        	               
+        	SelectedIndex="0"              	
         	HorizontalAlignment="Left" Margin="659,196,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock_Copy9" HorizontalAlignment="Left" Margin="34,199,0,0" TextWrapping="Wrap" 
         	Text="UOM" VerticalAlignment="Top"/>

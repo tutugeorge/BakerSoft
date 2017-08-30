@@ -22,6 +22,15 @@ namespace BakerSoft.ViewModels
         public DelegateCommand PurchaseCmd { get; set; }
         public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
 
+        private List<string> _paymentModeList;
+        public List<string> PaymentModeList
+        {
+            get { return _paymentModeList; }
+            set
+            {
+                SetProperty(ref _paymentModeList, value);
+            }
+        }
         private List<ProductCategory> _taxRateList;
         public List<ProductCategory> TaxRateList
         {
@@ -163,6 +172,10 @@ namespace BakerSoft.ViewModels
             SupplierList = _supplierModel.GetSuppliers();
             UOMList = _products.GetUoMCategories();
             TaxRateList = _products.GetProductCategories();
+            PaymentModeList = new List<string>()
+            {
+                "CASH", "CARD"
+            };
 
             GoToViewCmd = new DelegateCommand<string>(GoToView);
             PurchaseCmd = new DelegateCommand(Purchase);
