@@ -61,6 +61,7 @@
                   SelectedValuePath ="UoMCategoryId"                  
                   SelectedIndex="{Binding SelectedUOMIndex}"
                   SelectedValue="{Binding SelectedUOM}"
+                  IsEnabled="False"
         	HorizontalAlignment="Left" Margin="138,195,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="comboBox" 
                   ItemsSource="{Binding SupplierList}"
@@ -91,6 +92,7 @@
         	SelectedValuePath ="CategoryId"                  
         	SelectedIndex="0"      
         	SelectedValue="{Binding SelectedTaxRate}"
+                  IsEnabled="False"
         	HorizontalAlignment="Left" Margin="411,138,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cmbBxTaxRateList_Copy" 
         	ItemsSource="{Binding PaymentModeList}"
