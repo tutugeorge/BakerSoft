@@ -2,6 +2,7 @@
 using GSTBill.Models;
 using GSTBill.ViewModels;
 using Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -158,6 +159,7 @@ namespace BakerSoft.ViewModels
             get { return _productId; }
             set { SetProperty(ref _productId, value); }
         }
+        public InteractionRequest<INotification> NotificationRequest { get; private set; }
 
         public AddPurchaseViewModel(IRegionManager regionManager,
                                     PurchaseTransactionModel purchaseTransaction,
@@ -180,6 +182,13 @@ namespace BakerSoft.ViewModels
             GoToViewCmd = new DelegateCommand<string>(GoToView);
             PurchaseCmd = new DelegateCommand(Purchase);
             SearchProductByIdCmd = new DelegateCommand<string>(SearchProductById);
+            NotificationRequest = new InteractionRequest<INotification>();
+        }
+
+        private void RaiseNotification(string title, string message)
+        {
+            this.NotificationRequest.Raise(
+               new Notification { Content = message, Title = title });
         }
 
         private void GoToView(string navPath)
@@ -227,10 +236,17 @@ namespace BakerSoft.ViewModels
 
         private void SearchProductById(string id)
         {
-            var products = _products.SearchById(id);
-            ProductName = products[0].ProductName;
-            ProductId = Convert.ToString(products[0].ProductId);
-            SelectedUOMIndex = FindUOMIndex(products[0].ProductUoM);
+            try
+            {
+                var products = _products.SearchById(id);
+                ProductName = products[0].ProductName;
+                ProductId = Convert.ToString(products[0].ProductId);
+                SelectedUOMIndex = FindUOMIndex(products[0].ProductUoM);
+            }
+            catch (Exception)
+            {
+                RaiseNotification("Error", "Invalid Product");                
+            }
         }
 
         private int FindUOMIndex(int value)
