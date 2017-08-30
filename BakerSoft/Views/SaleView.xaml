@@ -3,12 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:prism="http://prismlibrary.com/"             
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:local="clr-namespace:GSTBill.Views"
              mc:Ignorable="d" 
              d:DesignHeight="562" d:DesignWidth="1000"
              Loaded="UserControl_Loaded">
+    <i:Interaction.Triggers>
+        <prism:InteractionRequestTrigger SourceObject="{Binding NotificationRequest, Mode=OneWay}">
+            <!-- This PopupWindowAction does not have a custom view defined, therefore it will try to use a DefaultConfirmationWindow -->
+            <!-- which is a window used by default by Prism to shown IConfirmation implementations -->
+            <!-- That window will be show as a modal dialog and centered over this window -->
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True"/>
+        </prism:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
+
     <Grid Margin="0,0,-272,0">
         <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="25" Width="325" Margin="0,0,10,-24" x:Name="txtAuto" TextWrapping="NoWrap"/>
         <ListBox x:Name="lbSuggestion" SelectionChanged="lbSuggestion_SelectionChanged" Background="LightYellow" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top" Width="325" Margin="0,0,10,0"/>

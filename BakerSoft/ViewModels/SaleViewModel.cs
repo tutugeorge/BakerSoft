@@ -2,6 +2,7 @@
 using BakerSoft.Models;
 using GSTBill.Models;
 using Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -24,14 +25,15 @@ namespace GSTBill.ViewModels
         public DelegateCommand<int?> RemoveProductCmd { get; private set; }
         public DelegateCommand<string> SearchProductByNameCmd { get; private set; }
         public DelegateCommand<string> SearchProductByIdCmd { get; private set; }
+        //public DelegateCommand RaiseNotificationCmd { get; private set; }
 
+        public InteractionRequest<INotification> NotificationRequest { get; private set; }
         private string _productSearchName;
         public string ProductSearchName
         {
             get { return _productSearchName; }
             set { SetProperty(ref _productSearchName, value); }
         }
-
         private Product _selectedSearchItem;
         public Product SelectedSearchItem
         {
@@ -151,6 +153,16 @@ namespace GSTBill.ViewModels
             RemoveProductCmd = new DelegateCommand<int?>(RemoveProduct);
             SearchProductByNameCmd = new DelegateCommand<string>(SearchProductByName);
             SearchProductByIdCmd = new DelegateCommand<string>(SearchProductById);
+            //RaiseNotificationCmd = new DelegateCommand(RaiseNotification);
+            NotificationRequest = new InteractionRequest<INotification>();
+        }
+
+        private void RaiseNotification(string title, string message)
+        {
+            this.NotificationRequest.Raise(
+               new Notification { Content = message, Title = title });
+            //,
+            //   n => { InteractionResultMessage = "The user was notified."; });
         }
 
         private void Checkout()
@@ -220,8 +232,15 @@ namespace GSTBill.ViewModels
             //}
             //SearchResult = multipleProds;
 
-            SearchResult = _products.SearchById(id);
-            SelectedSearchItemIndex = -1;
+            try
+            {
+                SearchResult = _products.SearchById(id);
+                SelectedSearchItemIndex = -1;
+            }
+            catch (Exception)
+            {
+                RaiseNotification("Error","Invalid Product Id");
+            }
         }
     }
 }

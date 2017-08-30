@@ -3,12 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:prism="http://prismlibrary.com/"             
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:local="clr-namespace:BakerSoft.Views"
              mc:Ignorable="d" 
              d:DesignHeight="562" d:DesignWidth="1000"
              Loaded="UserControl_Loaded">
+    <i:Interaction.Triggers>
+        <prism:InteractionRequestTrigger SourceObject="{Binding NotificationRequest, Mode=OneWay}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True"/>
+        </prism:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <TextBox x:Name="txtBxPId" HorizontalAlignment="Left" Height="23" Margin="141,38,0,0" TextWrapping="Wrap" 
                  Text="" VerticalAlignment="Top" Width="120"/>
@@ -61,6 +67,7 @@
                   SelectedValuePath ="UoMCategoryId"                  
                   SelectedIndex="{Binding SelectedUOMIndex}"
                   SelectedValue="{Binding SelectedUOM}"
+                  IsEnabled="False"
         	HorizontalAlignment="Left" Margin="138,195,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="comboBox" 
                   ItemsSource="{Binding SupplierList}"
@@ -91,13 +98,11 @@
         	SelectedValuePath ="CategoryId"                  
         	SelectedIndex="0"      
         	SelectedValue="{Binding SelectedTaxRate}"
+                  IsEnabled="False"
         	HorizontalAlignment="Left" Margin="411,138,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cmbBxTaxRateList_Copy" 
-        	ItemsSource="{Binding PaymentModeList}"
-        	DisplayMemberPath ="PaymentName"
-        	SelectedValuePath ="PaymentId"                  
-        	SelectedIndex="0"      
-        	SelectedValue="CASH"
+        	ItemsSource="{Binding PaymentModeList}"        	               
+        	SelectedIndex="0"              	
         	HorizontalAlignment="Left" Margin="659,196,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock_Copy9" HorizontalAlignment="Left" Margin="34,199,0,0" TextWrapping="Wrap" 
         	Text="UOM" VerticalAlignment="Top"/>
