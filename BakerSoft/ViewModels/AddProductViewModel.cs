@@ -3,6 +3,7 @@ using GSTBill.Models;
 using GSTBill.ViewModels;
 using log4net;
 using Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,6 +90,7 @@ namespace BakerSoft.ViewModels
                 SetProperty(ref _uomList, value);                
             }
         }
+        public InteractionRequest<INotification> NotificationRequest { get; private set; }
 
         //Add other data capture items for product
         public DelegateCommand AddProductCmd { get; set; }
@@ -98,13 +100,25 @@ namespace BakerSoft.ViewModels
             _productModel = productModel;
 
             AddProductCmd = new DelegateCommand(AddProduct);
+            NotificationRequest = new InteractionRequest<INotification>();
 
             TaxRateList = _productModel.GetProductCategories();
             UOMList = _productModel.GetUoMCategories();       
         }
 
+        private void RaiseNotification(string title, string message)
+        {
+            this.NotificationRequest.Raise(
+               new Notification { Content = message, Title = title });
+        }
+
         private void AddProduct()
         {
+            if(!ValidateInputFields())
+            {
+                RaiseNotification("Alert", "Please enter all the required fields");
+                return;
+            }
             var product = new Product();
             try
             {                
@@ -140,6 +154,13 @@ namespace BakerSoft.ViewModels
             SellingPrice = "0.00";
             ProductDescription = "";
             SelectedTaxRate = 0;
+        }
+
+        private bool ValidateInputFields()
+        {
+            if (string.IsNullOrWhiteSpace(ProductName))
+                return false;
+            return true;
         }
     }
 }
