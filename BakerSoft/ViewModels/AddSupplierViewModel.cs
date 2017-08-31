@@ -2,6 +2,7 @@
 using GSTBill.ViewModels;
 using log4net;
 using Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,17 +71,39 @@ namespace BakerSoft.ViewModels
             get { return _pincode; }
             set { SetProperty(ref _pincode, value); }
         }
+        public InteractionRequest<INotification> NotificationRequest { get; private set; }
 
-        public DelegateCommand AddSupplierCmd { get; set; }
+        private DelegateCommand _addSupplierCmd;
+        public DelegateCommand AddSupplierCmd
+        {
+            get { return _addSupplierCmd; }
+            set
+            {
+                SetProperty(ref _addSupplierCmd, value);
+            }
+        }
 
         public AddSupplierViewModel(SupplierModel supplierModel)
         {
             _supplierModel = supplierModel;
             AddSupplierCmd = new DelegateCommand(AddSupplier);
+            NotificationRequest = new InteractionRequest<INotification>();
+        }
+
+        private void RaiseNotification(string title, string message)
+        {
+            this.NotificationRequest.Raise(
+               new Notification { Content = message, Title = title });
         }
 
         private void AddSupplier()
         {
+            if(!ValidateInputFields())
+            {
+                RaiseNotification("Alert", "Please all the required fields");
+                return;
+            }
+
             var supplier = new Supplier();
             var address = new Address();
             try
@@ -121,6 +144,17 @@ namespace BakerSoft.ViewModels
             City = "";
             State = "";
             Pincode = "";
+        }
+
+        private bool ValidateInputFields()
+        {
+            if (string.IsNullOrWhiteSpace(SupplierName)||
+                string.IsNullOrWhiteSpace(GstNumber)||
+                string.IsNullOrWhiteSpace(AddressLine1)||
+                string.IsNullOrWhiteSpace(City)||
+                string.IsNullOrWhiteSpace(State))
+                return false;
+            return true;
         }
     }
 }
