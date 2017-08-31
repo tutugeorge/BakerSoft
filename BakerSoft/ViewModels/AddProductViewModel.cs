@@ -40,7 +40,12 @@ namespace BakerSoft.ViewModels
         public string ProductName
         {
             get { return _productName; }
-            set { SetProperty(ref _productName, value); }
+            set
+            {
+                SetProperty(ref _productName, value);
+                if (string.IsNullOrWhiteSpace(ProductDescription))
+                    ProductDescription = value;
+            }
         }
         private string _productDescription;
         public string ProductDescription
