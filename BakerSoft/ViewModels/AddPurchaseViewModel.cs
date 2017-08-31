@@ -127,7 +127,13 @@ namespace BakerSoft.ViewModels
         public string PurchasePrice
         {
             get { return _purchasePrice; }
-            set { SetProperty(ref _purchasePrice, value); }
+            set
+            {
+                SetProperty(ref _purchasePrice, value);
+                if (Convert.ToInt32(Quantity) >=0 &&
+                    Convert.ToInt32(Amount) <= 0)
+                    Amount = (Convert.ToInt32(Quantity) * Convert.ToInt32(value)).ToString();
+            }
         }
         private string _sellingPrice;
         public string SellingPrice
@@ -139,7 +145,13 @@ namespace BakerSoft.ViewModels
         public string Quantity
         {
             get { return _quantity; }
-            set { SetProperty(ref _quantity, value); }
+            set
+            {
+                SetProperty(ref _quantity, value);
+                if (Convert.ToInt32(PurchasePrice) >= 0 &&
+                    Convert.ToInt32(Amount) <= 0)
+                    Amount = (Convert.ToInt32(PurchasePrice) * Convert.ToInt32(value)).ToString();
+            }
         }
         private string _supplierName;
         public string SupplierName
@@ -232,6 +244,8 @@ namespace BakerSoft.ViewModels
             transaction.GSTIN = GSTIN;
             transaction.PurchaseDate = DateTime.Today;
             _purchaseTransaction.Complete(transaction);
+
+            ResetUI();
         }
 
         private void SearchProductById(string id)
@@ -265,6 +279,16 @@ namespace BakerSoft.ViewModels
                     return item.SupplierGST;
 
             return "";
+        }
+
+        private void ResetUI()
+        {
+            ProductId = "";
+            ProductName = "";
+            Quantity = "0";
+            SellingPrice = "0";
+            PurchasePrice = "0";
+            Amount = "0";
         }
     }
 }
