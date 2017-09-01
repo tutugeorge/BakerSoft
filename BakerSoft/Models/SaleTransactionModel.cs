@@ -121,5 +121,10 @@ namespace GSTBill.Models
         {
             return (sale.TransactionTotal - GetPaymentTotal());
         }
+
+        public int GetStockCount(int productId)
+        {
+           return _saleTransactionRepository.GetStockCount(productId);
+        }
     }
 }
