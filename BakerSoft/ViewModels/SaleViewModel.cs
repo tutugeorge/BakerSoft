@@ -138,6 +138,16 @@ namespace GSTBill.ViewModels
             get { return _itemList; }
             set { SetProperty(ref _itemList, value); }                       
         }
+        private bool _stockCheckRequired;
+        public bool StockCheckRequired
+        {
+            get { return _stockCheckRequired; }
+            set
+            {
+                SetProperty(ref _stockCheckRequired, value);
+            }
+        }
+
 
         public SaleViewModel(IRegionManager regionManager,
                             SaleTransactionModel saleTransaction,
@@ -146,6 +156,7 @@ namespace GSTBill.ViewModels
             _regionManager = regionManager;
             _saleTransaction = saleTransaction;
             _products = products;
+            Total = "0.00";
 
             CheckoutCmd = new DelegateCommand(Checkout);
             CancelSaleCmd = new DelegateCommand(CancelSale);
@@ -180,6 +191,14 @@ namespace GSTBill.ViewModels
 
         private void AddProduct(Product product)
         {
+            if(StockCheckRequired)
+            {
+                var count = CheckStock(product.ProductId);
+                if(count < Convert.ToDecimal(Quantity))
+                {
+                    RaiseNotification("Alert", "Not enough stock available for his item");
+                }
+            }
             var saleProduct = new SaleProduct();
             saleProduct.UoM = product.ProductUoM;
             saleProduct.ProductDescription = product.ProductDescription;
@@ -205,8 +224,9 @@ namespace GSTBill.ViewModels
             SearchResult = null;
             ItemList = null;
             ItemList = _saleTransaction.sale.ItemList;
-            Total = (_saleTransaction.sale.TransactionTotal +
-                    _saleTransaction.sale.TransactionTaxTotal).ToString("F2");
+            Total = _saleTransaction.sale.TransactionTotal.ToString("F2");
+            //Total = (_saleTransaction.sale.TransactionTotal +
+            //        _saleTransaction.sale.TransactionTaxTotal).ToString("F2");
             Quantity = "1";
         }
 
@@ -241,6 +261,11 @@ namespace GSTBill.ViewModels
             {
                 RaiseNotification("Error","Invalid Product Id");
             }
+        }
+
+        private int CheckStock(int productId)
+        {
+            return _saleTransaction.GetStockCount(productId);
         }
     }
 }

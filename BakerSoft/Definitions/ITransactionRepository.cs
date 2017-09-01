@@ -16,6 +16,7 @@ namespace GSTBill.Definitions
     interface ISaleTransactionRepository
     {
         void InsertTransaction(SaleTransaction sale);
+        int GetStockCount(int productId);
     }
 
     interface IPurchaseTransactionRepository

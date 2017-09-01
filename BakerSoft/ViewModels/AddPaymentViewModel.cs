@@ -4,6 +4,7 @@ using GSTBill.Models;
 using GSTBill.ViewModels;
 using log4net;
 using Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace BakerSoft.ViewModels
                 SetProperty(ref _paymentAmount, value);
             }
         }
+        public InteractionRequest<INotification> NotificationRequest { get; private set; }
 
         public AddPaymentViewModel(IRegionManager regionManager,
                                    SaleTransactionModel saleTransaction)
@@ -40,8 +42,15 @@ namespace BakerSoft.ViewModels
             _saleTransaction = saleTransaction;
 
             CashPaymentCmd = new DelegateCommand<string>(CashPayment);
+            NotificationRequest = new InteractionRequest<INotification>();
 
             PaymentAmount = _saleTransaction.sale.TransactionTotal;
+        }
+
+        private void RaiseNotification(string title, string message)
+        {
+            this.NotificationRequest.Raise(
+               new Notification { Content = message, Title = title });
         }
 
         private void CashPayment(string amount)
@@ -60,8 +69,13 @@ namespace BakerSoft.ViewModels
                 };
                 var outstandingAmount = _saleTransaction.AddPayment(cashPayment);
 
-                if(outstandingAmount <= 0)
+                if (outstandingAmount < 0)
+                    RaiseNotification("Info",
+                        string.Format("Balance amount is {0}", (-1.0m * outstandingAmount)));
+
+                if (outstandingAmount <= 0)
                     CompleteTransaction(outstandingAmount * -1.0m);
+                
 
                 PaymentAmount = outstandingAmount;
 

@@ -15,17 +15,6 @@ namespace GSTBill.Models
     {
         private ISaleTransactionRepository _saleTransactionRepository;
 
-        //public int TransactionStatus { get; set; }
-        //public double TransactionTotal { get; set; }
-        //public double TransactionTaxTotal { get; set; }
-        //public decimal TransactionDiscountTotal { get; set; }        
-        //public List<Product> ItemList
-        //{
-        //    get;
-        //    set;
-        //}
-        //public ObservableCollection<Payment> PaymentList { get; set; }
-
         public SaleTransaction sale { get; set; }
 
         public SaleTransactionModel(ISaleTransactionRepository saleTransactionRepository)
@@ -46,8 +35,7 @@ namespace GSTBill.Models
 
         public void Complete()
         {
-            //base.Complete();
-            //Call Data Layer
+            sale.TransactionDate = DateTime.Now;     
             _saleTransactionRepository.InsertTransaction(sale);
             ClearTransaction();
         }
@@ -74,6 +62,7 @@ namespace GSTBill.Models
 
             AddToTransactionTotal(item.PriceList[0].Value, item.Quantity);
             AddToTaxTotal(item.ProductTax, item.PriceList[0].Value, item.Quantity);
+            sale.TransactionTotal = sale.ItemTotal + sale.TransactionTaxTotal;
         }
 
         public void RemoveItem(int itemIndex)
@@ -81,6 +70,7 @@ namespace GSTBill.Models
             //TODO : Remove selected item from the list
             var item = sale.ItemList[itemIndex];
             sale.ItemList.RemoveAt(itemIndex);
+            sale.TransactionTotal = sale.ItemTotal + sale.TransactionTaxTotal;
             //SubstractFromTransactionTotal(item.PriceList[0].Value, item.Quantity);
             //SubstractFromTaxTotal(item.ProductTax, item.PriceList[0].Value, item.Quantity);
         }
@@ -101,18 +91,18 @@ namespace GSTBill.Models
 
         private void AddToTransactionTotal(decimal price, decimal quantity)
         {
-            sale.TransactionTotal = sale.TransactionTotal + Convert.ToDecimal(price * quantity);
+            sale.ItemTotal = sale.ItemTotal + Convert.ToDecimal(price * quantity);
         }
 
         private void SubstractFromTransactionTotal(Price price, int quantity)
         {
-            sale.TransactionTotal = sale.TransactionTotal - (price.SellingPrice * quantity);
+            sale.ItemTotal = sale.ItemTotal - (price.SellingPrice * quantity);
         }
 
         private void ClearTransaction()
         {
             sale.ItemList.Clear();
-            sale.TransactionTotal = 0.00m;
+            sale.ItemTotal = 0.00m;
             sale.TransactionTaxTotal = 0.00m;
             sale = new SaleTransaction();
         }
@@ -130,6 +120,11 @@ namespace GSTBill.Models
         private decimal GetOutstandingAmount()
         {
             return (sale.TransactionTotal - GetPaymentTotal());
+        }
+
+        public int GetStockCount(int productId)
+        {
+           return _saleTransactionRepository.GetStockCount(productId);
         }
     }
 }

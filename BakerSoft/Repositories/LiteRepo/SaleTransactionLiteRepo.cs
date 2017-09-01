@@ -13,6 +13,15 @@ namespace BakerSoft.Repositories
 {
     class SaleTransactionLiteRepo : ISaleTransactionRepository
     {
+        public int GetStockCount(int productId)
+        {
+            //using(var db = new StoreDbContext())
+            //{
+                
+            //}
+            return 1;
+        }
+
         public void InsertTransaction(SaleTransaction sale)
         {
             using (var db = new StoreDbContext())
