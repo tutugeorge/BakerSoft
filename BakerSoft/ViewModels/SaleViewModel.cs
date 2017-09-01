@@ -205,8 +205,9 @@ namespace GSTBill.ViewModels
             SearchResult = null;
             ItemList = null;
             ItemList = _saleTransaction.sale.ItemList;
-            Total = (_saleTransaction.sale.TransactionTotal +
-                    _saleTransaction.sale.TransactionTaxTotal).ToString("F2");
+            Total = _saleTransaction.sale.TransactionTotal.ToString("F2");
+            //Total = (_saleTransaction.sale.TransactionTotal +
+            //        _saleTransaction.sale.TransactionTaxTotal).ToString("F2");
             Quantity = "1";
         }
 

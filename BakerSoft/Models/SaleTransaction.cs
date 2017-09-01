@@ -17,7 +17,8 @@ namespace BakerSoft.Models
         public decimal TransactionDiscountTotal { get; set; }
 
         public int TransactionStatus { get; set; }
-        
+        public decimal ItemTotal { get; set; }
+
         public List<SaleProduct> ItemList
         {
             get;
