@@ -146,6 +146,7 @@ namespace GSTBill.ViewModels
             _regionManager = regionManager;
             _saleTransaction = saleTransaction;
             _products = products;
+            Total = "0.00";
 
             CheckoutCmd = new DelegateCommand(Checkout);
             CancelSaleCmd = new DelegateCommand(CancelSale);

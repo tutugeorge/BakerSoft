@@ -21,10 +21,9 @@ namespace GSTBill.Models
         public decimal DefaultSellingPrice
         {
             get
-            {
-                if (_defaultSellingPrice.Equals(0.00))
-                    _defaultSellingPrice = Convert.ToDecimal(Quantity * PriceList[0]);
-                return _defaultSellingPrice;
+            {                
+                return Convert.ToDecimal(PriceList[0] + 
+                    ProductTax.TaxRate * PriceList[0]);
             }
             set
             {
