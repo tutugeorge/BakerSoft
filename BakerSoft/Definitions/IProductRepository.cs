@@ -15,5 +15,6 @@ namespace BakerSoft.Definitions
         List<Product> GetProductsByName(string name);
         List<ProductCategory> GetTaxMaster();
         List<UomCategory> GetUomCategories();
+        List<Product> RetreiveAllProducts();
     }
 }

@@ -15,6 +15,7 @@ namespace BakerSoft.Repositories
     {
         public int GetStockCount(int productId)
         {
+            //How to check stock
             //using(var db = new StoreDbContext())
             //{
                 

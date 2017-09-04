@@ -47,5 +47,10 @@ namespace BakerSoft.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public List<Product> RetreiveAllProducts()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

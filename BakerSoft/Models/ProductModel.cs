@@ -18,6 +18,11 @@ namespace GSTBill.Models
             _productRepository = productRepository;
         }
 
+        public List<Product> RetreiveAllProducts()
+        {
+            return _productRepository.RetreiveAllProducts();
+        }
+
         public List<Product> SearchByName(string name)
         {
             return _productRepository.GetProductsByName(name);

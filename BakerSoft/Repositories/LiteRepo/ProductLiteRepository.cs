@@ -94,5 +94,17 @@ namespace BakerSoft.Repositories
             }
             return categories;
         }
+
+        public List<Product> RetreiveAllProducts()
+        {
+            List<Product> products;
+            using (var db = new StoreDbContext())
+            {
+                var query = (from a in db.Set<PRODUCT>()
+                             select a);
+                products = Mapper.Map<List<Product>>(query.ToList());                
+            }
+            return products;
+        }
     }
 }

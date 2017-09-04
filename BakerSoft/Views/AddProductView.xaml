@@ -60,6 +60,31 @@
         	SelectedIndex="0"      
         	SelectedValue="{Binding SelectedTaxRate}"
         	HorizontalAlignment="Left" Margin="528,153,0,0" VerticalAlignment="Top" Width="120" SelectedItem=""/>
+        <ListView x:Name="listView" 
+                  ItemsSource="{Binding ProductList}"
+                  HorizontalAlignment="Left" Height="352" Margin="746,95,0,0" VerticalAlignment="Top" Width="228">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ProductDescription}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Tax" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding ProductTax.TaxRate}" />
+                                    <TextBlock Text="%" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </UserControl>
