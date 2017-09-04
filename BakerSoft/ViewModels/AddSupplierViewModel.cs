@@ -17,6 +17,15 @@ namespace BakerSoft.ViewModels
                 System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private SupplierModel _supplierModel;
 
+        private List<Supplier> _supplierList;
+        public List<Supplier> SupplierList
+        {
+            get { return _supplierList; }
+            set
+            {
+                SetProperty(ref _supplierList, value);
+            }
+        }
         private string _supplierName;
         public string SupplierName
         {
@@ -86,6 +95,7 @@ namespace BakerSoft.ViewModels
         public AddSupplierViewModel(SupplierModel supplierModel)
         {
             _supplierModel = supplierModel;
+            SupplierList = _supplierModel.GetSuppliers();
             AddSupplierCmd = new DelegateCommand(AddSupplier);
             NotificationRequest = new InteractionRequest<INotification>();
         }
