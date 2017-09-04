@@ -25,7 +25,7 @@
         	Text="{Binding GstNumber}" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button" Content="Add Supplier" 
                 Command="{Binding AddSupplierCmd}"
-                HorizontalAlignment="Left" Margin="487,54,0,0" VerticalAlignment="Top" Width="106" Height="49"/>
+                HorizontalAlignment="Left" Margin="423,54,0,0" VerticalAlignment="Top" Width="106" Height="49"/>
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="63,148,0,0" TextWrapping="Wrap" 
         	Text="TIN Number" VerticalAlignment="Top" Height="24" Width="78"/>
         <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="24" Margin="194,148,0,0" TextWrapping="Wrap" 
@@ -54,6 +54,28 @@
         	Text="Pincode" VerticalAlignment="Top" Height="24" Width="78"/>
         <TextBox x:Name="textBox_Copy7" HorizontalAlignment="Left" Height="24" Margin="194,372,0,0" TextWrapping="Wrap" 
         	Text="{Binding Pincode}" VerticalAlignment="Top" Width="120"/>
+        <ListView x:Name="listView"
+                  ItemsSource="{Binding SupplierList}"
+                  HorizontalAlignment="Left" Height="367" Margin="663,86,0,0" VerticalAlignment="Top" Width="286" RenderTransformOrigin="0.27,0.175">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding SupplierName}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="SearchId" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding SupplierGST}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </UserControl>

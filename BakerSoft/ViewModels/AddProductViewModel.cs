@@ -18,6 +18,15 @@ namespace BakerSoft.ViewModels
                 System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private ProductModel _productModel;
 
+        private List<Product> _productList;
+        public List<Product> ProductList
+        {
+            get { return _productList; }
+            set
+            {
+                SetProperty(ref _productList, value);
+            }
+        }
         private int _selectedUOM;
         public int SelectedUOM
         {
@@ -108,7 +117,8 @@ namespace BakerSoft.ViewModels
             NotificationRequest = new InteractionRequest<INotification>();
 
             TaxRateList = _productModel.GetProductCategories();
-            UOMList = _productModel.GetUoMCategories();       
+            UOMList = _productModel.GetUoMCategories();
+            ProductList = _productModel.RetreiveAllProducts();     
         }
 
         private void RaiseNotification(string title, string message)
@@ -159,6 +169,7 @@ namespace BakerSoft.ViewModels
             SellingPrice = "0.00";
             ProductDescription = "";
             SelectedTaxRate = 0;
+            ProductList = _productModel.RetreiveAllProducts();
         }
 
         private bool ValidateInputFields()

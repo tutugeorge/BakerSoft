@@ -95,5 +95,10 @@ namespace BakerSoft.Repositories
             }
             return categories;
         }
+
+        public List<Product> RetreiveAllProducts()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
