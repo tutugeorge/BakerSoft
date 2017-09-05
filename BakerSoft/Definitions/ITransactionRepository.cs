@@ -15,14 +15,14 @@ namespace GSTBill.Definitions
 
     interface ISaleTransactionRepository
     {
-        List<SaleTransaction> GetTransactionHistory();
+        List<SaleTransaction> GetTransactionHistory(DateTime fromDate);
         void InsertTransaction(SaleTransaction sale);
         int GetStockCount(int productId);
     }
 
     interface IPurchaseTransactionRepository
     {
-        List<PurchaseTransaction> GetTransactionHistory();
+        List<PurchaseTransaction> GetTransactionHistory(DateTime dateFilter);
         void InsertTransaction(PurchaseTransaction purchase);
     }
 }

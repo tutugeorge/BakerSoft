@@ -13,12 +13,15 @@ namespace BakerSoft.Repositories
 {
     class SaleTransactionLiteRepo : ISaleTransactionRepository
     {
-        public List<SaleTransaction> GetTransactionHistory()
+        public List<SaleTransaction> GetTransactionHistory(DateTime fromDate)
         {
             List<SaleTransaction> saleTxns;
+            //DateTime fromDate = DateTime.Today;
+            //DateTime toDate = DateTime.Today;
             using (var db = new StoreDbContext())
             {
                 var query = from b in db.Set<SALE_TRANSACTIONS>()
+                            where b.TransactionDate >= fromDate //&& 
                             orderby b.TransactionDate descending
                             select b;
                 saleTxns = Mapper.Map<List<SaleTransaction>>(query);

@@ -9,6 +9,7 @@ using GSTBill.Models;
 using DAL.LiteDB;
 using AutoMapper;
 using DAL.Models;
+using BakerSoft.Exceptions;
 
 namespace BakerSoft.Repositories
 {
@@ -52,6 +53,8 @@ namespace BakerSoft.Repositories
                 var price = (from p in db.Set<PURCHASE_PRODUCTS>()
                              where p.ProductId == prods.ProductId
                              select p.SellingPrice).ToList();
+                if (price.Count <= 0)
+                    throw new NoPurchasedProductException();
                 prods.PriceList = new List<decimal?>();
 
                 //price.ForEach(x => productList.Add(prods));

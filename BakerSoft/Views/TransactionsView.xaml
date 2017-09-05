@@ -9,9 +9,13 @@
              xmlns:local="clr-namespace:BakerSoft.Views"
              mc:Ignorable="d" 
              d:DesignHeight="562" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="boolToVisibility" />
+    </UserControl.Resources>
     <Grid>
         <ListView x:Name="listView" 
                   ItemsSource="{Binding SaleTxnList}"
+                  Visibility="{Binding IsChecked,ElementName=saleRadioBtn,Converter={StaticResource boolToVisibility}}"
                   HorizontalAlignment="Left" Height="394" Margin="48,95,0,0" VerticalAlignment="Top" Width="396">
             <ListView.View>
                 <GridView>
@@ -41,6 +45,7 @@
         </ListView>
         <ListView x:Name="purchaselistView" 
                   ItemsSource="{Binding PurchaseTxnList}"
+                  Visibility="{Binding IsChecked,ElementName=purchaseRadioBtn,Converter={StaticResource boolToVisibility}}"
                   HorizontalAlignment="Left" Height="394" Margin="48,95,0,0" VerticalAlignment="Top" Width="396">
             <ListView.View>
                 <GridView>
@@ -67,6 +72,24 @@
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
-        </ListView>    
+        </ListView>
+        <RadioButton x:Name="saleRadioBtn" Content="SALE" HorizontalAlignment="Left" Margin="50,27,0,0" VerticalAlignment="Top" 
+                     GroupName="TxnType"
+                     IsChecked="True"/>
+        <RadioButton x:Name="purchaseRadioBtn" Content="PURCHASE" HorizontalAlignment="Left" Margin="137,28,0,0" VerticalAlignment="Top" 
+                     GroupName="TxnType"/>
+        <RadioButton x:Name="radioButton" 
+                     Content="Today" 
+                     GroupName="DateFilter"
+                     IsChecked="True"
+                     Command="{Binding DateFilterCmd}"
+                     CommandParameter="0"
+                     HorizontalAlignment="Left" Margin="50,61,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radioButton_Copy" 
+        	         Content="This Month" 
+                     GroupName="DateFilter"
+                     Command="{Binding DateFilterCmd}"
+                     CommandParameter="1"
+                     HorizontalAlignment="Left" Margin="138,61,0,0" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

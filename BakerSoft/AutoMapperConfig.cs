@@ -53,6 +53,7 @@ namespace BakerSoft
                     ForMember(dest => dest.SALES_PAYMENTS, opt => opt.MapFrom(src => src.PaymentList));
 
                     config.CreateMap<SALE_TRANSACTIONS, SaleTransaction>();
+                    config.CreateMap<PURCHASE_TRANSACTIONS, PurchaseTransaction>();
 
                     //.ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))
                     //.ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.ProductName))
