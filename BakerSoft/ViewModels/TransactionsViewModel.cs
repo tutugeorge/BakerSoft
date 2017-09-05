@@ -39,6 +39,7 @@ namespace BakerSoft.ViewModels
                             PurchaseTransactionModel purchaseTransaction)
         {
             _saleTransaction = saleTransaction;
+            _purchaseTransaction = purchaseTransaction;
 
             SaleTxnList = _saleTransaction.GetTransactionHistory();
             PurchaseTxnList = _purchaseTransaction.GetPurchaseTxnHistory();
