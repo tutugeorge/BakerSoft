@@ -13,6 +13,7 @@ namespace BakerSoft.ViewModels
     class TransactionsViewModel : BaseViewModel
     {
         SaleTransactionModel _saleTransaction;
+        PurchaseTransactionModel _purchaseTransaction;
 
         private List<SaleTransaction> _saleTxnList;
         public List<SaleTransaction> SaleTxnList
@@ -23,13 +24,24 @@ namespace BakerSoft.ViewModels
                 SetProperty(ref _saleTxnList, value);
             }
         }
+        private List<PurchaseTransaction> _purchaseTxnList;
+        public List<PurchaseTransaction> PurchaseTxnList
+        {
+            get { return _purchaseTxnList; }
+            set
+            {
+                SetProperty(ref _purchaseTxnList, value);
+            }
+        }
 
         public TransactionsViewModel(IRegionManager regionManager,
-                            SaleTransactionModel saleTransaction)
+                            SaleTransactionModel saleTransaction,
+                            PurchaseTransactionModel purchaseTransaction)
         {
             _saleTransaction = saleTransaction;
 
             SaleTxnList = _saleTransaction.GetTransactionHistory();
+            PurchaseTxnList = _purchaseTransaction.GetPurchaseTxnHistory();
         }
     }
 }

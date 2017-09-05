@@ -36,6 +36,11 @@ namespace GSTBill.Models
             _transactionRepository.InsertTransaction(purchase);
         }
 
+        public List<PurchaseTransaction> GetPurchaseTxnHistory()
+        {
+            return _transactionRepository.GetTransactionHistory();
+        }
+
         //public override void AddItem(Product item)
         //{
         //    base.AddItem(item);

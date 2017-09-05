@@ -12,6 +12,11 @@ namespace BakerSoft.Repositories
 {
     class PurchaseTransactionRepository : IPurchaseTransactionRepository
     {
+        public List<PurchaseTransaction> GetTransactionHistory()
+        {
+            throw new NotImplementedException();
+        }
+
         public void InsertTransaction(PurchaseTransaction purchase)
         {
             using (var db = new StoreDB())

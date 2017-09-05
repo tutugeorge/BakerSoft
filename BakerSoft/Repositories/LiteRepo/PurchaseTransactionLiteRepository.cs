@@ -24,5 +24,18 @@ namespace BakerSoft.Repositories
                 db.SaveChanges();
             }
         }
+
+        public List<PurchaseTransaction> GetTransactionHistory()
+        {
+            List<PurchaseTransaction> purchaseTxns;
+            using (var db = new StoreDbContext())
+            {
+                var query = from b in db.Set<PURCHASE_TRANSACTIONS>()
+                            orderby b.PurchaseDate descending
+                            select b;
+                purchaseTxns = Mapper.Map<List<PurchaseTransaction>>(query);
+            }
+            return purchaseTxns;
+        }
     }
 }

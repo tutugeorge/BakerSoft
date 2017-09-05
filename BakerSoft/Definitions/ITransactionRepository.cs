@@ -22,6 +22,7 @@ namespace GSTBill.Definitions
 
     interface IPurchaseTransactionRepository
     {
+        List<PurchaseTransaction> GetTransactionHistory();
         void InsertTransaction(PurchaseTransaction purchase);
     }
 }
