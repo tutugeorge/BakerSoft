@@ -19,6 +19,7 @@ namespace BakerSoft.Repositories
             using (var db = new StoreDbContext())
             {
                 var query = from b in db.Set<SALE_TRANSACTIONS>()
+                            orderby b.TransactionDate descending
                             select b;
                 saleTxns = Mapper.Map<List<SaleTransaction>>(query);
             }
