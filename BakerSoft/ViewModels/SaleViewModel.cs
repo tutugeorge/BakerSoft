@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BakerSoft.Exceptions;
 using BakerSoft.Models;
 using GSTBill.Models;
 using Prism.Commands;
@@ -256,6 +257,10 @@ namespace GSTBill.ViewModels
             {
                 SearchResult = _products.SearchById(id);
                 SelectedSearchItemIndex = -1;
+            }
+            catch(NoPurchasedProductException e)
+            {
+                RaiseNotification(e.ErrorTitle, e.ErrorMessage);
             }
             catch (Exception)
             {

@@ -151,6 +151,7 @@
     <Compile Include="Definitions\ISupplierRepository.cs" />
     <Compile Include="Definitions\ITransaction.cs" />
     <Compile Include="Definitions\ITransactionRepository.cs" />
+    <Compile Include="Exceptions\InvalidProductIdException.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\CashPayment.cs" />
     <Compile Include="Models\Item.cs" />
