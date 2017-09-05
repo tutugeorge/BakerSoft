@@ -154,6 +154,7 @@ namespace BakerSoft.ViewModels
             City = "";
             State = "";
             Pincode = "";
+            SupplierList = _supplierModel.GetSuppliers();
         }
 
         private bool ValidateInputFields()
