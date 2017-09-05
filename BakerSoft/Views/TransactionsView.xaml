@@ -82,10 +82,14 @@
                      Content="Today" 
                      GroupName="DateFilter"
                      IsChecked="True"
+                     Command="{Binding DateFilterCmd}"
+                     CommandParameter="0"
                      HorizontalAlignment="Left" Margin="50,61,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="radioButton_Copy" 
         	         Content="This Month" 
                      GroupName="DateFilter"
+                     Command="{Binding DateFilterCmd}"
+                     CommandParameter="1"
                      HorizontalAlignment="Left" Margin="138,61,0,0" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

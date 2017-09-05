@@ -1,6 +1,7 @@
 ﻿using BakerSoft.Models;
 using GSTBill.Models;
 using GSTBill.ViewModels;
+using Prism.Commands;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,8 @@ namespace BakerSoft.ViewModels
             }
         }
 
+        public DelegateCommand<string> DateFilterCmd { get; set; }
+
         public TransactionsViewModel(IRegionManager regionManager,
                             SaleTransactionModel saleTransaction,
                             PurchaseTransactionModel purchaseTransaction)
@@ -43,6 +46,19 @@ namespace BakerSoft.ViewModels
 
             SaleTxnList = _saleTransaction.GetTransactionHistory(DateTime.Today);
             PurchaseTxnList = _purchaseTransaction.GetPurchaseTxnHistory();
+
+            DateFilterCmd = new DelegateCommand<string>(FilterSaleTxnHistory); 
+        }
+
+        private void FilterSaleTxnHistory(string filterValue)
+        {
+            var dateFilter = DateTime.Today;
+            if (string.Equals(filterValue, "1"))
+            {
+                DateTime now = DateTime.Now;
+                dateFilter = new DateTime(now.Year, now.Month, 1);                
+            }
+            SaleTxnList = _saleTransaction.GetTransactionHistory(dateFilter);
         }
     }
 }
