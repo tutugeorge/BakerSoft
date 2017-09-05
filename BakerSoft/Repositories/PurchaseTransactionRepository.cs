@@ -12,7 +12,7 @@ namespace BakerSoft.Repositories
 {
     class PurchaseTransactionRepository : IPurchaseTransactionRepository
     {
-        public List<PurchaseTransaction> GetTransactionHistory()
+        public List<PurchaseTransaction> GetTransactionHistory(DateTime fromDate)
         {
             throw new NotImplementedException();
         }

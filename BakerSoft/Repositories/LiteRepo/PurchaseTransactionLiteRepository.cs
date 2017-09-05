@@ -25,12 +25,13 @@ namespace BakerSoft.Repositories
             }
         }
 
-        public List<PurchaseTransaction> GetTransactionHistory()
+        public List<PurchaseTransaction> GetTransactionHistory(DateTime fromDate)
         {
             List<PurchaseTransaction> purchaseTxns;
             using (var db = new StoreDbContext())
             {
                 var query = from b in db.Set<PURCHASE_TRANSACTIONS>()
+                            where b.PurchaseDate >= fromDate
                             orderby b.PurchaseDate descending
                             select b;
                 purchaseTxns = Mapper.Map<List<PurchaseTransaction>>(query);

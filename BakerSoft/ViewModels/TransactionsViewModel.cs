@@ -45,12 +45,12 @@ namespace BakerSoft.ViewModels
             _purchaseTransaction = purchaseTransaction;
 
             SaleTxnList = _saleTransaction.GetTransactionHistory(DateTime.Today);
-            PurchaseTxnList = _purchaseTransaction.GetPurchaseTxnHistory();
+            PurchaseTxnList = _purchaseTransaction.GetPurchaseTxnHistory(DateTime.Today);
 
-            DateFilterCmd = new DelegateCommand<string>(FilterSaleTxnHistory); 
+            DateFilterCmd = new DelegateCommand<string>(FilterTxnHistory); 
         }
 
-        private void FilterSaleTxnHistory(string filterValue)
+        private void FilterTxnHistory(string filterValue)
         {
             var dateFilter = DateTime.Today;
             if (string.Equals(filterValue, "1"))
@@ -59,6 +59,7 @@ namespace BakerSoft.ViewModels
                 dateFilter = new DateTime(now.Year, now.Month, 1);                
             }
             SaleTxnList = _saleTransaction.GetTransactionHistory(dateFilter);
+            PurchaseTxnList = _purchaseTransaction.GetPurchaseTxnHistory(dateFilter);
         }
     }
 }

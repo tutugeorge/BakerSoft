@@ -22,7 +22,7 @@ namespace GSTBill.Definitions
 
     interface IPurchaseTransactionRepository
     {
-        List<PurchaseTransaction> GetTransactionHistory();
+        List<PurchaseTransaction> GetTransactionHistory(DateTime dateFilter);
         void InsertTransaction(PurchaseTransaction purchase);
     }
 }
