@@ -24,7 +24,10 @@
                 Command="{Binding GoToViewCmd}" CommandParameter="AddPurchaseView"
                 HorizontalAlignment="Left" Margin="150,618,0,0" VerticalAlignment="Top" Width="150" Height="101"/>
         <Button x:Name="button_Copy1" Content="StockCheck" HorizontalAlignment="Left" Margin="300,618,0,0" VerticalAlignment="Top" Width="150" Height="101"/>
-        <Button x:Name="button_Copy2" Content="Transactions" HorizontalAlignment="Left" Margin="450,618,0,0" VerticalAlignment="Top" Width="150" Height="101"/>
+        <Button x:Name="button_Copy2" 
+                Content="Transactions"
+                Command="{Binding GoToViewCmd}" CommandParameter="TransactionsView"
+                HorizontalAlignment="Left" Margin="450,618,0,0" VerticalAlignment="Top" Width="150" Height="101"/>
         <Button x:Name="button_Copy3"
                 Command="{Binding GoToViewCmd}" CommandParameter="AddProductView"
                 Content="Products" HorizontalAlignment="Left" Margin="600,618,0,0" VerticalAlignment="Top" Width="150" Height="101"/>

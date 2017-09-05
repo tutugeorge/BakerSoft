@@ -13,6 +13,18 @@ namespace BakerSoft.Repositories
 {
     class SaleTransactionLiteRepo : ISaleTransactionRepository
     {
+        public List<SaleTransaction> GetTransactionHistory()
+        {
+            List<SaleTransaction> saleTxns;
+            using (var db = new StoreDbContext())
+            {
+                var query = from b in db.Set<SALE_TRANSACTIONS>()
+                            select b;
+                saleTxns = Mapper.Map<List<SaleTransaction>>(query);
+            }
+            return saleTxns;
+        }
+
         public int GetStockCount(int productId)
         {
             //How to check stock
