@@ -252,10 +252,11 @@ namespace BakerSoft.ViewModels
         {
             try
             {
-                var products = _products.SearchById(id);
-                ProductName = products[0].ProductName;
-                ProductId = Convert.ToString(products[0].ProductId);
-                SelectedUOMIndex = FindUOMIndex(products[0].ProductUoM);
+                var product = _products.GetProductDetails(Convert.ToInt32(id));
+                //var products = _products.SearchById(id);
+                ProductName = product.ProductName;
+                ProductId = Convert.ToString(product.ProductId);
+                SelectedUOMIndex = FindUOMIndex(product.ProductUoM);
             }
             catch (Exception)
             {

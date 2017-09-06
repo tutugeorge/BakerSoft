@@ -20,13 +20,26 @@ namespace BakerSoft.Repositories
             using (var db = new StoreDbContext())
             {
                 PRODUCT prod = Mapper.Map<PRODUCT>(product);
-                prod.ProductCategoryId = 1;
+                //prod.ProductCategoryId = 1;
                 prod.ProductType = 1;
                 //prod.ProductUoM = 1;
 
                 db.Set<PRODUCT>().Add(prod);
                 db.SaveChanges();
             }
+        }
+
+        public Product GetProductDetails(int id)
+        {
+            Product product = null;
+            using (var db = new StoreDbContext())
+            {
+                var query = from b in db.Set<PRODUCT>()
+                            where b.ProductSearchId == id
+                            select b;
+                product = Mapper.Map<Product>(query.FirstOrDefault());
+            }
+            return product;
         }
 
         public List<Product> GetProductsById(string id)

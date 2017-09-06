@@ -140,6 +140,7 @@ namespace BakerSoft.ViewModels
                 product.ProductName = ProductName;
                 product.ProductSearchId = Convert.ToInt32(ProductSearchId);
                 product.ProductUoM = SelectedUOM;
+                product.ProductCategoryId = SelectedTaxRate;
                 //product.PriceList = new List<Price>()
                 //{ new Price() { SellingPrice = Convert.ToDouble(this.SellingPrice) } };
                 product.ProductDescription = ProductDescription;

@@ -16,14 +16,14 @@ namespace BakerSoft.ViewModels
         SaleTransactionModel _saleTransaction;
         PurchaseTransactionModel _purchaseTransaction;
 
-        private Decimal _saleTotalAmount;
-        public Decimal SaleTotalAmount
+        private decimal _saleTotalAmount;
+        public decimal SaleTotalAmount
         {
             get { return _saleTotalAmount; }
             set { SetProperty(ref _saleTotalAmount, value); }
         }
-        private Decimal _purchaseTotalAmount;
-        public Decimal PurchaseTotalAmount
+        private decimal _purchaseTotalAmount;
+        public decimal PurchaseTotalAmount
         {
             get { return _purchaseTotalAmount; }
             set { SetProperty(ref _purchaseTotalAmount, value); }

@@ -28,6 +28,11 @@ namespace BakerSoft.Repositories
             products.Add(product);
         }
 
+        public Product GetProductDetails(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Product> GetProductsById(string id)
         {
             return products;
