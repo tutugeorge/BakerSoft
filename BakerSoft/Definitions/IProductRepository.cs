@@ -11,6 +11,7 @@ namespace BakerSoft.Definitions
     interface IProductRepository
     {
         void AddProduct(Product product);
+        Product GetProductDetails(int id);
         List<Product> GetProductsById(string id);
         List<Product> GetProductsByName(string name);
         List<ProductCategory> GetTaxMaster();

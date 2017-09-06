@@ -91,5 +91,15 @@
                      Command="{Binding DateFilterCmd}"
                      CommandParameter="1"
                      HorizontalAlignment="Left" Margin="138,61,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="257,512,0,0" TextWrapping="Wrap" 
+                   Text="{Binding SaleTotalAmount}"
+                   Visibility="{Binding IsChecked,ElementName=saleRadioBtn,Converter={StaticResource boolToVisibility}}"
+                   VerticalAlignment="Top" Height="28" Width="71"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="163,512,0,0" TextWrapping="Wrap" 
+                   Text="Total" VerticalAlignment="Top" Height="28" Width="71"/>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="257,512,0,0" TextWrapping="Wrap" 
+        	       Text="{Binding PurchaseTotalAmount}"
+                   Visibility="{Binding IsChecked,ElementName=purchaseRadioBtn,Converter={StaticResource boolToVisibility}}"
+                   VerticalAlignment="Top" Height="28" Width="71"/>
     </Grid>
 </UserControl>

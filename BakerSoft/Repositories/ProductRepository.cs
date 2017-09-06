@@ -27,6 +27,11 @@ namespace BakerSoft.Repositories
             }
         }
 
+        public Product GetProductDetails(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Product> GetProductsById(string id)
         {
             int i = Convert.ToInt32(id);

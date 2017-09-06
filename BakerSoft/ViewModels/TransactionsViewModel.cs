@@ -16,6 +16,18 @@ namespace BakerSoft.ViewModels
         SaleTransactionModel _saleTransaction;
         PurchaseTransactionModel _purchaseTransaction;
 
+        private decimal _saleTotalAmount;
+        public decimal SaleTotalAmount
+        {
+            get { return _saleTotalAmount; }
+            set { SetProperty(ref _saleTotalAmount, value); }
+        }
+        private decimal _purchaseTotalAmount;
+        public decimal PurchaseTotalAmount
+        {
+            get { return _purchaseTotalAmount; }
+            set { SetProperty(ref _purchaseTotalAmount, value); }
+        }
         private List<SaleTransaction> _saleTxnList;
         public List<SaleTransaction> SaleTxnList
         {
@@ -44,8 +56,7 @@ namespace BakerSoft.ViewModels
             _saleTransaction = saleTransaction;
             _purchaseTransaction = purchaseTransaction;
 
-            SaleTxnList = _saleTransaction.GetTransactionHistory(DateTime.Today);
-            PurchaseTxnList = _purchaseTransaction.GetPurchaseTxnHistory(DateTime.Today);
+            FilterTxnHistory("0");            
 
             DateFilterCmd = new DelegateCommand<string>(FilterTxnHistory); 
         }
@@ -60,6 +71,19 @@ namespace BakerSoft.ViewModels
             }
             SaleTxnList = _saleTransaction.GetTransactionHistory(dateFilter);
             PurchaseTxnList = _purchaseTransaction.GetPurchaseTxnHistory(dateFilter);
+            SetTotalAmount();
+        }
+
+        private void SetTotalAmount()
+        {
+            var saleTotal = 0.0m;
+            var purchaseTotal = 0.0m;
+            foreach (var item in SaleTxnList)
+                saleTotal += item.TransactionTotal;
+            SaleTotalAmount = saleTotal;
+            foreach (var item in PurchaseTxnList)
+                purchaseTotal += item.PurchaseTxnTotal;
+            PurchaseTotalAmount = purchaseTotal;
         }
     }
 }

@@ -207,8 +207,8 @@ namespace GSTBill.ViewModels
             saleProduct.ProductId = product.ProductId;
             saleProduct.ProductTax = product.ProductTax;
             saleProduct.SellingPrice = Convert.ToDecimal(product.PriceList[0]);
-
-            saleProduct.Quantity = Convert.ToDecimal(Quantity);
+            
+            saleProduct.Quantity = Convert.ToDecimal(Quantity) * GetConversionFactorForUOMId(SelectedUOM);
             _saleTransaction.AddItem(saleProduct);
             UpdateTransaction();
         }
@@ -271,6 +271,13 @@ namespace GSTBill.ViewModels
         private int CheckStock(int productId)
         {
             return _saleTransaction.GetStockCount(productId);
+        }
+
+        private decimal GetConversionFactorForUOMId(int UoMId)
+        {
+            decimal factor = 1.0m;
+            factor = UOMList.Find(uom => uom.UoMId.Equals(UoMId)).UoMConversionFactor;
+            return factor;
         }
     }
 }
