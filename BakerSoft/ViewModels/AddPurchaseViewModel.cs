@@ -252,8 +252,7 @@ namespace BakerSoft.ViewModels
         {
             try
             {
-                var product = _products.GetProductDetails(Convert.ToInt32(id));
-                //var products = _products.SearchById(id);
+                var product = _products.GetProductDetails(Convert.ToInt32(id));                
                 ProductName = product.ProductName;
                 ProductId = Convert.ToString(product.ProductId);
                 SelectedUOMIndex = FindUOMIndex(product.ProductUoM);
@@ -267,10 +266,13 @@ namespace BakerSoft.ViewModels
 
         private int FindTaxRateIndex(int productCategoryId)
         {
-            int index = 0;
+            int index = 1;
             for (int i = 0; i < TaxRateList.Count; i++)
                 if (TaxRateList[i].CategoryId.Equals(productCategoryId))
-                    index = i;
+                {
+                    index = i + 1;
+                    break;
+                }
             return index;
         }
 
