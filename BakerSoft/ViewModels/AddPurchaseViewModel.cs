@@ -257,11 +257,21 @@ namespace BakerSoft.ViewModels
                 ProductName = product.ProductName;
                 ProductId = Convert.ToString(product.ProductId);
                 SelectedUOMIndex = FindUOMIndex(product.ProductUoM);
+                SelectedTaxRate = FindTaxRateIndex(product.ProductCategoryId);
             }
             catch (Exception)
             {
                 RaiseNotification("Error", "Invalid Product");                
             }
+        }
+
+        private int FindTaxRateIndex(int productCategoryId)
+        {
+            int index = 0;
+            for (int i = 0; i < TaxRateList.Count; i++)
+                if (TaxRateList[i].CategoryId.Equals(productCategoryId))
+                    index = i;
+            return index;
         }
 
         private int FindUOMIndex(int value)
