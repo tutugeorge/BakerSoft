@@ -46,8 +46,16 @@ namespace GSTBill.Models
         //public List<Price> PriceList { get; set; }
         public List<decimal?> PriceList { get; set; }
 
+        public List<ProductPrice> PricesList { get; set; }
+
         public Tax ProductTax { get; set; }
 
         public List<UomDefinitions> UoMDefinitionList { get; set; }
+    }
+
+    public class ProductPrice
+    {
+        public decimal PurchasePrice { get; set; }
+        public decimal? SellingPrice { get; set; }
     }
 }

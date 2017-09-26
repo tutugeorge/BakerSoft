@@ -192,10 +192,10 @@ namespace GSTBill.ViewModels
 
         private void AddProduct(Product product)
         {
-            if(StockCheckRequired)
+            if(true)//(StockCheckRequired)
             {
-                var count = CheckStock(product.ProductId);
-                if(count < Convert.ToDecimal(Quantity))
+                var count = CheckStock(product.ProductId, Convert.ToDecimal(product.PricesList[0].PurchasePrice));
+                if(count < GetConvertedQuantity())
                 {
                     RaiseNotification("Alert", "Not enough stock available for his item");
                 }
@@ -207,8 +207,8 @@ namespace GSTBill.ViewModels
             saleProduct.ProductId = product.ProductId;
             saleProduct.ProductTax = product.ProductTax;
             saleProduct.SellingPrice = Convert.ToDecimal(product.PriceList[0]);
-            
-            saleProduct.Quantity = Convert.ToDecimal(Quantity) * GetConversionFactorForUOMId(SelectedUOM);
+
+            saleProduct.Quantity = GetConvertedQuantity();
             _saleTransaction.AddItem(saleProduct);
             UpdateTransaction();
         }
@@ -246,14 +246,28 @@ namespace GSTBill.ViewModels
                 var prods = _products.SearchById(id);
             var multipleProds = new List<Product>();
 
-            foreach (var item in prods[0].PriceList)
-            {
-                var temp = new Product();
-                temp = Mapper.Map<Product, Product>(prods[0], temp);
-                temp.PriceList = new List<decimal?>() { item };
-                multipleProds.Add(temp);
-            }
-            SearchResult = multipleProds;
+
+                foreach (var item in prods[0].PricesList)
+                {
+                    var temp = new Product();
+                    temp = Mapper.Map<Product, Product>(prods[0], temp);
+                    temp.PriceList = new List<decimal?>() { item.SellingPrice };
+                    temp.PricesList = new List<ProductPrice>()
+                    {  new ProductPrice()
+                    { PurchasePrice = item.PurchasePrice, SellingPrice = item.SellingPrice
+                    } };
+                    multipleProds.Add(temp);
+                }
+
+                //foreach (var item in prods[0].PriceList)
+                //{
+                //    var temp = new Product();
+                //    temp = Mapper.Map<Product, Product>(prods[0], temp);
+                //    temp.PriceList = new List<decimal?>() { item };
+                //    multipleProds.Add(temp);
+                //}
+
+                SearchResult = multipleProds;
 
             
                 //SearchResult = _products.SearchById(id);
@@ -269,9 +283,9 @@ namespace GSTBill.ViewModels
             }
         }
 
-        private int CheckStock(int productId)
+        private decimal CheckStock(int productId, decimal sellingPrice)
         {
-            return _saleTransaction.GetStockCount(productId);
+            return _saleTransaction.GetStockCount(productId, sellingPrice);
         }
 
         private decimal GetConversionFactorForUOMId(int UoMId)
@@ -279,6 +293,11 @@ namespace GSTBill.ViewModels
             decimal factor = 1.0m;
             factor = UOMList.Find(uom => uom.UoMId.Equals(UoMId)).UoMConversionFactor;
             return factor;
+        }
+
+        private decimal GetConvertedQuantity()
+        {
+            return Convert.ToDecimal(Quantity) * GetConversionFactorForUOMId(SelectedUOM);
         }
     }
 }
