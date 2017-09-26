@@ -34,6 +34,7 @@ namespace BakerSoft
                     config.CreateMap<Address, ADDRESS>();
                     config.CreateMap<ADDRESS, Address>();
 
+                    config.CreateMap<Product, Product>();
                     config.CreateMap<Product, PRODUCT>();
 
                     config.CreateMap<Payment, PAYMENT>();

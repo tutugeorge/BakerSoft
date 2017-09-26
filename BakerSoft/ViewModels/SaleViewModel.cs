@@ -240,22 +240,23 @@ namespace GSTBill.ViewModels
         {
             //Object cloning required.
 
-            //Displaying products as different items if multiple pricess are available
-            //var prods = _products.SearchById(id);
-            //var multipleProds = new List<Product>();
-
-            //foreach (var item in prods[0].PriceList)
-            //{
-            //    var temp = new Product();
-            //    temp = Mapper.Map<Product,Product>(prods[0], temp);
-            //    temp.PriceList = new List<decimal?>() { item };
-            //    multipleProds.Add(temp);
-            //}
-            //SearchResult = multipleProds;
-
             try
             {
-                SearchResult = _products.SearchById(id);
+                //Displaying products as different items if multiple pricess are available
+                var prods = _products.SearchById(id);
+            var multipleProds = new List<Product>();
+
+            foreach (var item in prods[0].PriceList)
+            {
+                var temp = new Product();
+                temp = Mapper.Map<Product, Product>(prods[0], temp);
+                temp.PriceList = new List<decimal?>() { item };
+                multipleProds.Add(temp);
+            }
+            SearchResult = multipleProds;
+
+            
+                //SearchResult = _products.SearchById(id);
                 SelectedSearchItemIndex = -1;
             }
             catch(NoPurchasedProductException e)
