@@ -65,17 +65,19 @@ namespace BakerSoft.Repositories
 
                 var price = (from p in db.Set<PURCHASE_PRODUCTS>()
                              where p.ProductId == prods.ProductId
-                             select p.SellingPrice).ToList();
+                             select new { p.PurchasePrice, p.SellingPrice }).ToList();
                 if (price.Count <= 0)
                     throw new NoPurchasedProductException();
                 prods.PriceList = new List<decimal?>();
+                prods.PricesList = new List<ProductPrice>();
 
                 //price.ForEach(x => productList.Add(prods));
 
                 //for (int index = 0; index < price.Count; index++)
                 //    productList[index].PriceList.Add(price[index]);
-                price.ForEach(x => prods.PriceList.Add((x.Value)));
-
+                price.ForEach(x => prods.PriceList.Add((x.SellingPrice)));
+                price.ForEach(o => prods.PricesList.Add(new ProductPrice()
+                { PurchasePrice = o.PurchasePrice, SellingPrice = o.SellingPrice }));
 
             }
             return (new List<Product>() { prods });

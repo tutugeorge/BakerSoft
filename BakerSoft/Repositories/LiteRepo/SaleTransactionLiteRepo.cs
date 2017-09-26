@@ -29,8 +29,9 @@ namespace BakerSoft.Repositories
             return saleTxns;
         }
 
-        public int GetStockCount(int productId)
+        public decimal GetStockCount(int productId, decimal sellingPrice)
         {
+            decimal stockCount = 0;
             //How to check stock
             using (var db = new StoreDbContext())
             {
@@ -45,25 +46,27 @@ namespace BakerSoft.Repositories
                 //Get purchase details for the product grouped by purchase price.
                 var purchase = (from pp in db.Set<PURCHASE_PRODUCTS>()
                           where pp.ProductId == productId
-                          select new { pp.ProductId, pp.Quantity, pp.SellingPrice })
-                         .GroupBy(s => new { s.ProductId, s.SellingPrice })
-                         .Select(r => new { r.Key.ProductId, r.Key.SellingPrice, qty = r.Sum(x => x.Quantity) });
+                          select new { pp.ProductId, pp.Quantity, pp.SellingPrice, pp.PurchasePrice })
+                         .GroupBy(s => new { s.ProductId, s.PurchasePrice })
+                         .Select(r => new { r.Key.ProductId, r.Key.PurchasePrice, qty = r.Sum(x => x.Quantity) });
                 //Get Sales details for the product grouped by purchase price. UOM conversion based on product UOM 
                 var sales = (from sp in db.Set<SALES_PRODUCTS>()
                           join uom in db.Set<UOM_DEFINITION_MASTER>()
                           on sp.UoM equals uom.UoMId
                           where sp.ProductId == productId
-                          select new { sp.ProductId, Quantity = sp.Quantity/uom.UoMConversionFactor, sp.SellingPrice })
-                         .GroupBy(s => new { s.ProductId, s.SellingPrice })
-                         .Select(r => new { r.Key.ProductId, r.Key.SellingPrice, qty = r.Sum(x => x.Quantity) });
+                          select new { sp.ProductId, Quantity = sp.Quantity/uom.UoMConversionFactor, sp.SellingPrice, sp.PurchasePrice })
+                         .GroupBy(s => new { s.ProductId, s.PurchasePrice })
+                         .Select(r => new { r.Key.ProductId, r.Key.PurchasePrice, qty = r.Sum(x => x.Quantity) });
 
                 var result = from purch in purchase.ToList()
                              join sale in sales.ToList()
-                             on purch.SellingPrice equals sale.SellingPrice
-                             select new { purch.SellingPrice, stock = (purch.qty - sale.qty) };
+                             on purch.PurchasePrice equals sale.PurchasePrice
+                             select new { purch.PurchasePrice, stock = (purch.qty - sale.qty) };
+
+                stockCount = result.Where(o => o.PurchasePrice.Equals(sellingPrice)).FirstOrDefault().stock;
             }
             
-            return 1;
+            return stockCount;
         }
 
         public void InsertTransaction(SaleTransaction sale)

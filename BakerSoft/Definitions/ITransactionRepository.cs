@@ -17,7 +17,7 @@ namespace GSTBill.Definitions
     {
         List<SaleTransaction> GetTransactionHistory(DateTime fromDate);
         void InsertTransaction(SaleTransaction sale);
-        int GetStockCount(int productId);
+        decimal GetStockCount(int productId, decimal sellingPrice);
     }
 
     interface IPurchaseTransactionRepository
