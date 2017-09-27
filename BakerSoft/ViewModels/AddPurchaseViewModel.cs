@@ -1,6 +1,7 @@
 ﻿using BakerSoft.Models;
 using GSTBill.Models;
 using GSTBill.ViewModels;
+using log4net;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Regions;
@@ -14,6 +15,8 @@ namespace BakerSoft.ViewModels
 {
     class AddPurchaseViewModel : BaseViewModel
     {
+        private static readonly ILog log = LogManager.GetLogger(
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         IRegionManager _regionManager;
         PurchaseTransactionModel _purchaseTransaction;
         SupplierModel _supplierModel;
@@ -210,42 +213,61 @@ namespace BakerSoft.ViewModels
 
         private void Purchase()
         {
+            if (!ValidateInputFields())
+            {
+                RaiseNotification("Alert", "Please all the required fields");
+                return;
+            }
+
             var transaction = new PurchaseTransaction();
             var product = new PurchaseProduct();
-            product.ProductId = Convert.ToInt32(ProductId);
-            product.PurchasePrice = Convert.ToDecimal(PurchasePrice);
-            product.SellingPrice = Convert.ToDecimal(SellingPrice);
-            product.Quantity = Convert.ToInt32(Quantity);
-            //product.Product = new Product()
-            //{
-            //    ProductId = Convert.ToInt32(ProductId)
-            //};
+            try
+            {
+                product.ProductId = Convert.ToInt32(ProductId);
+                product.PurchasePrice = Convert.ToDecimal(PurchasePrice);
+                product.SellingPrice = Convert.ToDecimal(SellingPrice);
+                product.Quantity = Convert.ToInt32(Quantity);
 
-            //product.ProductName = ProductName;
-            //product.ProductCategoryId = SelectedTaxRate;
-            //product.ProductUoM = SelectedUOM;            
-            transaction.ItemList.Add(product);
-            transaction.PaymentList.Add(new PurchasePayment()
-            {                
-                PaymentAmount = Convert.ToDecimal(Amount),
-                Payment = new Payment()
+                transaction.ItemList.Add(product);
+                transaction.PaymentList.Add(new PurchasePayment()
                 {
-                    PaidAmount = Convert.ToDecimal(Amount),
-                    PaymentDate = DateTime.Today,
-                    PaymentType = 1
+                    PaymentAmount = Convert.ToDecimal(Amount),
+                    Payment = new Payment()
+                    {
+                        PaidAmount = Convert.ToDecimal(Amount),
+                        PaymentDate = DateTime.Today,
+                        PaymentType = 1
+                    }
+                });
+                //To do
+                //transaction.PurchaseTaxTotal = //Compute tax from SelectedTaxRate
+                transaction.PurchaseTaxTotal = Convert.ToDecimal(1.00);
+                transaction.SupplierId = SelectedSupplierId;
+                transaction.PurchaseTxnTotal = Convert.ToDecimal(Amount);
+                transaction.BillNumber = BillNumber;
+                transaction.GSTIN = GSTIN;
+                transaction.PurchaseDate = DateTime.Today;
+                _purchaseTransaction.Complete(transaction);
+            }
+            catch (Exception ex)
+            {
+                log.Error(transaction, ex);
+                RaiseNotification("Error", "Failed to add purchase.");
+            }
+            finally
+            {
+                ResetUI();
+            }
         }
-            });
-            //To do
-            //transaction.PurchaseTaxTotal = //Compute tax from SelectedTaxRate
-            transaction.PurchaseTaxTotal = Convert.ToDecimal(1.00);
-            transaction.SupplierId = SelectedSupplierId;
-            transaction.PurchaseTxnTotal = Convert.ToDecimal(Amount);
-            transaction.BillNumber = BillNumber;
-            transaction.GSTIN = GSTIN;
-            transaction.PurchaseDate = DateTime.Today;
-            _purchaseTransaction.Complete(transaction);
 
-            ResetUI();
+        private bool ValidateInputFields()
+        {
+            if (string.IsNullOrWhiteSpace(ProductId)||
+                string.IsNullOrWhiteSpace(PurchasePrice)||
+                string.IsNullOrWhiteSpace(SellingPrice)||
+                string.IsNullOrWhiteSpace(Quantity))
+                return false;
+            return true;
         }
 
         private void SearchProductById(string id)

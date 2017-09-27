@@ -175,7 +175,8 @@ namespace BakerSoft.ViewModels
 
         private bool ValidateInputFields()
         {
-            if (string.IsNullOrWhiteSpace(ProductName))
+            if (string.IsNullOrWhiteSpace(ProductName)||
+                string.IsNullOrWhiteSpace(ProductSearchId))
                 return false;
             return true;
         }

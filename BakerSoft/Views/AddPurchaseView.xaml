@@ -51,7 +51,7 @@
                   SelectedValue="{Binding SelectedSupplier}"
                   HorizontalAlignment="Left" Margin="658,37,0,0" VerticalAlignment="Top" Width="120"/>-->
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="34,35,0,0" TextWrapping="Wrap" 
-                   Text="Product Id" VerticalAlignment="Top"/>
+                   Text="Product Id*" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="144,107,0,0" TextWrapping="Wrap" 
                    Text="{Binding ProductName}" VerticalAlignment="Top" RenderTransformOrigin="-0.02,0.531"/>
         <Button x:Name="button2" 
@@ -60,7 +60,7 @@
                 CommandParameter="{Binding Text, ElementName=txtBxPId}"
                 HorizontalAlignment="Left" Margin="142,75,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.067,-0.325"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="34,139,0,0" TextWrapping="Wrap" 
-        	Text="Quantity" VerticalAlignment="Top"/>
+        	Text="Quantity*" VerticalAlignment="Top"/>
         <ComboBox x:Name="cmbBxUOMList" 
         	ItemsSource="{Binding UOMList}"
         	DisplayMemberPath ="UoMCategoryDescription"
@@ -77,9 +77,9 @@
                   SelectedValue="{Binding SelectedSupplierId}"
                   HorizontalAlignment="Left" Margin="658,35,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="315,35,0,0" TextWrapping="Wrap" 
-        	Text="Purchase Price" VerticalAlignment="Top"/>
+        	Text="Purchase Price*" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="315,84,0,0" TextWrapping="Wrap" 
-        	Text="Selling Price" VerticalAlignment="Top"/>
+        	Text="Selling Price*" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="315,139,0,0" TextWrapping="Wrap" 
         	Text="Tax Category" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="575,38,0,0" TextWrapping="Wrap" 
