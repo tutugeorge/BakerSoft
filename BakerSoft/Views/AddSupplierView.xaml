@@ -16,11 +16,11 @@
     </i:Interaction.Triggers>
     <Grid>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="63,59,0,0" TextWrapping="Wrap" 
-                   Text="Supplier Name" VerticalAlignment="Top" Height="24" Width="102"/>
+                   Text="Supplier Name*" VerticalAlignment="Top" Height="24" Width="102"/>
         <TextBox x:Name="txtBxSupplierName" HorizontalAlignment="Left" Height="24" Margin="194,59,0,0" TextWrapping="Wrap" 
                  Text="{Binding SupplierName}" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="63,104,0,0" TextWrapping="Wrap" 
-        	Text="GSTIN" VerticalAlignment="Top" Height="24" Width="78"/>
+        	Text="GSTIN*" VerticalAlignment="Top" Height="24" Width="78"/>
         <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="24" Margin="194,104,0,0" TextWrapping="Wrap" 
         	Text="{Binding GstNumber}" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="button" Content="Add Supplier" 
@@ -31,7 +31,7 @@
         <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="24" Margin="194,148,0,0" TextWrapping="Wrap" 
         	Text="{Binding TinNumber}" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="63,192,0,0" TextWrapping="Wrap" 
-        	Text="AddressLine1" VerticalAlignment="Top" Height="24" Width="78"/>
+        	Text="AddressLine1*" VerticalAlignment="Top" Height="24" Width="78"/>
         <TextBox x:Name="textBox_Copy2" HorizontalAlignment="Left" Height="24" Margin="194,192,0,0" TextWrapping="Wrap" 
         	Text="{Binding AddressLine1}" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="63,226,0,0" TextWrapping="Wrap" 
@@ -43,11 +43,11 @@
         <TextBox x:Name="textBox_Copy4" HorizontalAlignment="Left" Height="24" Margin="194,264,0,0" TextWrapping="Wrap" 
         	Text="{Binding AddressLine3}" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Margin="63,300,0,0" TextWrapping="Wrap" 
-        	Text="City" VerticalAlignment="Top" Height="24" Width="78"/>
+        	Text="City*" VerticalAlignment="Top" Height="24" Width="78"/>
         <TextBox x:Name="textBox_Copy5" HorizontalAlignment="Left" Height="24" Margin="194,300,0,0" TextWrapping="Wrap" 
         	Text="{Binding City}" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock_Copy6" HorizontalAlignment="Left" Margin="63,334,0,0" TextWrapping="Wrap" 
-        	Text="State" VerticalAlignment="Top" Height="24" Width="78"/>
+        	Text="State*" VerticalAlignment="Top" Height="24" Width="78"/>
         <TextBox x:Name="textBox_Copy6" HorizontalAlignment="Left" Height="24" Margin="194,334,0,0" TextWrapping="Wrap" 
         	Text="{Binding State}" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock_Copy7" HorizontalAlignment="Left" Margin="63,372,0,0" TextWrapping="Wrap" 
