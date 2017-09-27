@@ -16,7 +16,10 @@
             <intr:InvokeCommandAction Command="{Binding LoadWindowCmd}"/>
         </intr:EventTrigger>
     </intr:Interaction.Triggers>
-    <Grid Background="#FF3E1A1A">
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightColorKey}}"/>
+        </Grid.Background>
         <Button x:Name="button" Content="Sale" 
                 Command="{Binding GoToSaleCmd}" CommandParameter="SaleView"
                 HorizontalAlignment="Left" Margin="0,618,0,0" VerticalAlignment="Top" Width="150" Height="101"/>
