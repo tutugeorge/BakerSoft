@@ -22,9 +22,9 @@
         <TextBox x:Name="txtBxProductName" HorizontalAlignment="Left" Height="23" Margin="158,47,0,0" TextWrapping="Wrap" 
                  Text="{Binding ProductName}" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="46,54,0,0" TextWrapping="Wrap" 
-                   Text="Product Name" VerticalAlignment="Top"/>
+                   Text="Product Name*" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="46,102,0,0" TextWrapping="Wrap" 
-        	Text="Search Id" VerticalAlignment="Top"/>
+        	Text="Search Id*" VerticalAlignment="Top"/>
         <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="158,95,0,0" TextWrapping="Wrap" 
                  Text="{Binding ProductSearchId}" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="46,146,0,0" TextWrapping="Wrap" 
