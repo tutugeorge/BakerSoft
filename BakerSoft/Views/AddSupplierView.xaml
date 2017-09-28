@@ -59,14 +59,14 @@
                   HorizontalAlignment="Left" Height="367" Margin="663,86,0,0" VerticalAlignment="Top" Width="286" RenderTransformOrigin="0.27,0.175">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="50">
+                    <GridViewColumn Header="Name" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding SupplierName}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="SearchId" Width="50">
+                    <GridViewColumn Header="SearchId" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding SupplierGST}" />

@@ -140,6 +140,7 @@ namespace BakerSoft.ViewModels
             }
             finally
             {
+                RaiseNotification("Success", string.Format("Successfully added new supplier '{0}'", SupplierName));
                 ResetUI();
             }
         }
