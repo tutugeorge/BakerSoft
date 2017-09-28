@@ -110,7 +110,7 @@ namespace BakerSoft.ViewModels
         {
             if(!ValidateInputFields())
             {
-                RaiseNotification("Alert", "Please all the required fields");
+                RaiseNotification("Alert", "Please fill all the required fields");
                 return;
             }
 
@@ -136,6 +136,7 @@ namespace BakerSoft.ViewModels
             catch (Exception ex)
             {
                 log.Error(supplier, ex);
+                RaiseNotification("Error", "Failed to complete the operation");
             }
             finally
             {
