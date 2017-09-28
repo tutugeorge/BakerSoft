@@ -18,7 +18,7 @@
     <Grid>
         <Button x:Name="button" 
                 Command="{Binding AddProductCmd}"
-                Content="Add Product" HorizontalAlignment="Left" Margin="524,242,0,0" VerticalAlignment="Top" Width="75"/>
+                Content="Add Product" HorizontalAlignment="Left" Margin="530,242,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBox x:Name="txtBxProductName" HorizontalAlignment="Left" Height="23" Margin="158,47,0,0" TextWrapping="Wrap" 
                  Text="{Binding ProductName}" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="46,54,0,0" TextWrapping="Wrap" 
@@ -34,8 +34,10 @@
         <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="385,54,0,0" TextWrapping="Wrap" 
         	Text="Selling Price" VerticalAlignment="Top"/>
         <TextBox x:Name="textBox_Copy3" HorizontalAlignment="Left" Height="23" Margin="524,47,0,0" TextWrapping="Wrap" 
-        	Text="{Binding SellingPrice}" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="385,98,0,0" TextWrapping="Wrap" 
+        	     Text="{Binding SellingPrice}"
+                 IsEnabled="False"
+                 VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="385,94,0,0" TextWrapping="Wrap" 
         	Text="UOM" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBox" 
                   ItemsSource="{Binding UOMList}"
@@ -43,7 +45,7 @@
                   SelectedValuePath ="UoMCategoryId"                  
                   SelectedIndex="0"
                   SelectedValue="{Binding SelectedUOM}"
-                  HorizontalAlignment="Left" Margin="524,98,0,0" VerticalAlignment="Top" Width="120"/>
+                  HorizontalAlignment="Left" Margin="524,94,0,0" VerticalAlignment="Top" Width="120"/>
         <!--<ComboBox x:Name="comboBox_Copy" 
         	ItemsSource="{Binding TaxRateList}"
         	DisplayMemberPath ="TaxTotal"
@@ -51,7 +53,7 @@
             SelectedIndex="0"      
         	SelectedValue="{Binding SelectedTaxRate}"
         	HorizontalAlignment="Left" Margin="524,47,0,0" VerticalAlignment="Top" Width="120" SelectedItem=""/>-->
-        <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Margin="389,160,0,0" TextWrapping="Wrap" 
+        <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Margin="387,146,0,0" TextWrapping="Wrap" 
         	Text="Category" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBox_Copy1" 
         	ItemsSource="{Binding TaxRateList}"
@@ -59,20 +61,20 @@
         	SelectedValuePath ="CategoryId"                  
         	SelectedIndex="0"      
         	SelectedValue="{Binding SelectedTaxRate}"
-        	HorizontalAlignment="Left" Margin="528,153,0,0" VerticalAlignment="Top" Width="120" SelectedItem=""/>
+        	HorizontalAlignment="Left" Margin="524,139,0,0" VerticalAlignment="Top" Width="120" SelectedItem=""/>
         <ListView x:Name="listView" 
                   ItemsSource="{Binding ProductList}"
-                  HorizontalAlignment="Left" Height="352" Margin="746,95,0,0" VerticalAlignment="Top" Width="228">
+                  HorizontalAlignment="Left" Height="352" Margin="746,43,0,0" VerticalAlignment="Top" Width="228">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="50">
+                    <GridViewColumn Header="Name" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding ProductDescription}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="SearchId" Width="50">
+                    <GridViewColumn Header="SearchId" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding ProductSearchId}" />
