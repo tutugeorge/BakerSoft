@@ -25,7 +25,7 @@
         <Button x:Name="button" Command="{Binding CheckoutCmd}"
                 Content="Checkout" HorizontalAlignment="Left" Margin="1128,69,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
         <TextBox x:Name="txtSearchName" HorizontalAlignment="Left" Height="35" Margin="40,103,0,0" TextWrapping="Wrap" 
-                 Text="Enter ProductID" VerticalAlignment="Top" Width="174"/>
+                 Text="Enter Product Name" VerticalAlignment="Top" Width="174"/>
         <TextBox x:Name="txtBxPId"
                  KeyboardNavigation.TabIndex="0"                 
                  HorizontalAlignment="Left" Height="29" Margin="40,305,0,0" TextWrapping="Wrap" 

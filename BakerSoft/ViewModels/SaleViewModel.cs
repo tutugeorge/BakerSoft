@@ -198,8 +198,10 @@ namespace GSTBill.ViewModels
                 if(count < GetConvertedQuantity())
                 {
                     RaiseNotification("Alert", "Not enough stock available for his item");
+                    return;
                 }
             }
+
             var saleProduct = new SaleProduct();
             saleProduct.UoM = product.ProductUoM;
             saleProduct.ProductDescription = product.ProductDescription;

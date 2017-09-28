@@ -155,9 +155,11 @@ namespace BakerSoft.ViewModels
             catch (Exception ex)
             {
                 log.Error(product, ex);
+                RaiseNotification("Error", "Failed to add the new product");
             }
             finally
             {
+                RaiseNotification("Success", string.Format("Successfully added new product '{0}'", ProductDescription));
                 ResetUI();
             }
         }
