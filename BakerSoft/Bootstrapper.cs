@@ -89,6 +89,12 @@ namespace GSTBill
                 #region UOM DATA
                 litedb.Set<DAL.Models.UOM_CATEGORY_MASTER>().Add(new DAL.Models.UOM_CATEGORY_MASTER()
                 {
+                    UoMCategoryCode = "3",
+                    UoMCategoryId = 3,
+                    UoMCategoryDescription = "Piece"
+                });
+                litedb.Set<DAL.Models.UOM_CATEGORY_MASTER>().Add(new DAL.Models.UOM_CATEGORY_MASTER()
+                {
                     UoMCategoryCode = "2",
                     UoMCategoryId = 2,
                     UoMCategoryDescription = "Litre"
@@ -99,7 +105,13 @@ namespace GSTBill
                     UoMCategoryId = 1,
                     UoMCategoryDescription = "Gram"
                 });
-
+                litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
+                {
+                    UoMCode = "3",
+                    UoMDescription = "Piece",
+                    UoMCategoryId = 3,
+                    UoMConversionFactor = 1.0m
+                });
                 litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
                 {
                     UoMCode = "1",

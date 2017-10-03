@@ -192,7 +192,7 @@ namespace GSTBill.ViewModels
 
         private void AddProduct(Product product)
         {
-            if(true)//(StockCheckRequired)
+            if(false)//(StockCheckRequired)
             {
                 var count = CheckStock(product.ProductId, Convert.ToDecimal(product.PricesList[0].PurchasePrice));
                 if(count < GetConvertedQuantity())
