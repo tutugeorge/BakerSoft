@@ -47,8 +47,15 @@ namespace BakerSoft.Repositories
                 var purchase = (from pp in db.Set<PURCHASE_PRODUCTS>()
                           where pp.ProductId == productId
                           select new { pp.ProductId, pp.Quantity, pp.SellingPrice, pp.PurchasePrice })
-                         .GroupBy(s => new { s.ProductId, s.PurchasePrice })
-                         .Select(r => new { r.Key.ProductId, r.Key.PurchasePrice, qty = r.Sum(x => x.Quantity) });
+                         .GroupBy(s => new {
+                             s.ProductId,
+                             s.PurchasePrice,
+                             s.SellingPrice })
+                         .Select(r => new {
+                             r.Key.ProductId,
+                             r.Key.PurchasePrice,
+                             r.Key.SellingPrice,
+                             qty = r.Sum(x => x.Quantity) });
                 //Get Sales details for the product grouped by purchase price. UOM conversion based on product UOM 
                 var sales = (from sp in db.Set<SALES_PRODUCTS>()
                           join uom in db.Set<UOM_DEFINITION_MASTER>()
@@ -63,7 +70,10 @@ namespace BakerSoft.Repositories
                              on purch.PurchasePrice equals sale.PurchasePrice
                              select new { purch.PurchasePrice, stock = (purch.qty - sale.qty) };
 
-                stockCount = result.Where(o => o.PurchasePrice.Equals(sellingPrice)).FirstOrDefault().stock;
+                if (result.Where(o => o.PurchasePrice.Equals(sellingPrice)).ToList().Count != 0)
+                    stockCount = result.Where(o => o.PurchasePrice.Equals(sellingPrice)).FirstOrDefault().stock;
+                else
+                    stockCount = purchase.First(o => o.PurchasePrice.Equals(sellingPrice)).qty;
             }
             
             return stockCount;
