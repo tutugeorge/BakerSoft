@@ -209,6 +209,7 @@ namespace GSTBill.ViewModels
             saleProduct.ProductId = product.ProductId;
             saleProduct.ProductTax = product.ProductTax;
             saleProduct.SellingPrice = Convert.ToDecimal(product.PriceList[0]);
+            saleProduct.PurchasePrice = Convert.ToDecimal(product.PricesList[0].PurchasePrice);
 
             saleProduct.Quantity = GetConvertedQuantity();
             _saleTransaction.AddItem(saleProduct);
