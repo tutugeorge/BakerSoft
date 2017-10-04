@@ -30,7 +30,7 @@
                  KeyboardNavigation.TabIndex="0"                 
                  HorizontalAlignment="Left" Height="29" Margin="40,305,0,0" TextWrapping="Wrap" 
         	    Text="" VerticalAlignment="Top" Width="174"/>
-        <Button x:Name="button_Copy" Command="{Binding CheckoutCmd}"
+        <Button x:Name="button_Copy" Command="{Binding CancelSaleCmd}"
         	    Content="Cancel"                 
                 HorizontalAlignment="Left" Margin="1128,149,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
         <ListView x:Name="listView" 
