@@ -248,6 +248,8 @@ namespace BakerSoft.ViewModels
                 transaction.GSTIN = GSTIN;
                 transaction.PurchaseDate = DateTime.Today;
                 _purchaseTransaction.Complete(transaction);
+                RaiseNotification("Success", 
+                        string.Format("Successfully added the purchase of the product {0}", ProductName));
             }
             catch (Exception ex)
             {
@@ -324,6 +326,7 @@ namespace BakerSoft.ViewModels
             SellingPrice = "0";
             PurchasePrice = "0";
             Amount = "0";
+            BillNumber = "";
         }
     }
 }
