@@ -99,7 +99,7 @@
                   ItemsSource="{Binding UOMList}"
                   DisplayMemberPath ="UoMDescription"
                   SelectedValuePath ="UoMId"                  
-                  SelectedIndex="0"
+                  SelectedIndex="{Binding SelectedUOMIndex}"
                   SelectedValue="{Binding SelectedUOM}"
                   HorizontalAlignment="Left" Margin="257,306,0,0" VerticalAlignment="Top" Width="112" Height="42"/>
         <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="42" Margin="399,304,0,0" TextWrapping="Wrap" 

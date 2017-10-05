@@ -43,9 +43,18 @@ namespace GSTBill.ViewModels
             {
                 SetProperty(ref _selectedSearchItem, value);
                 if (_selectedSearchItem != null)
+                {
                     //SelectedUOM = _selectedSearchItem.ProductUoM;
-                    UOMList = _selectedSearchItem.UoMDefinitionList; 
+                    UOMList = _selectedSearchItem.UoMDefinitionList;
+                    SelectedUOMIndex = 0;
+                }
             }
+        }
+        private int _selectedUOMIndex;
+        public int SelectedUOMIndex
+        {
+            get { return _selectedUOMIndex; }
+            set { SetProperty(ref _selectedUOMIndex, value); }
         }
         private int _selectedUOM;
         public int SelectedUOM
@@ -158,6 +167,7 @@ namespace GSTBill.ViewModels
             _saleTransaction = saleTransaction;
             _products = products;
             Total = "0.00";
+            SelectedUOMIndex = 0;
 
             CheckoutCmd = new DelegateCommand(Checkout);
             CancelSaleCmd = new DelegateCommand(CancelSale);
@@ -232,6 +242,7 @@ namespace GSTBill.ViewModels
             //Total = (_saleTransaction.sale.TransactionTotal +
             //        _saleTransaction.sale.TransactionTaxTotal).ToString("F2");
             Quantity = "1";
+            SelectedUOMIndex = 0;
         }
 
         private void SearchProductByName(string name)
