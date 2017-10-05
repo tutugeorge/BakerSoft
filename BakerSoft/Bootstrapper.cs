@@ -117,7 +117,7 @@ namespace GSTBill
                     UoMCode = "1",
                     UoMDescription = "MilliGram",
                     UoMCategoryId = 1,
-                    UoMConversionFactor = 1000m
+                    UoMConversionFactor = 0.001m
                 });
                 litedb.Set<DAL.Models.UOM_DEFINITION_MASTER>().Add(new DAL.Models.UOM_DEFINITION_MASTER()
                 {
@@ -131,7 +131,7 @@ namespace GSTBill
                     UoMCode = "1",
                     UoMDescription = "KiloGram",
                     UoMCategoryId = 1,
-                    UoMConversionFactor = 0.001m
+                    UoMConversionFactor = 1000m
                 });
                 #endregion
 

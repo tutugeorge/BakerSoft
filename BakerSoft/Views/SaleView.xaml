@@ -19,18 +19,20 @@
         </prism:InteractionRequestTrigger>
     </i:Interaction.Triggers>
 
-    <Grid Margin="0,0,-272,0">
-        <TextBox HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="25" Width="325" Margin="0,0,10,-24" x:Name="txtAuto" TextWrapping="NoWrap"/>
+    <Grid Margin="-22,-32,-250,32">
+        <TextBox HorizontalAlignment="Right"
+                 Visibility="Hidden"
+                 VerticalAlignment="Bottom" Height="25" Width="325" Margin="0,0,10,-24" x:Name="txtAuto" TextWrapping="NoWrap"/>
         <ListBox x:Name="lbSuggestion" SelectionChanged="lbSuggestion_SelectionChanged" Background="LightYellow" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top" Width="325" Margin="0,0,10,0"/>
         <Button x:Name="button" Command="{Binding CheckoutCmd}"
                 Content="Checkout" HorizontalAlignment="Left" Margin="1128,69,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
-        <TextBox x:Name="txtSearchName" HorizontalAlignment="Left" Height="35" Margin="40,103,0,0" TextWrapping="Wrap" 
+        <TextBox x:Name="txtSearchName" HorizontalAlignment="Left" Height="35" Margin="40,79,0,0" TextWrapping="Wrap" 
                  Text="Enter Product Name" VerticalAlignment="Top" Width="174"/>
         <TextBox x:Name="txtBxPId"
                  KeyboardNavigation.TabIndex="0"                 
-                 HorizontalAlignment="Left" Height="29" Margin="40,305,0,0" TextWrapping="Wrap" 
+                 HorizontalAlignment="Left" Height="29" Margin="40,233,0,0" TextWrapping="Wrap" 
         	    Text="" VerticalAlignment="Top" Width="174"/>
-        <Button x:Name="button_Copy" Command="{Binding CheckoutCmd}"
+        <Button x:Name="button_Copy" Command="{Binding CancelSaleCmd}"
         	    Content="Cancel"                 
                 HorizontalAlignment="Left" Margin="1128,149,0,0" VerticalAlignment="Top" Width="109" Height="44"/>
         <ListView x:Name="listView" 
@@ -97,24 +99,25 @@
                   ItemsSource="{Binding UOMList}"
                   DisplayMemberPath ="UoMDescription"
                   SelectedValuePath ="UoMId"                  
-                  SelectedIndex="0"
+                  SelectedIndex="{Binding SelectedUOMIndex}"
                   SelectedValue="{Binding SelectedUOM}"
-                  HorizontalAlignment="Left" Margin="323,374,0,0" VerticalAlignment="Top" Width="138" Height="42"/>
-        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="42" Margin="385,304,0,0" TextWrapping="Wrap" 
+                  HorizontalAlignment="Left" Margin="257,306,0,0" VerticalAlignment="Top" Width="112" Height="42"/>
+        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="42" Margin="399,304,0,0" TextWrapping="Wrap" 
         	Text="{Binding Quantity}" 
             IsEnabled="{Binding IsAddItemEnabled, Mode=TwoWay}" 
                  KeyboardNavigation.TabIndex="3"
-                 VerticalAlignment="Top" Width="76" RenderTransformOrigin="1.737,-3.244"/>
+                 VerticalAlignment="Top" Width="62" RenderTransformOrigin="1.737,-3.244"/>
         <Button x:Name="button_Copy2" 
                 Command="{Binding SearchProductByIdCmd}"
                 CommandParameter="{Binding Text, ElementName=txtBxPId}"
         	    Content="Search"
                 KeyboardNavigation.TabIndex="1"
-                HorizontalAlignment="Left" Margin="40,369,0,0" VerticalAlignment="Top" Width="109" Height="44" RenderTransformOrigin="0.486,1.477"/>
+                HorizontalAlignment="Left" Margin="40,281,0,0" VerticalAlignment="Top" Width="109" Height="44" RenderTransformOrigin="0.486,1.477"/>
         <TextBlock x:Name="textBlock" 
                    Text="{Binding Total}" 
-                   HorizontalAlignment="Left" Margin="881,516,0,-14" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="60" FontSize="18.667"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="734,527,0,0" TextWrapping="Wrap" Text="Total" VerticalAlignment="Top"/>
+                   HorizontalAlignment="Left" Margin="877,478,0,0" TextWrapping="Wrap"
+                   VerticalAlignment="Center" Width="201" Height="60" FontSize="18.667"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="730,491,0,0" TextWrapping="Wrap" Text="Total" VerticalAlignment="Top" FontSize="20"/>
         <Button x:Name="button1" Content="Remove Item" 
                 IsEnabled="{Binding IsRemoveItemEnabled, Mode=TwoWay}"
                 Command="{Binding RemoveProductCmd}"
@@ -123,10 +126,10 @@
         <Button x:Name="button_Copy3" 
         	Command="{Binding SearchProductByNameCmd}"
         	CommandParameter="{Binding Text, ElementName=txtSearchName}"
-        	Content="Search" HorizontalAlignment="Left" Margin="40,164,0,0" VerticalAlignment="Top" Width="109" Height="44" RenderTransformOrigin="0.486,1.477"/>
+        	Content="Search" HorizontalAlignment="Left" Margin="40,132,0,0" VerticalAlignment="Top" Width="109" Height="44" RenderTransformOrigin="0.486,1.477"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="40,48,0,0" TextWrapping="Wrap" 
-                   Text="Enter Product Name" VerticalAlignment="Top" Height="44" Width="174"/>
-        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="40,241,0,0" TextWrapping="Wrap" 
+                   Text="Enter Product Name" VerticalAlignment="Top" Height="38" Width="174"/>
+        <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="40,201,0,0" TextWrapping="Wrap" 
         	Text="Enter Product Id" VerticalAlignment="Top" Height="44" Width="174"/>
 
     </Grid>
