@@ -115,8 +115,9 @@
                 HorizontalAlignment="Left" Margin="40,281,0,0" VerticalAlignment="Top" Width="109" Height="44" RenderTransformOrigin="0.486,1.477"/>
         <TextBlock x:Name="textBlock" 
                    Text="{Binding Total}" 
-                   HorizontalAlignment="Left" Margin="881,516,0,-14" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="60" FontSize="18.667"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="734,527,0,0" TextWrapping="Wrap" Text="Total" VerticalAlignment="Top"/>
+                   HorizontalAlignment="Left" Margin="877,478,0,0" TextWrapping="Wrap"
+                   VerticalAlignment="Center" Width="201" Height="60" FontSize="18.667"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="730,491,0,0" TextWrapping="Wrap" Text="Total" VerticalAlignment="Top" FontSize="20"/>
         <Button x:Name="button1" Content="Remove Item" 
                 IsEnabled="{Binding IsRemoveItemEnabled, Mode=TwoWay}"
                 Command="{Binding RemoveProductCmd}"
