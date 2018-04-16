@@ -210,3 +210,12 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/Logs
+/Shared
+/SQLite.CodeFirst.Console
+/DAL/LiteDB
+/DAL/Test
+/DAL/StoreDbInitializer.cs
+/DAL/StoreDbContext.cs
+/DAL/ModelConfiguration.cs
+/DAL/LiteDB.cs

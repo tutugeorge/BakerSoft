@@ -213,11 +213,7 @@ namespace BakerSoft.ViewModels
 
         private void Purchase()
         {
-            if (!ValidateInputFields())
-            {
-                RaiseNotification("Alert", "Please all the required fields");
-                return;
-            }
+            ValidateInputFields();
 
             var transaction = new PurchaseTransaction();
             var product = new PurchaseProduct();
@@ -262,14 +258,14 @@ namespace BakerSoft.ViewModels
             }
         }
 
-        private bool ValidateInputFields()
+        private void ValidateInputFields()
         {
             if (string.IsNullOrWhiteSpace(ProductId)||
                 string.IsNullOrWhiteSpace(PurchasePrice)||
                 string.IsNullOrWhiteSpace(SellingPrice)||
                 string.IsNullOrWhiteSpace(Quantity))
-                return false;
-            return true;
+                return ;
+            RaiseNotification("Alert", "Please all the required fields");            
         }
 
         private void SearchProductById(string id)

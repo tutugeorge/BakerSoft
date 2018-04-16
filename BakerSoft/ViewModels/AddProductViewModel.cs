@@ -16,8 +16,9 @@ namespace BakerSoft.ViewModels
     {
         private static readonly ILog log = LogManager.GetLogger(
                 System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private ProductModel _productModel;
 
+        #region Properties
+        private ProductModel _productModel;
         private List<Product> _productList;
         public List<Product> ProductList
         {
@@ -108,6 +109,7 @@ namespace BakerSoft.ViewModels
 
         //Add other data capture items for product
         public DelegateCommand AddProductCmd { get; set; }
+        #endregion
 
         public AddProductViewModel(ProductModel productModel)
         {
@@ -121,6 +123,7 @@ namespace BakerSoft.ViewModels
             ProductList = _productModel.RetreiveAllProducts();     
         }
 
+        #region Methods
         private void RaiseNotification(string title, string message)
         {
             this.NotificationRequest.Raise(
@@ -182,5 +185,6 @@ namespace BakerSoft.ViewModels
                 return false;
             return true;
         }
+        #endregion
     }
 }
